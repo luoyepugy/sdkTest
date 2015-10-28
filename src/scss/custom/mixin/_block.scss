@@ -1,0 +1,36 @@
+
+@import "other";
+
+
+// 块状元素内部文本居中
+//
+// 参数列表依次为（宽度，高度：若省略该参数则默认为宽度）
+//
+@mixin inside-center($width, $height: $width) {
+  width: $width;
+  text-align: center;
+  @include line-height($height);
+}
+
+
+// 块状元素本身居中
+@mixin outside-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+// 块状子元素分成两份
+//
+// 参数列表依次为（左边宽度，右边宽度）
+//
+@mixin display-inline($left-width, $right-width) {
+  .inline-left{
+    width: $left-width;
+    @include inline-block;
+  }
+  .inline-right {
+    width: $right-width;
+    @include inline-block;
+  }
+}

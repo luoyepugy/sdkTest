@@ -1,0 +1,43 @@
+
+// 基本skin，包括背景，字体颜色，边框（可传入边框颜色或者border属性值）
+//
+// 参数列表依次为（背景，字体颜色，边框）
+//
+@mixin skin-basic($background, $color, $border: 0) {
+	background: $background;
+	color: $color;
+	
+	@if length($border) == 1 {
+    border: 1px solid $border;
+	} @else {
+    border: $border;
+	}
+}
+
+
+// 只有背景，边框（可传入边框颜色或者border属性值）
+//
+// 参数列表依次为（背景，边框）
+//
+@mixin skin-bgbd($background, $border){
+	background: $background;
+  @if length($border) == 1 {
+    border: 1px solid $border;
+	} @else {
+    border: $border;
+	}
+}
+
+
+// 只有字体颜色，边框（可传入边框颜色或者border属性值）
+//
+// 参数列表依次为（字体颜色，边框）
+//
+@mixin skin-fgbd($color, $border){
+	color: $color;
+  @if length($border) == 1 {
+    border: 1px solid $border;
+	} @else {
+    border: $border;
+	}
+}

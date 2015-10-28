@@ -1,0 +1,7 @@
+{
+	"success": true,
+	"message": "失败",
+	"data": {
+		"verification_code": "1234"
+	}
+}

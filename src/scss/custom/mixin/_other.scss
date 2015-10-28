@@ -1,0 +1,25 @@
+
+// 垂直居中
+//
+// 参数列表依次为（高度）
+//
+@mixin line-height($height) {
+  height: $height;
+  line-height: $height;
+}
+
+
+// 行块元素低版本兼容
+@mixin inline-block {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+
+// 最后一个隐藏
+@mixin last-hidden {
+  &:last-child {
+    display: none;
+  }
+}

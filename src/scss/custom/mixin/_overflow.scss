@@ -1,0 +1,35 @@
+
+// 字符溢出
+//
+// 参数为（文本溢出时显示类型，如ellipsis、clip）
+//
+@mixin overflow($type) {
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  text-overflow: $type;
+}
+
+
+// 字符限制行数
+//
+// 参数为（行数，为数字，引用为如.climit2）
+//
+@mixin climit($row) {
+  .climit#{$row} {
+    overflow: hidden;
+    height: $row * 1.5em;
+  }
+}
+
+
+// 字符限制长度
+//
+// 参数为（字符长度，为数字，引用为如.elimit10）
+//
+@mixin elimit($num) {
+  .elimit#{$num} {
+    @include overflow(ellipsis);
+    max-width: #{num}em;
+  }
+}

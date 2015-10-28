@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="-webkit-tap-highlight" content="no"/>
+<meta content="IE=10" http-equiv="x-ua-compatible"/>
+<title>编辑资料</title>
+<link rel="stylesheet" href="css/fonts.css" />
+<link rel="stylesheet" href="css/apps.min.css" />
+<script type="text/javascript" src="js/Qmik.min.js"></script>
+<script type="text/javascript" src="js/pages.min.js"></script>
+<body>
+    <!-- 头部导航 -->
+    <header class="header">
+        <div class="header_nav">
+            <a href="index.html" class="link_white"><i class="icon-arrow-left"></i></a>
+            <span class="header_nav_title">编辑资料</span>
+            <a href="#" class="header_nav_button link_white">返回游戏</a>
+        </div>
+    </header>
+    <!-- /头部导航 -->
+    <!-- 中间内容 -->
+    <article class="content" q-ctrl="editUserForm">
+        <!-- 编辑资料表单 -->    
+        <section class="user_portrait pr limit_size">
+            <img id="user_portrait" src="images/default_portrait.png" />
+            <input type="file" id="file" class="upload_img" name="file" onchange="uploadImg()"  />
+        </section>
+        <p class="tc mt2">点击设置头像</p>
+        <section class="user_infos mt3">
+            <label for="user_nickname" class="inline_left tr">昵称：</label>
+            <input id="user_nickname" class="input inline_right" name="user_nickname" type="text" value="" />
+        </section>
+        <section class="user_infos mt5 mb5 vm" q-ctrl="radio">
+            <span class="inline_left tr">性别：</span>
+            <label class="mr8" q-onclick="choice">
+                <i class="icon-radio-checked green font_lg"></i>
+                <input class="none" type="radio" name="sex" value="male" checked />男
+            </label>
+            <label q-onclick="choice">
+                <i class="icon-radio-checked gray_light font_lg"></i>
+                <input class="none" type="radio" name="sex" value="female" />女
+            </label>
+        </section>
+        <section class="user_infos mt3">
+            <label for="user_birthday" class="inline_left tr">生日：</label>
+            <input id="user_birthday" class="input inline_right" type="text" name="user_birthday" placeholder="未设置" value="" />
+        </section>
+        <section class="user_infos mt3">
+            <label for="user_hometown" class="inline_left tr">地区：</label>
+            <input id="user_hometown" class="input inline_right" type="text" name="user_hometown" placeholder="未设置" value="" />
+        </section>
+        <p class="tc"><input class="green_button mt7" type="submit" value="提交保存" q-onclick="submit" /></p>
+        <!-- /编辑资料表单 -->
+    </article>
+    <!-- /中间内容 -->
+</body>
+</html>

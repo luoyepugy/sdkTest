@@ -1,0 +1,45 @@
+
+
+// 超链接
+//
+// 参数为（文本原始颜色，鼠标放上后的颜色：若省略该值默认为文本原始颜色）
+//
+@mixin link($original-color, $hover-color: $original-color) {
+  cursor: pointer;
+  color: $original-color;
+
+  &:hover {
+    color: $hover-color;
+  }  
+}
+
+
+// 该样式下所有的a标签
+//
+// 参数为（文本原始颜色，鼠标放上后的颜色：若省略该值默认为文本原始颜色）
+//
+@mixin link-a($original-color, $hover-color: $original-color) {
+  a {
+    color: $original-color;
+    
+    &:hover {
+      color: $hover-color;
+    }
+  }
+}
+
+
+// 超链接（带文本修饰类型参数）
+//
+// 参数为（文本原始颜色，鼠标放上后的颜色，文本修饰类型）
+//
+@mixin link-basic($original-color, $hover-color, $decoration-type: none) {
+  a {
+    color: $original-color;
+
+    &:hover {
+      color: $hover-color;
+      text-decoration: $decoration-type;
+    }
+  }
+}

@@ -1,0 +1,123 @@
+
+// fontsize生成器
+//
+// 参数列表依次为（间距值、开始值、结束值）,值不带单位，默认为px
+// 可以在样式表中引用生成的class（ex .f12）
+//
+
+@mixin fontsize($step, $start, $end) {
+  $n: $start;
+  @while $n <= $end {
+    .f#{$n} {
+      font-size: #{$n}px;
+      $n: $n + $step;
+    }
+  }
+}
+
+
+// width生成器
+//
+// 参数列表依次为（间距值、开始值、结束值）,值不带单位，默认为px
+// 可以在样式表中引用生成的class（ex .w200）
+//
+
+@mixin width($step, $start, $end, $unit: px) {
+  $n: $start;
+  @while $n <= $end {
+    .w#{$n} {
+      width: #{$n}#{$unit};
+      $n: $n + $step;
+    }
+  }
+}
+
+
+
+// padding生成器
+//
+// 参数列表依次为（间距值、开始值、结束值，类型，标记）,值不带单位，默认为px
+// 可以在样式表中引用生成的class（ex .p10）
+//
+
+@mixin padding($step, $start, $end, $unit: px) {
+  $n: $start;
+  @while $n <= $end {
+    .p#{$n} {
+      padding: #{$n}#{$unit}; 
+      $n: $n + $step;
+    }
+  }
+}
+
+
+// padding分解生成器
+//
+// 参数列表依次为（间距值、开始值、结束值，类型，标记）,值不带单位，默认为px
+// 可以在样式表中引用生成的class（ex .pt10）
+//
+
+@mixin padding-single($step, $start, $end, $unit: px) {
+  $n: $start;
+  @while $n <= $end {
+    .pt#{$n} {
+      padding-top: #{$n}#{$unit};
+    }
+    .pr#{$n} {
+      padding-right: #{$n}#{$unit};
+    }
+    .pl#{$n} {
+      padding-left: #{$n}#{$unit};
+    }
+    .pb#{$n} {
+      padding-bottom: #{$n}#{$unit};
+    }
+    $n: $n + $step;
+  }
+}
+
+
+
+
+
+// margin生成器
+//
+// 参数列表依次为（间距值、开始值、结束值，类型，标记）,值不带单位，默认为px
+// 可以在样式表中引用生成的class（ex .m10）
+//
+
+@mixin margin($step, $start, $end, $unit: px) {
+  $n: $start;
+  @while $n <= $end {
+    .m#{$n} {
+      margin: #{$n}#{$unit};
+      $n: $n + $step;
+    }
+  }
+}
+
+
+// margin分解生成器
+//
+// 参数列表依次为（间距值、开始值、结束值，类型，标记）,值不带单位，默认为px
+// 可以在样式表中引用生成的class（ex .mt10）
+//
+
+@mixin margin-single($step, $start, $end, $unit: px) {
+  $n: $start;
+  @while $n <= $end {
+    .mt#{$n} {
+      margin-top: #{$n}#{$unit};
+    }
+    .mr#{$n} {
+      margin-right: #{$n}#{$unit};
+    }
+    .ml#{$n} {
+      margin-left: #{$n}#{$unit};
+    }
+    .mb#{$n} {
+      margin-bottom: #{$n}#{$unit};
+    }
+    $n: $n + $step
+  }
+}

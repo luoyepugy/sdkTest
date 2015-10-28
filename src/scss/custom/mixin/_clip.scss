@@ -1,0 +1,21 @@
+
+
+// 裁剪（八边形）
+//
+// 参数列表为（八边形四个角的直角长度）
+//
+@mixin clip-octagon($width) {
+  clip-path: polygon( $width 0, 100 - $width 0, 100% $width,
+                    100% 100 - $width, 100 - $width 100%,
+                    $width 100%, 0 100 - $width, 0 $width
+  );
+}
+
+
+// 裁剪（菱形）
+//
+// 参数列表为（菱形四个角的直角长度,使用%单位值）
+//
+@mixin clip-diamond {
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+}

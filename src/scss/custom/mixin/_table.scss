@@ -1,0 +1,31 @@
+
+// 表格
+//
+// 参数为（td的文本对齐类型）
+//
+@mixin table($td-align) {
+  width: 100%;
+  th {
+    text-align: center;
+    padding: .7em 0;
+    vertical-align: middle;
+  }
+  td {
+    padding: .7em 0;
+    vertical-align: middle;
+    text-align: $td-algin;
+  }
+}
+
+
+// 斑马纹表格
+//
+// 参数为（第一行的背景色，第二行的背景色）
+//
+@mixin table-zebra($even-color, $odd-color) {
+  background-color: $even-color;
+
+  tr:nth-of-type(even) {
+    background-color: $odd-color;
+  }
+}

@@ -1,0 +1,112 @@
+
+// font-weight
+.fb {
+  font-weight: 700;
+}
+.fn {
+  font-weight: 400;
+}
+
+
+// text-indent
+.t2 {
+  text-indent: 2em;
+}
+
+
+// block-center
+.bc {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+// float
+.fl {
+  float: left;
+  display: inline;
+}
+.fr {
+  float: right;
+  display: inline;
+}
+
+
+// clear
+.cb {
+  clear: both;
+}
+.cl {
+  clear: left;
+}
+.cr {
+  clear: right;
+}
+
+
+// vertical-align
+.vm * {
+  vertical-align: middle;
+}
+.vt * {
+  vertical-align: top;
+}
+
+// zoom
+.zoom {
+  zoom: 1;
+}
+
+
+// display
+.none {
+  display: none;
+}
+.db {
+  display: block;
+}
+.dib {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+// cursor
+.pointer {
+  cursor: pointer;
+}
+
+// position
+.pr {
+  position: relative;
+}
+.pa {
+  position: absolute;
+}
+
+
+// text-align
+.tl {
+  text-align: left;
+}
+.tc {
+  text-align: center;
+}
+.tr {
+  text-align: right;
+}
+
+
+// line-height
+.lh120 {
+  line-height: 120%;
+}
+.lh150 {
+  line-height: 150%;
+}
+.lh180 {
+  line-height: 180%;
+}
+.lh200 {
+  line-height: 200%;
+}

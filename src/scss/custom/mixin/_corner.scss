@@ -1,0 +1,30 @@
+
+
+// 斜切角
+//
+// 参数依次为（背景颜色，斜切角颜色，斜切角大小，依次为上右下左，斜切角角度，范围为0-90deg）
+//
+@mixin beveled-corners($bg, $corner-bg:transparent, $tl:15px, $tr:$tl, $br:$tl, $bl:$tr, $angle: 45deg) {
+  background: $bg;
+  background: linear-gradient(180-$angle, $corner-bg $tl, $bg 0) top left,
+              linear-gradient(180+$angle, $corner-bg $tr, $bg 0) top right,
+              linear-gradient(-$angle, $corner-bg $br, $bg 0) bottom right,
+              linear-gradient($angle, $corner-bg $bl, $bg 0) bottom left;
+  background-size: 50% 50%;
+  background-repeat: no-repeat;
+}
+
+
+// 曲线切口角
+//
+// 参数依次为（背景颜色，曲线切口颜色，曲线切口大小，依次为上右下左）
+//
+@mixin curved-corners($bg, $corner-bg:transparent, $tl:25px, $tr:$tl, $br:$tl, $bl:$tr) {
+  background: $bg;
+  background: radial-gradient(circle at top left,$corner-bg $tl, $bg 0) top left,
+              radial-gradient(circle at top right,$corner-bg $tr, $bg 0) top right,
+              radial-gradient(circle at bottom right,$corner-bg $br, $bg 0) bottom right,
+              radial-gradient(circle at bottom left,$corner-bg $bl, $bg 0) bottom left;
+  background-size: 50% 50%;
+  background-repeat: no-repeat;
+}

@@ -1,0 +1,2 @@
+
+define(['./homeCtrl', './changePwdCtrl'], function() {});

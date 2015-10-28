@@ -1,0 +1,15 @@
+
+@import 'custom/custom.scss';
+@import 'custom/mixin.scss';
+
+
+
+
+
+// 颜色
+@include color('gray_light', '#bbb');
+@include color('gray_mid', '#666');
+@include color('green', '#96aa39');
+@include color('orange', '#ff802e');
+@include color('red');
+@include color('white');

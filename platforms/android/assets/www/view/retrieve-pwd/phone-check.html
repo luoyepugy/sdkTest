@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="-webkit-tap-highlight" content="no"/>
+<meta content="IE=10" http-equiv="x-ua-compatible"/>
+<title>找回密码</title>
+<link rel="stylesheet" href="../css/fonts.css" />
+<link rel="stylesheet" href="../css/apps.min.css" />
+<script type="text/javascript" src="../js/Qmik.min.js"></script>
+<script type="text/javascript" src="../js/pages.min.js"></script>
+<body>
+    <!-- 头部导航 -->
+    <header class="header">
+        <div class="header_nav">
+            <a href="identity.html" class="link_white"><i class="icon-arrow-left"></i></a>
+            <span class="header_nav_title">找回密码</span>
+            <a href="#" class="header_nav_button link_white">返回游戏</a>
+        </div>
+    </header>
+    <!-- /头部导航 -->   
+    <!-- 中间内容 -->
+    <article class="content" q-ctrl="resetPwdForm">
+        <!-- 步骤图 -->
+        <div class="step">
+            <section class="inline_left font_root_normal">
+                <i class="icon-number white font_xxg"></i>
+                <span class="gray_light step_img">身份验证</span>
+            </section>
+            <section class="inline_right font_root_normal">
+                <i class="icon-number2 orange font_xxg"></i>
+                <span class="step_img">重置密码</span>
+            </section>
+        </div>
+        <!-- /步骤图 -->
+        <p class="p gray_mid font_md">请为账号设置新登录密码，建议使用字母、数字与标点的组合，可以大幅提高账号安全度。</p>
+        <section class="change_pwd mb3 mt7">
+            <label for="new_password" class="inline_left tr">新密码：</label>
+            <input id="new_password" class="input inline_right" name="new_password" type="password" placeholder="请输入新密码" />
+        </section>
+        <section class="change_pwd">
+            <label for="confirm_password" class="inline_left tr">确认新密码：</label>
+            <input id="confirm_password" class="input inline_right" name="confirm_password" type="password" placeholder="请再次输入新密码" />
+        </section>
+        <p class="tc"><input class="green_button mt7" type="button" value="完成" q-onclick="submit" /></p>
+    </article>
+    <!-- /中间内容 -->
+</body>
+</html>

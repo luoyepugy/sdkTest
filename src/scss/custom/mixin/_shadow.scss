@@ -1,0 +1,36 @@
+
+
+// 阴影
+//
+// 参数列表依次为（x轴偏移宽度，y轴偏移宽度，阴影模糊度，阴影扩散度，阴影颜色）
+//
+@mixin box-shadow($shadows: 3px 3px 7px 4px rgba(0,0,0,.4)) {
+  box-shadow: $shadows;
+}
+
+
+// 曲线阴影
+//
+// 参数列表依次为（倾斜角度，旋转角度，左右距离，阴影）
+//
+@mixin box-shadow-curved($skew: 28deg, $rotate: 11deg, $distance: 23px, $shadows: 3px 7px 15px 7px rgba(0,0,0,.4)) {
+  position: relative;
+  &:before,
+  &:after {
+    width: 50%;
+    height: 50%;
+    content: '';
+    position: absolute;
+    bottom: 0;
+    z-index: -1;
+    @include box-shadow($shadows);
+  }
+  &:after {
+    transform: skew(-$skew) rotate(-$rotate);
+    left: $distance;
+  }
+  &:before {
+    transform: skew($skew) rotate($rotate);
+    right: $distance;
+  }
+}

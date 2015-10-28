@@ -1,0 +1,56 @@
+
+@import "other";
+
+
+// 编辑类型表单，左侧为label，右侧为input或button
+//
+// 参数依次为（左侧宽度，右侧宽度）
+//
+@mixin form($leftwidth, $rightwidth) {
+  display: table;
+
+  .label {
+    width: $leftwidth;
+    text-align: right;
+    padding-right: 10px;
+    display: table-cell;
+    vertical-align: middle;
+  }
+  .label-content {
+    width: $rightwidth;
+    display: table-cell;
+    vertical-align: middle;
+  }
+}
+
+
+// 输入框
+@mixin input($height, $border: 0) {
+  outline: none;
+  padding-left: 5px;
+  border: $border;
+  @include line-height($height);
+}
+
+// 按钮
+@mixin button {
+  cursor: pointer;
+  border: 0;
+  text-align: center;
+  @include inline-block;
+}
+
+
+// 多行文本框
+@mixin textarea($width: 100%) {
+	padding-left: 5px;
+	width: $width;
+	outline: none;
+}
+
+
+// 下拉选择框
+@mixin select($height) {
+	@include line-height($height);
+	outline: none;
+}

@@ -1,0 +1,29 @@
+
+// 图片大小，生成可在html页面引用的样式
+//
+// 参数为（宽度， 高度），值不需要带单位，默认为px
+// 可以在样式表中引用生成的class（ex .icon100x200）
+//
+@mixin size-icon($width, $height: $width) {
+  @if $width == $height {
+    .icon#{$width} {
+      width: #{$width}px;
+      height: #{$height}px;
+    }
+  } @else {
+    .icon#{$width}x#{$height} {
+      width: #{$width}px;
+      height: #{$height}px;
+    }
+  }
+}
+
+
+// 只在类似于.classname中引用
+//
+// 参数为（宽度， 高度），值需要带单位
+//
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}

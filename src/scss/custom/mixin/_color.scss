@@ -1,0 +1,10 @@
+
+// 块状子元素分成两份
+//
+// 参数列表依次为（颜色名称，颜色值：若省略该参数则默认为颜色名称）
+//
+@mixin color($color_name, $color: $color_name) {
+  .#{$color_name} {
+      color: unquote($color);
+  }
+}

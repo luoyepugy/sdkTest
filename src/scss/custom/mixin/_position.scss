@@ -1,0 +1,39 @@
+
+// 定位（左上或者右下）
+//
+// 参数为（位置：up为左上，down为右下）
+//
+@mixin position($position-type: absolute, $seat: up) {
+  position: $position-type;
+  @if $seat == up {
+    left: 0;
+    top: 0;
+  } @else if $seat == down {
+    right: 0;
+    bottom: 0;
+  }
+}
+
+
+// 定位
+//
+// 参数列表依次为（定位类型，方向1，值1，方向2，值2）
+//
+
+@mixin position-basic($position-type, $direction1, $value1, $direction2, $value2) {
+  position: $position-type;
+  #{$direction1}: $value1;
+  #{$direction2}: $value2;
+}
+
+
+// 绝对居中定位
+//
+// 参数为（宽度）
+//
+@mixin position-center($width) {
+  width: $width;
+  position: absolute;
+  left: 50%;
+  margin-left: - ($width / 2);
+}
