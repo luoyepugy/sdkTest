@@ -2,7 +2,8 @@ var gulp = require('gulp'),
     plugins = require('gulp-load-plugins')(),
     pngquant = require('imagemin-pngquant'),
     spritesmith = require('gulp.spritesmith'),
-    browserSync = require('browser-sync').create();
+    browserSync = require('browser-sync').create(),
+    amdOptimize = require('amd-optimize');
 
 // scss文件对象
 var sassFiles = {
@@ -11,8 +12,8 @@ var sassFiles = {
         dest: "./www/css/"
     },
     "yyy": {
-        src: "./www/js/lib/ionic/scss/*.scss",
-        dest: "./www/js/lib/ionic/css/"
+        src: "./www/lib/ionic/scss/*.scss",
+        dest: "./www/lib/ionic/css/"
     }
 };
 // css
@@ -29,8 +30,7 @@ gulp.task('css',function (){
                 remove:true
             }))
             .pipe(plugins.rename({ suffix: '.min' }))
-            .pipe(gulp.dest(fileset.dest))
-            // .pipe(browserSync.stream());
+            .pipe(gulp.dest(fileset.dest));
     })();
 });
 
@@ -40,13 +40,8 @@ gulp.task('js', function() {
   return gulp.src('src/js/**/*.js')
     .pipe(plugins.jshint('.jshintrc'))
     .pipe(plugins.jshint.reporter('default'))
-    .pipe(gulp.dest('www/js/'))
-    .pipe(plugins.uglify())
-    .pipe(plugins.rename({ extname: '.min.js' }))
     .pipe(gulp.dest('www/js/'));
 });
-// 等待js任务执行完成，在浏览器加载前，实时刷新
-// gulp.task('js-watch', ['js'], browserSync.reload);
 
 
 // 图片压缩
@@ -79,11 +74,27 @@ gulp.task('clean', function() {
         .pipe(plugins.clean());
 });
 
+
+// 打包
+gulp.task('bundle', function() {
+    return gulp.src('src/js/**/*.js') 
+        .pipe(amdOptimize('src/js/main', {
+            configFile : "src/js/config.js",
+            findNestedDependencies: true,
+            include: false
+        }))
+        .pipe(plugins.concat('build.js'))
+        .pipe(plugins.uglify())
+        //.pipe(plugins.rename({ extname: '.min.js' }))
+        .pipe(gulp.dest('www/js/'));
+});
+
+
 // 监听
 gulp.task('watch', function() {
 
     gulp.watch('src/scss/**/*.scss', ['css']);
-    gulp.watch('src/js/**/*.js', ['js']);
+    gulp.watch('src/js/**/*.js', ['js','bundle']);
 
     var files = [
       'www/**/*.html',
@@ -98,7 +109,6 @@ gulp.task('watch', function() {
       }
     });
     
-    // gulp.watch("www/*.html").on('change', browserSync.reload);
 });
 
 // 默认任务

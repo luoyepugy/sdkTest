@@ -8,9 +8,11 @@
     "gulp-rename": "^1.2.0"
   },
   "devDependencies": {
+    "amd-optimize": "^0.6.1",
     "browser-sync": "^2.9.3",
     "gulp-autoprefixer": "^3.0.1",
     "gulp-clean": "^0.3.1",
+    "gulp-concat": "^2.6.0",
     "gulp-group-files": "^2.0.0",
     "gulp-imagemin": "^2.3.0",
     "gulp-jshint": "^1.11.2",

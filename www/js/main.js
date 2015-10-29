@@ -5,8 +5,7 @@ requirejs.config({
 　　　　　　  "zepto": "../lib/zepto/zepto.min",
         "angular": "../lib/ionic/js/ionic.bundle",
         'app': './app',
-        'routes': './routes',
-        'angular-route': '../lib/angular-route/angular-route'
+        'routes': './routes'
 　　　　},
     shim: {
 　　　　　　  'underscore': {
@@ -17,10 +16,6 @@ requirejs.config({
         },
         'zepto': {
             exports: '$'
-        },
-        'angular-route': {
-            exports: 'angular-route',
-            deps: ['angular']
         }
     },
     deps: ['./bootstrap']

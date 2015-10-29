@@ -33,7 +33,41 @@ define(['./app'], function (app) {
 		.state('feedback/record', {
 			url: "/feedback/record",
 		    templateUrl: "view/feedback/record.html"
-		});
+		})
+
+		.state('trade', {
+			url: "/trade",
+		    "abstract": true,
+		    templateUrl: "view/trade/trade.html"
+		})
+		.state('trade.all', {
+		    url: '/all',
+		    views:{
+		        'trade-all':{
+		            templateUrl: "view/trade/trade-all.html"
+		        }
+
+		    }
+		 })
+		.state('trade.success', {
+		    url: '/success',
+		    views:{
+		        'trade-success':{
+		            templateUrl: "view/trade/trade-success.html"
+		        }
+
+		    }
+		 })
+		.state('trade.fail', {
+		    url: '/fail',
+		    views:{
+		        'trade-fail':{
+		            templateUrl: "view/trade/trade-fail.html"
+		        }
+
+		    }
+		 });
+
 		$urlRouterProvider.otherwise('/home');
 	}]);
 		
