@@ -2,6 +2,13 @@
 @import 'custom/custom.scss';
 @import 'custom/mixin.scss';
 
+// 列表
+.list {
+  display: block;
+}
+.list-space .item {
+  margin-bottom: 10px;
+}
 
 // 错误提示
 .error_tip {

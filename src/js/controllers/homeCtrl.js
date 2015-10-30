@@ -14,7 +14,7 @@ define(['./module', '../modules/ajax-get'], function(controllers, ajax) {
 				$scope.isOn = true;
 				flag--;
 			}
-			ajax.ajaxGet('../js/json/change-password.json', {'on': $scope.isOn});
+			ajax.ajaxGet('../../json/change-password.json', {'on': $scope.isOn});
 		};
 	});
 });

@@ -1,5 +1,5 @@
 
 
-define(['angular','./controllers/index'], function(angular){
-    return angular.module('app',['ionic','app.controllers']);
+define(['angular', './controllers/index'], function(angular, controllers){
+    return angular.module('myApp',['ionic','myApp.controllers']);
 });

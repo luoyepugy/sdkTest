@@ -34,7 +34,6 @@ define(['./app'], function (app) {
 			url: "/feedback/record",
 		    templateUrl: "view/feedback/record.html"
 		})
-
 		.state('trade', {
 			url: "/trade",
 		    "abstract": true,
@@ -44,9 +43,9 @@ define(['./app'], function (app) {
 		    url: '/all',
 		    views:{
 		        'trade-all':{
-		            templateUrl: "view/trade/trade-all.html"
+		            templateUrl: "view/trade/trade-all.html",
+		            controller: 'tradeCtrl'
 		        }
-
 		    }
 		 })
 		.state('trade.success', {
@@ -55,7 +54,6 @@ define(['./app'], function (app) {
 		        'trade-success':{
 		            templateUrl: "view/trade/trade-success.html"
 		        }
-
 		    }
 		 })
 		.state('trade.fail', {
@@ -64,7 +62,6 @@ define(['./app'], function (app) {
 		        'trade-fail':{
 		            templateUrl: "view/trade/trade-fail.html"
 		        }
-
 		    }
 		 });
 

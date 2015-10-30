@@ -1,9 +1,21 @@
 
 <ion-view>
-	 <ion-list class="list">
-		<ion-item class="">
-			dfksk
-			dfskl
-		</ion-item>
-	 </ion-list>
+	<ion-content>
+		<ion-refresher
+	          pulling-text="下拉刷新..."  
+	          on-refresh="doRefresh()">
+	    </ion-refresher>
+		<ion-list class="list list-inset list-space">
+			<ion-item class="item trade-item" ng-repeat="item in list">
+				<span>{{item.stuff}}</span><span class="true: green">{{item.status}}</span>
+				<p class="gray_light f12"><span>{{item.payment}}支付<b class="orange">{{item.money}}</b>元</span><time>{{item.time}}</time></p>
+				<p class="gray_mid">订单号：{{item.order_number}}</p>
+				<p>说明： {{item.content}}</p>
+			</ion-item>
+		</ion-list>
+		<ion-infinite-scroll
+	          on-infinite="loadMore()"
+	          distance="1%">
+	    </ion-infinite-scroll>
+    </ion-content>
 </ion-view>
