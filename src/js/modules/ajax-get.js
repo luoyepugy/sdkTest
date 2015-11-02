@@ -21,7 +21,6 @@ define(['zepto', './validate-tips'], function($, messages) {
                     messages.tips('服务器请求失败');
                 }
             });
-            console.log(datas);
         }
     };
 });

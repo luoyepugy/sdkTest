@@ -1,0 +1,41 @@
+{
+    "success": true,
+    "message": "失败",
+    "data": {
+        "total": 2,
+        "items": 
+        [
+            {
+                "id": 7,
+                "stuff": "100钻石",
+                "status": true,
+                "payment": "支付宝",
+                "money": 20,
+                "time": "2014-10-20",
+                "order_number": "222222",
+                "content": "支付成功"
+            },
+            {
+                "id": 8,
+                "stuff": "300钻石",
+                "status": false,
+                "payment": "支付宝",
+                "money": 10,
+                "time": "2014-09-20",
+                "order_number": "222222",
+                "content": "支付成功"
+            },
+            {
+                "id": 9,
+                "stuff": "400钻石",
+                "status": false,
+                "payment": "支付宝",
+                "money": 70,
+                "time": "2014-01-20",
+                "order_number": "222222",
+                "content": "支付成功"
+            }
+             
+        ]
+    }
+}

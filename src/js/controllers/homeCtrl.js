@@ -5,15 +5,8 @@ define(['./module', '../modules/ajax-get'], function(controllers, ajax) {
 		$scope.portrait = 'images/portrait.jpg';
 		$scope.name = '京东方类df';
 		$scope.isOn = true;
-		var flag = 0;
 		$scope.statusToggle = function() {
-			if(flag % 2 === 0) {
-				$scope.isOn = false;
-				flag++;
-			} else {
-				$scope.isOn = true;
-				flag--;
-			}
+			$scope.isOn = !$scope.isOn;
 			ajax.ajaxGet('../../json/change-password.json', {'on': $scope.isOn});
 		};
 	});
