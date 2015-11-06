@@ -1,0 +1,28 @@
+
+<ion-view view-title="常见问题">
+	<ion-content>
+		<ion-refresher
+		      pulling-text="下拉刷新..."  
+		      on-refresh="doRefresh()">
+		</ion-refresher>
+		<ion-list class="list-inset list-space">
+			<ion-item ng-repeat="item in list">
+				<div ng-click="toggle()" class="pointer">
+					<span class="black">{{item.stuff}}</span>
+					<span class="fr" ng-class="{true: 'green', false: 'orange'}[item.status]">{{item.status ? '成功': '未成功'}}</span>
+					<p><span>{{item.payment}}支付<b class="orange">{{item.money}}</b>元</span>
+					<time class="fr">{{item.time}}</time>
+					</p>
+				</div>
+				<div ng-if="show" ng-class="{true: '', false: 'none' }[show]">
+					<p class="division">订单号：{{item.order_number}}</p>
+					<p>说明： {{item.content}}</p>
+				</div>
+			</ion-item>
+		</ion-list>
+		<ion-infinite-scroll 
+				on-infinite="loadMore()" 
+				distance="1%">
+		</ion-infinite-scroll>
+    </ion-content>
+</ion-view>

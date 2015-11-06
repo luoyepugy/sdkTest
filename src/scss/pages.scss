@@ -27,3 +27,24 @@
 	border-radius: 10px;
 	overflow: hidden;
 }
+
+// ==================================
+// ============= 服务条款 ============
+// ==================================
+.terms {
+	dl {
+		padding: 20px;
+	}
+	dt {
+		margin: 15px 0 7px 0;
+		color: #000;
+		font-weight: normal;
+		&:first-child {
+			margin: 0 0 7px 0;
+		}
+	}
+	dd {
+		line-height: 25px;
+		color: #555;
+	}
+}

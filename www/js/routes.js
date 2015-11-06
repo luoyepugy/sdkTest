@@ -27,15 +27,36 @@ define(['./app'], function (app) {
 			url: "/retrieve-pwd",
 		    templateUrl: "view/retrieve-pwd/identity.html"
 		})
-		.state('feedback/question', {
-			url: "/feedback/question",
-		    templateUrl: "view/feedback/question.html"
-		})
-		.state('feedback/record', {
-			url: "/feedback/record",
-		    templateUrl: "view/feedback/record.html"
-		})
 
+		.state('feedback', {
+			url: "/feedback",
+		    "abstract": true,
+		    templateUrl: "view/feedback/feedback.html"
+		})
+		.state('feedback.common', {
+		    url: '/common',
+		    views:{
+		        'feedback-common':{
+		            templateUrl: "view/feedback/ques-common.html"
+		        }
+		    }
+		 })
+		.state('feedback.submit', {
+		    url: '/submit',
+		    views:{
+		        'feedback-submit':{
+		            templateUrl: "view/feedback/ques-submit.html"
+		        }
+		    }
+		 })
+		.state('feedback.record', {
+		    url: '/record',
+		    views:{
+		        'feedback-record':{
+		            templateUrl: "view/feedback/record.html"
+		        }
+		    }
+		 })
 
 		.state('trade', {
 			url: "/trade",
