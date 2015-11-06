@@ -1,8 +1,7 @@
 
-define(['zepto','angular', 'app', 'routes'], function($, angular) {
+define(['angular', 'domReady', 'routes'], function(angular, domReady) {
 	'use strict';
-	$(function() {
-		angular.bootstrap(document, ['app']);
+	domReady(function() {
+		angular.bootstrap(document, ['myApp']);
 	});
-
 });

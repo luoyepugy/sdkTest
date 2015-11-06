@@ -1,66 +1,51 @@
 
 define(['./module', '../modules/validate-tips'], function(controllers, messages) {
-	controllers.controller('tradeAllCtrl', function($scope, $http, $ionicLoading, $timeout) {
+	controllers.controller('tradeAllCtrl', ['$scope', '$ionicLoading', 'tradeService', function($scope, $ionicLoading, tradeService) {
 
 		var lastId = 0;
 		// 预加载
 	    $ionicLoading.show({
 	        template: '<ion-spinner></ion-spinner><h3>加载中...</h3>',
-	        duration: 3000
+	        duration: 2000
 	    });
-		$http.get('../../json/trade.json', { params: {'page': 'all'} })
-			.success(function(response) {
-	            if(response.success === true) {
-	            	var datas = response.data.items;
-					$scope.list = datas;
-					lastId = datas[datas.length-1].id;
-				} else {
-					messages.tips(response.message);
-				}
-		    })
-		    .error(function(){
-		        messages.tips('服务器请求失败');
-		    })
-		    .finally(function() {
-		        $ionicLoading.hide();
-		    });
 
-		// 下拉刷新
-	    $scope.doRefresh = function() {
-	        // 从指定路径获取数据
-	        $timeout( function() {  
-	            $http.get('../../json/trade-more.json', { params: {'page': 'all', 'status': 'refresh'} })
-	            	.success(function(response) {
-		                if(response.success === true) {
-							var datas = response.data.items;
-							$scope.list = datas;
-							lastId = datas[datas.length-1].id;
-						} else {
-							messages.tips(response.message);
-						}
-		            })
-		            .error(function(data){
-		                messages.tips('服务器请求失败');
-		            });
-	        }, 1000);   
-	    };
+	    // $scope.toggle = tradeService.toggle();
 
-	    // 加载更多
-	    $scope.loadMore = function() {
-	        // 从指定路径获取数据 
-	        $http.get('../../json/trade-more.json', { params: {'page': 'all', 'status': 'loadmore', 'id': lastId} })
-	        	.success(function(response) {
-	        		var datas = response.data.items;
-	        		for(var i = 0; i < datas.length; i++) {
-		            	$scope.list.push(datas[i]);
-		            	lastId = datas[datas.length-1].id;
-		            }
-		            $scope.$broadcast('scroll.infiniteScrollComplete');
-		        })
-		        .error(function(data){
-	                messages.tips('服务器请求失败');
-	            });
-	    };
+	    // 初始化
+	    var promise = tradeService.getData({'page': 'all'});
+	    promise.then(function(data) {
+	    	$ionicLoading.hide();
+	    	$scope.list = data;
+	    	lastId = data[data.length-1].id;
+	    },function(data) {
+	    	messages.tips(data);
+	    });
 
-	});
+	    // 刷新
+	    // $scope.doRefresh = function() {
+	    // 	var promise = tradeService.getData({'page': 'all', 'status': 'refresh'}, '../../json/trade-more.json');
+		   //  promise.then(function(data) {
+		   //  	$ionicLoading.hide();
+		   //  	$scope.list = data;
+		   //  	lastId = data[data.length-1].id;
+		   //  },function(data) {
+		   //  	messages.tips(data);
+		   //  });
+	    // }
+
+	    // // 加载更多
+	    // $scope.loadMore = function() {
+	    // 	var promise = tradeService.getData({'page': 'all', 'status': 'loadmore', 'id': lastId}, '../../json/trade-more.json');
+		   //  promise.then(function(data) {
+		   //  	for(var i = 0; i < data.length; i++) {
+	    //         	$scope.list.push(data[i]);
+	    //         	lastId = data[data.length-1].id;
+	    //         }
+	    //         $scope.$broadcast('scroll.infgetDataeScrollComplete');
+		   //  },function(data) {
+		   //  	messages.tips(data);
+		   //  });
+	    // }
+
+	}]);
 });

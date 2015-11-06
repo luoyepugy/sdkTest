@@ -14,7 +14,7 @@
 					<time class="fr">{{item.time}}</time>
 					</p>
 				</div>
-				<div ng-show="show">
+				<div ng-show="$index===clickRow">
 					<p class="division">订单号：{{item.order_number}}</p>
 					<p>说明： {{item.content}}</p>
 				</div>

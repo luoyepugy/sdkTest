@@ -1,0 +1,15 @@
+
+<ion-modal-view>
+	<ion-header-bar ng-class="barCssClass">
+		<button ng-click="returnCancel()">{{cancelText}}</button>
+		<h1 class="title"></h1>
+		<button ng-click="returnOk()">{{okText}}</button>
+	</ion-header-bar>
+	<ion-content>
+		<ion-scroll on-scroll="getData()" scrollbar-y=false>
+			<ul>
+				<li ng-repeat="sex in datas">{{sex.value}}</li>
+			</ul>
+		</ion-scroll>
+	</ion-content>
+</ion-modal-view>

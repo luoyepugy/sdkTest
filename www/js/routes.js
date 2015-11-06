@@ -11,7 +11,8 @@ define(['./app'], function (app) {
 		})
 		.state('edit-user', {
 		    url: "/edit-user",
-		    templateUrl: "view/edit-user.html"
+		    templateUrl: "view/edit-user.html",
+		    controller: 'editCtrl'
 		})
 		.state('change-password', {
 			url: "/change-password",

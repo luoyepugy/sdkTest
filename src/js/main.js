@@ -1,21 +1,28 @@
 
 requirejs.config({
     paths: {
-　　　　　　  "underscore": "../lib/underscore/underscore.min",
-　　　　　　  "zepto": "../lib/zepto/zepto.min",
-        "angular": "../lib/ionic/js/ionic.bundle",
-        'app': './app',
-        'routes': './routes'
+　　　　　　  underscore: "../lib/underscore/underscore.min",
+　　　　　　  zepto: "../lib/zepto/zepto.min",
+        angular: "../lib/ionic/js/ionic.bundle",
+        domReady: "../lib/requirejs-domready/domReady",
+        cordova: '../lib/cordova/cordova.android',
+        ngCordova: '../lib/ngCordova/dist/ng-cordova.min',
+        app: './app',
+        routes: './routes'
 　　　　},
     shim: {
-　　　　　　  'underscore': {
+　　　　　　  underscore: {
 　　　　　　　　    exports: '_'
 　　　　　　  },
-        'angular': {
+        angular: {
             exports: 'angular'
         },
-        'zepto': {
+        zepto: {
             exports: '$'
+        },
+        ngCordova: {
+            deps: ['angular','cordova'],
+            exports: 'ngCordova'
         }
     },
     deps: ['./bootstrap']

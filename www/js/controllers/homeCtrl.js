@@ -1,13 +1,16 @@
 
-define(['./module', '../modules/ajax-get'], function(controllers, ajax) {
-	controllers.controller('homeCtrl', function($scope) {
-		$scope.id = '54878661152';
-		$scope.portrait = 'images/portrait.jpg';
-		$scope.name = '京东方类df';
-		$scope.isOn = true;
+define(['./module', '../modules/validate-tips'], function(controllers, messages) {
+	controllers.controller('homeCtrl', ['$scope', '$http', 'userService', 'httpService', function($scope, $http, userService, httpService) {
+        $scope.user = userService.user;
+        $scope.autoLogin = true;
 		$scope.statusToggle = function() {
-			$scope.isOn = !$scope.isOn;
-			ajax.ajaxGet('../../json/change-password.json', {'on': $scope.isOn});
+			$scope.autoLogin = !$scope.autoLogin;
+            var promise = httpService.getData('../../json/change-password.json', {'on': $scope.autoLogin });
+            promise.then(function(data) {
+                messages.tips('修改成功');
+            }, function(data) {
+                messages.tips(data);
+            });
 		};
-	});
+	}]);
 });

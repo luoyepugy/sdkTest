@@ -1,29 +1,38 @@
-<!DOCTYPE html>
-<html lang="zh-cn">
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="-webkit-tap-highlight" content="no"/>
-<meta content="IE=10" http-equiv="x-ua-compatible"/>
-<title>编辑资料</title>
-<link rel="stylesheet" href="css/fonts.css" />
-<link rel="stylesheet" href="css/apps.min.css" />
-<script type="text/javascript" src="js/Qmik.min.js"></script>
-<script type="text/javascript" src="js/pages.min.js"></script>
-<body>
-    <!-- 头部导航 -->
-    <header class="header">
-        <div class="header_nav">
-            <a href="index.html" class="link_white"><i class="icon-arrow-left"></i></a>
-            <span class="header_nav_title">编辑资料</span>
-            <a href="#" class="header_nav_button link_white">返回游戏</a>
-        </div>
-    </header>
-    <!-- /头部导航 -->
-    <!-- 中间内容 -->
-    <article class="content" q-ctrl="editUserForm">
-        <!-- 编辑资料表单 -->    
-        <section class="user_portrait pr limit_size">
+ 
+<ion-view view-title="编辑资料">
+   <ion-content>
+        <ion-list class="j-form">
+            <ion-item class="tc">
+                <img id="user_portrait" class="portrait icon120" ng-src="{{user.portrait}}" ng-click="takePhoto()" />
+                <input type="file" id="file" class="upload_img hide" name="file" onchange="uploadImg()" value="" data-empty="请上传头像"  />
+                <p>点击设置头像</p>
+            </ion-item>
+            <ion-item class="item-input">
+                <span class="input-label">昵称</span>
+                <input type="text" name="name" placeholder="请输入昵称" value="{{user.name}}" data-empty="请输入昵称" />
+            </ion-item>
+            <ion-item class="item-input">
+                <span class="input-label">性别</span>
+                <ion-radio ng-model="choice" ng-value="male">男</ion-radio>
+                <ion-radio ng-model="choice" ng-value="famale">女</ion-radio>
+            </ion-item>
+            <ion-item class="item-input item-select">
+                <span class="input-label">生日</span>
+                <select name="birthday" id="">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                </select>
+            </ion-item>
+            <ion-item class="item-input">
+                <span class="input-label">地区</span>
+                <input type="text" name="address" placeholder="未设置" value="" data-empty="请选择地区" />
+            </ion-item>
+        </ion-list>
+        <p class="tc mt10"><button class="button button-balanced" ng-click="submit()">提交保存</button></p>
+   </ion-content> 
+</ion-view>
+
+       <!--  <section class="user_portrait pr limit_size">
             <img id="user_portrait" src="images/default_portrait.png" />
             <input type="file" id="file" class="upload_img" name="file" onchange="uploadImg()"  />
         </section>
@@ -52,8 +61,4 @@
             <input id="user_hometown" class="input inline_right" type="text" name="user_hometown" placeholder="未设置" value="" />
         </section>
         <p class="tc"><input class="green_button mt7" type="submit" value="提交保存" q-onclick="submit" /></p>
-        <!-- /编辑资料表单 -->
-    </article>
-    <!-- /中间内容 -->
-</body>
-</html>
+ -->

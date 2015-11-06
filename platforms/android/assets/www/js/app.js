@@ -1,5 +1,5 @@
 
 
-define(['angular','./controllers/index'], function(angular){
-    return angular.module('app',['app.controllers']);
+define(['angular', 'ngCordova', './controllers/index', './directives/index', './services/index'], function(angular, ngCordova, controllers, directives, services){
+    return angular.module('myApp',['ionic','ngCordova', 'myApp.controllers','myApp.directives', 'myApp.services']);
 });

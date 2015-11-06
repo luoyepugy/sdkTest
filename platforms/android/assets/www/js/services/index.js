@@ -1,0 +1,2 @@
+
+define(['./user', './trade'], function() {});

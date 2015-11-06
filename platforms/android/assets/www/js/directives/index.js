@@ -1,0 +1,2 @@
+
+define(['./messageBox', './trade'], function() {});

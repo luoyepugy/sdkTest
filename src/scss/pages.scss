@@ -7,6 +7,11 @@
 // ==================================
 .trade-item {
   padding: 15px;
+  position: relative;
+}
+.trade-item .fr {
+	position: absolute;
+	right: 15px;
 }
 .trade-item .division {
   margin-top: 10px;
@@ -15,5 +20,10 @@
 }
 
 // ==================================
-// ============= 修改密码 ============
+// ============= 编辑资料 ============
 // ==================================
+.portrait {
+	border: 1px solid #ccc;
+	border-radius: 10px;
+	overflow: hidden;
+}
