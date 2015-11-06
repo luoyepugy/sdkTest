@@ -13,9 +13,6 @@ define(['./module', '../modules/validate-tips'], function(controllers, messages)
 			    promise.then(function(data) {
 			    	messages.tips('修改成功');
 			    	window.location = '../../#/home';
-					for(i in results) {
-						userService.user[i] = results[i];
-					}
 			    }, function(data) {
 			    	messages.tips(data);
 			    });

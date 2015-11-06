@@ -1,2 +1,2 @@
 
-define(['./messageBoxDire', './tradeDire', './userSexDire'], function() {});
+define(['./tradeDire'], function() {});

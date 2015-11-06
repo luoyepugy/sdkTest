@@ -17,7 +17,6 @@ define(['./module'], function(services) {
 	            	deferred.reject('服务器请求失败');
 	            });
 	        return deferred.promise;
-		}
-
+		};
 	}]);
 });

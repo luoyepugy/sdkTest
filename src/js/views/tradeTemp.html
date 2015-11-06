@@ -16,6 +16,7 @@
 				<p class="division">订单号：{{item.order_number}}</p>
 				<p>说明： {{item.content}}</p>
 			</div>
+			<input type="hidden" ng-model="{{item.id}}" />
 		</ion-item>
 	</ion-list>
 	<ion-infinite-scroll 

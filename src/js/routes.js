@@ -46,8 +46,7 @@ define(['./app'], function (app) {
 		    url: '/all',
 		    views:{
 		        'trade-all':{
-		            templateUrl: "view/trade/trade-all.html",
-		            controller: 'tradeAllCtrl'
+		            templateUrl: "view/trade/trade-all.html"
 		        }
 		    }
 		 })
@@ -55,8 +54,7 @@ define(['./app'], function (app) {
 		    url: '/success',
 		    views:{
 		        'trade-success':{
-		            templateUrl: "view/trade/trade-success.html",
-		            controller: 'tradeSucceCtrl'
+		            templateUrl: "view/trade/trade-success.html"
 		        }
 		    }
 		 })
@@ -64,8 +62,7 @@ define(['./app'], function (app) {
 		    url: '/fail',
 		    views:{
 		        'trade-fail':{
-		            templateUrl: "view/trade/trade-fail.html",
-		            controller: 'tradeFailCtrl'
+		            templateUrl: "view/trade/trade-fail.html"
 		        }
 		    }
 		 });

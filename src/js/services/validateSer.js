@@ -21,6 +21,6 @@ define(['./module', 'zepto', '../modules/validate-tips'], function(services, $, 
             } else {
                 return 0;
             }
-		}
+		};
 	});
 });

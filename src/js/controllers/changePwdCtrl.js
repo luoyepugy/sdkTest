@@ -1,6 +1,7 @@
 
 define(['./module', '../modules/validate-tips'], function(controllers, messages) {
-	controllers.controller('changePwdCtrl',['$scope', '$http', 'validateService', 'httpService', function($scope, $http, validateService, httpService){
+	controllers.controller('changePwdCtrl',['$scope', '$http', 'validateService', 'httpService', 'userService', function($scope, $http, validateService, httpService, userService){
+		$scope.user = userService.user;
 		$scope.submit = function() {
 			var results;
 			results = validateService.isEmpty('.j-form input');
@@ -14,7 +15,10 @@ define(['./module', '../modules/validate-tips'], function(controllers, messages)
 			} else {
 				var promise = httpService.getData('../../json/change-password.json', results);
 			    promise.then(function(data) {
-			   		messages.tips(data);
+			    	messages.tips(data);
+			    	userService.user.password = $scope.user.newPwd;
+			    	delete userService.user.newPwd;
+			    	window.location = '../../#/home';
 			    },function(data) {
 			    	messages.tips(data);
 			    });
