@@ -1,2 +1,2 @@
 
-define(['./homeCtrl', './changePwdCtrl', './editCtrl'], function() {});
+define(['./homeCtrl', './changePwdCtrl', './editCtrl', './tradeAllCtrl'], function() {});

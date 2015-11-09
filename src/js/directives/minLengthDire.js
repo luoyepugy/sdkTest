@@ -8,6 +8,7 @@ define(['./module'], function(directives) {
 			},
 			template: '',
 			link: function(scope, element, attrs) {
+				var len = $element.attrs.minLength;
 				if(element.val().length < len) {
 					console.log('请输入至少' + len + '位长度');
 				}

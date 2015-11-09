@@ -1,18 +1,15 @@
 
 define(['./module', '../modules/validate-tips'], function(directives, messages) {
-	directives.directive('tradeList', function(tradeService, $document, $ionicLoading) {
+	directives.directive('tradeList', function(tradeService, $document, $ionicLoading, $rootScope) {
 		return {
 			restrict: 'E',
 			templateUrl: './js/views/tradeTemp.html',
 			replace: true,
 			scope: {
-				list: '=',
-				page: '@'
+				list: '='
 			},
 			link: function(scope, element, attrs) {
 				var lastId = $(element).find('input').last().val();
-				console.log(lastId);
-				var page = scope.page;
 				scope.show = false;
 
 				// 预加载
@@ -21,7 +18,7 @@ define(['./module', '../modules/validate-tips'], function(directives, messages) 
 			    });
 
 			    // 初始化
-			    var promise = tradeService.getData({'page': page});
+			    var promise = tradeService.getData();
 			    promise.then(function(data) {
 			    	$ionicLoading.hide();
 			    	scope.list = data;
@@ -32,7 +29,7 @@ define(['./module', '../modules/validate-tips'], function(directives, messages) 
 
 			    // 刷新
 				scope.doRefresh = function() {
-					var promise = tradeService.getData({'page': page, 'status': 'refresh'}, '../../json/trade-more.json');
+					var promise = tradeService.getData({'status': 'refresh'}, '../../json/trade-more.json');
 				    promise.then(function(data) {
 				    	scope.list = data;
 				    },function(data) {
@@ -42,12 +39,12 @@ define(['./module', '../modules/validate-tips'], function(directives, messages) 
 
 				// 加载更多
 				scope.loadMore = function() {
-					var promise = tradeService.getData({'page': page, 'status': 'loadmore', 'id': 0}, '../../json/trade-more.json');
+					var promise = tradeService.getData({'status': 'loadmore', 'id': 0}, '../../json/trade-more.json');
 				    promise.then(function(data) {
-				    	for(var i = 0; i < data.length; i++) {
+			            for(var i = 0; i < data.length; i++) {
 			            	scope.list.push(data[i]);
 			            }
-			            scope.$broadcast('scroll.infgetDataeScrollComplete');
+			            scope.$broadcast('scroll.infiniteScrollComplete');
 				    },function(data) {
 				    	messages.tips(data);
 				    });
