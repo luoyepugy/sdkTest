@@ -2,18 +2,21 @@
 define(['./module'], function(directives) {
 	directives.directive('messageBox', function() {
 		return {
-			restrict: 'E',
+			restrict: 'EA',
 			replace: true,
 			scope: {
-				message: '@'
+				message: '@',
+				showMessage: '@'
 			},
-			template: '<p class="error_tip">{{message}}</p>',
+			template: '<p class="error_tip" ng-if="showMessage">{{message}}</p>',
 			link: function(scope, element, attrs) {
-				if(element.attrs.message !== '') {
-					$(element).removeClass('none');
+				var showMessage = scope.showMessage;
+				var messages = scope.message;
+				if(messages !== '') {
+					showMessage = true;
 					setTimeout(function(){
-	                    $(element).addClass('none');
-	                    element.attrs.message = '';
+	                    showMessage = false;
+	                    messages = '';
 	                }, 3000);
 				}
 			}

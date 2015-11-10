@@ -6,12 +6,13 @@ define(['./module', '../modules/validate-tips'], function(controllers, messages)
 			var resultsIsEmpty,
 				resultsDatas;
 			resultsIsEmpty = validateService.isEmpty('.j-form input');
-			if(resultsIsEmpty === 0) {
-				return false;
+			if(resultsIsEmpty !== 1) {
+				$scope.message = resultsIsEmpty;
+				console.log(resultsIsEmpty);
 			}
 			resultsDatas = validateService.submitData('.j-form');
 			if (resultsDatas['newPwd'].length < 4) { 
-				messages.tips('请输入至少4位密码');
+				$scope.message = '请输入至少4位密码';
 			} else if(resultsDatas['newPwd'] !== resultsDatas['confirmPwd']) {
 				messages.tips('两次密码输入不一致');
 			} else {

@@ -3,13 +3,14 @@ define(['./module', 'zepto', '../modules/validate-tips'], function(services, $, 
 	services.service('validateService', function() {
 		this.isEmpty = function(form) {
 			var inputs = {},
-            num = 0,
-            total = $(form).length;
+                num = 0,
+                total = $(form).length,
+                results = '';
             $(form).each(function() {
                 var key =  $(this).attr('name');
                 var val = $.trim($(this).val());
                 if(val === '' || val === undefined || val === null) {
-                    messages.tips($(this).data('empty'));
+                    results = $(this).data('empty');
                 } else {
                     num++;
                 }
@@ -17,7 +18,7 @@ define(['./module', 'zepto', '../modules/validate-tips'], function(services, $, 
             if(num === total) {
                 return 1;
             } else {
-                return 0;
+                return results;
             }
 		};
         this.submitData = function(form) {

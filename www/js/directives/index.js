@@ -1,2 +1,2 @@
 
-define(['./tradeDire', './refreshDire'], function() {});
+define(['./tradeDire', './messageBoxDire'], function() {});

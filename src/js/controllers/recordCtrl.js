@@ -1,5 +1,4 @@
 
-
 define(['./module', '../modules/validate-tips'], function(controllers, messages) {
 	controllers.controller('recordCtrl', function($scope, tradeService, $ionicLoading) {
 
