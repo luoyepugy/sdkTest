@@ -13,11 +13,6 @@
 	position: absolute;
 	right: 15px;
 }
-.trade-item .division {
-  margin-top: 10px;
-  padding-top: 10px;
-  border-top: 1px solid #ddd;
-}
 
 // ==================================
 // ============= 编辑资料 ============
@@ -47,4 +42,22 @@
 		line-height: 25px;
 		color: #555;
 	}
+}
+
+// ==================================
+// ============= 我的反馈记录 ==========
+// ==================================
+.record-item {
+	margin-bottom: 5px;
+	@include display-inline(calc(100% - 65px), 60px);
+}
+.record-item .inline-right {
+	text-align: right;
+}
+
+// ==================================
+// ============= 常见问题 =============
+// ==================================
+.ques-common {
+	@include display-inline(30px, calc(100% - 35px));
 }

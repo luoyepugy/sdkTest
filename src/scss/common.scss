@@ -6,12 +6,33 @@
 // 图片大小
 @include size-icon(120px);
 
+// 设置textarea
+.item-input textarea {
+  width: calc(100% - 155px);
+}
+// 设置全局背景色
+.scroll-content {
+  background-color: #efefef;
+}
+
 // 列表
 .list {
   display: block;
+  background-color: #efefef;
 }
 .list-space .item {
   margin-bottom: 10px;
+  background-color: #fff;
+  white-space: normal;
+}
+
+
+
+// 分割线
+.division {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #ddd;
 }
 
 // 错误提示

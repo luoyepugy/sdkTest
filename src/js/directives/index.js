@@ -1,2 +1,2 @@
 
-define(['./tradeDire'], function() {});
+define(['./tradeDire', './refreshDire'], function() {});

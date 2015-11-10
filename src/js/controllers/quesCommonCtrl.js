@@ -1,6 +1,6 @@
 
 define(['./module', '../modules/validate-tips'], function(controllers, messages) {
-	controllers.controller('tradeAllCtrl', ['$scope', '$ionicLoading', 'tradeService', function($scope, $ionicLoading, tradeService) {
+	controllers.controller('quesCommonCtrl', function($scope, tradeService, $ionicLoading) {
 
 		// 最后一个item的id
 		var lastId = 0;
@@ -13,10 +13,12 @@ define(['./module', '../modules/validate-tips'], function(controllers, messages)
 	    });
 
 	    // 切换状态
-	    $scope.toggle = tradeService.toggle;
+	    $scope.toggle = function() {
+	    	$scope.show = !$scope.show;
+	    };
 
 	    // 初始化
-	    var promise = tradeService.getData();
+	    var promise = tradeService.getData({}, '../../json/commonquestion.json');
 	    promise.then(function(data) {
 	    	$ionicLoading.hide();
 	    	$scope.list = data;
@@ -27,7 +29,7 @@ define(['./module', '../modules/validate-tips'], function(controllers, messages)
 
 	    // 刷新
 	    $scope.doRefresh = function() {
-	    	var promise = tradeService.getData({'status': 'refresh'}, '../../json/trade-more.json');
+	    	var promise = tradeService.getData({'status': 'refresh'}, '../../json/commonquestion.json');
 		    promise.then(function(data) {
 		    	$ionicLoading.hide();
 		    	$scope.list = data;
@@ -40,7 +42,7 @@ define(['./module', '../modules/validate-tips'], function(controllers, messages)
 
 	    // 加载更多
 	    $scope.loadMore = function() {
-	    	var promise = tradeService.getData({'status': 'loadmore', 'id': lastId}, '../../json/trade-more.json');
+	    	var promise = tradeService.getData({'status': 'loadmore', 'id': lastId}, '../../json/commonquestion.json');
 		    promise.then(function(data) {
 		    	for(var i = 0; i < data.length; i++) {
 	            	$scope.list.push(data[i]);
@@ -55,5 +57,5 @@ define(['./module', '../modules/validate-tips'], function(controllers, messages)
 		    });
 	    }
 
-	}]);
+	});
 });

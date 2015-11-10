@@ -32,5 +32,6 @@
   .inline-right {
     width: $right-width;
     @include inline-block;
+    vertical-align: top;
   }
 }

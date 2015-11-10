@@ -6,18 +6,18 @@
                 <img class="portrait" ng-src="{{user.portrait}}">
                 <h2>{{user.name}}</h2>
                 <p class="gray_light font_sm">ID: {{user.id}}</p>
-                <a class="button button-balanced " href="#/edit-user">编辑资料</a>
+                <a class="button balanced ion-compose icon button-icon" href="#/edit-user"></a>
             </ion-item>
         </ion-list>
         <ion-list>
-            <a class="item item-icon-left" href="#/change-password"><i class="icon-locked icon balanced"></i>修改密码</a>
-            <a class="item item-icon-left" href="#/trade/all"><i class="icon-coin icon balanced"></i>我的交易</a>
-            <a class="item item-icon-left" href="#/terms"><i class="icon-coin icon balanced"></i>服务条款</a>
-            <a class="item item-icon-left" href="#/retrieve-pwd"><i class="icon-coin icon balanced"></i>找回密码</a>
-            <a class="item item-icon-left" href="#/feedback/common"><i class="icon-coin icon balanced"></i>反馈</a>
-            <a class="item item-icon-left" href="#/feedback/record"><i class="icon-coin icon balanced"></i>我的反馈记录</a>
+            <a class="item item-icon-left" href="#/change-password"><i class="ion-locked icon balanced"></i>修改密码</a>
+            <a class="item item-icon-left" href="#/trade/all"><i class="ion-star icon balanced"></i>我的交易</a>
+            <a class="item item-icon-left" href="#/terms"><i class="ion-folder icon balanced"></i>服务条款</a>
+            <a class="item item-icon-left" href="#/retrieve-pwd"><i class="ion-unlocked icon balanced"></i>找回密码</a>
+            <a class="item item-icon-left" href="#/feedback/common"><i class="ion-gear-b icon balanced"></i>反馈</a>
+            <a class="item item-icon-left" href="#/feedback/record"><i class="ion-clipboard icon balanced"></i>我的反馈记录</a>
             <ion-toggle toggle-class="toggle-balanced" class="item-icon-left" ng-model="user.autoLogin" ng-checked="{{user.autoLogin}}" ng-click="statusToggle()">
-                <i class="icon-key icon balanced"></i>自动登录游戏
+                <i class="ion-key icon balanced"></i>自动登录游戏
             </ion-toggle>          
         </ion-list>
         <p class="gray_light tc mt10">关闭自动登录，每次进入游戏时可重新选择登录账号</p>

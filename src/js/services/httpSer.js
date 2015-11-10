@@ -1,7 +1,6 @@
 
 define(['./module'], function(services) {
 	services.service('httpService', ['$q', '$http', function($q, $http) {
-
 		this.getData = function(url, datas) {
 			var deferred = $q.defer();
 	        // $http.post(url, datas)

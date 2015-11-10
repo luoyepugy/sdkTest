@@ -2,18 +2,18 @@
 define(['./module', '../modules/validate-tips'], function(controllers, messages) {
 	controllers.controller('tradeAllCtrl', ['$scope', '$ionicLoading', 'tradeService', function($scope, $ionicLoading, tradeService) {
 
+		// 最后一个item的id
 		var lastId = 0;
-
+		// 更多数据判断
 		$scope.hasMore = true;
-		$scope.hasRefresh = true;
+
 		// 预加载
 	    $ionicLoading.show({
 	        template: '<ion-spinner></ion-spinner><h3>加载中...</h3>'
 	    });
 
-	    $scope.toggle = function() {
-	    	$scope.show = !$scope.show;
-	    };
+	    // 切换状态
+	    $scope.toggle = tradeService.toggle;
 
 	    // 初始化
 	    var promise = tradeService.getData();
@@ -32,7 +32,7 @@ define(['./module', '../modules/validate-tips'], function(controllers, messages)
 		    	$ionicLoading.hide();
 		    	$scope.list = data;
 		    	lastId = data[data.length-1].id;
-		    	$scope.hasRefresh = false;
+		    	$scope.$broadcast('scroll.refreshComplete');
 		    },function(data) {
 		    	messages.tips(data);
 		    });
@@ -46,9 +46,11 @@ define(['./module', '../modules/validate-tips'], function(controllers, messages)
 	            	$scope.list.push(data[i]);
 	            	lastId = data[data.length-1].id;
 	            }
+	            if(data.length === 0) {
+	            	$scope.hasMore = false;
+	            }
 	            $scope.$broadcast('scroll.infiniteScrollComplete');
 		    },function(data) {
-		    	$scope.hasMore = false;
 		    	messages.tips(data);
 		    });
 	    }

@@ -10,17 +10,24 @@ define(['./module', 'zepto', '../modules/validate-tips'], function(services, $, 
                 var val = $.trim($(this).val());
                 if(val === '' || val === undefined || val === null) {
                     messages.tips($(this).data('empty'));
-                    return false;
                 } else {
-                    inputs[key] = val;
                     num++;
                 }
             });
             if(num === total) {
-                return inputs;
+                return 1;
             } else {
                 return 0;
             }
 		};
+        this.submitData = function(form) {
+            var datas = {};
+            $(form).find('input[name],textarea[name],select[name]').each(function() {
+                var key =  $(this).attr('name');
+                var val = $.trim($(this).val());
+                datas[key] = val;
+            });
+            return datas;
+        }
 	});
 });

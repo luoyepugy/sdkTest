@@ -4,7 +4,7 @@
 	      on-refresh="doRefresh()">
 	</ion-refresher>
 	<ion-list class="list list-inset list-space">
-		<ion-item class="item trade-item" ng-repeat="item in list | filter: tradeFilter">
+		<ion-item class="item trade-item" ng-repeat="item in list">
 			<div ng-click="toggle()" class="pointer">
 				<span class="black">{{item.stuff}}</span>
 				<span class="fr" ng-class="{true: 'green', false: 'orange'}[item.status]">{{item.status ? '成功': '未成功'}}</span>
@@ -12,7 +12,7 @@
 				<time class="fr">{{item.time}}</time>
 				</p>
 			</div>
-			<div ng-if="show" ng-class="{true: '', false: 'none' }[show]">
+			<div ng-if="show">
 				<p class="division">订单号：{{item.order_number}}</p>
 				<p>说明： {{item.content}}</p>
 			</div>
@@ -20,6 +20,7 @@
 		</ion-item>
 	</ion-list>
 	<ion-infinite-scroll 
+			ng-if="hasMore"
 			on-infinite="loadMore()" 
 			distance="1%">
 	</ion-infinite-scroll>

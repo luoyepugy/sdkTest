@@ -37,7 +37,8 @@ define(['./app'], function (app) {
 		    url: '/common',
 		    views:{
 		        'feedback-common':{
-		            templateUrl: "view/feedback/ques-common.html"
+		            templateUrl: "view/feedback/ques-common.html",
+		            controller: 'quesCommonCtrl'
 		        }
 		    }
 		 })
@@ -45,7 +46,8 @@ define(['./app'], function (app) {
 		    url: '/submit',
 		    views:{
 		        'feedback-submit':{
-		            templateUrl: "view/feedback/ques-submit.html"
+		            templateUrl: "view/feedback/ques-submit.html",
+		            controller: 'quesSubmitCtrl'
 		        }
 		    }
 		 })
@@ -53,7 +55,8 @@ define(['./app'], function (app) {
 		    url: '/record',
 		    views:{
 		        'feedback-record':{
-		            templateUrl: "view/feedback/record.html"
+		            templateUrl: "view/feedback/record.html",
+		            controller: 'recordCtrl'
 		        }
 		    }
 		 })
@@ -67,8 +70,7 @@ define(['./app'], function (app) {
 		    url: '/all',
 		    views:{
 		        'trade-all':{
-		            templateUrl: "view/trade/trade-all.html",
-		            controller: 'tradeAllCtrl'
+		            templateUrl: "view/trade/trade-all.html"
 		        }
 		    }
 		 })
@@ -85,8 +87,7 @@ define(['./app'], function (app) {
 		    url: '/fail',
 		    views:{
 		        'trade-fail':{
-		            templateUrl: "view/trade/trade-fail.html",
-		            controller: 'tradeAllCtrl'
+		            templateUrl: "view/trade/trade-fail.html"
 		        }
 		    }
 		 });

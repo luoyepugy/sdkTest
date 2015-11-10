@@ -1,22 +1,23 @@
 
 define(['./module', '../modules/validate-tips'], function(controllers, messages) {
-	controllers.controller('editCtrl', ['$scope', '$rootScope', '$http', '$ionicActionSheet', '$cordovaCamera', 'validateService', 'userService', 'httpService',  
-	function($scope, $rootScope, $http, $ionicActionSheet, $cordovaCamera, validateService, userService, httpService) {
+	controllers.controller('editCtrl', ['$scope', '$rootScope', '$http', '$ionicActionSheet', 'validateService', 'userService', 'httpService',  
+	function($scope, $rootScope, $http, $ionicActionSheet, validateService, userService, httpService) {
 		$scope.user =  userService.user;
 		$scope.submit = function() {
-			var results;
-			results = validateService.isEmpty('.j-form input');
-			if(results === 0) {
+			var resultsIsEmpty,
+				resultsDatas;
+			resultsIsEmpty = validateService.isEmpty('.j-form input');
+			if(resultsIsEmpty === 0) {
 				return false;
-			} else {
-				var promise = httpService.getData('../../json/change-password.json', results);
-			    promise.then(function(data) {
-			    	messages.tips('修改成功');
-			    	window.location = '../../#/home';
-			    }, function(data) {
-			    	messages.tips(data);
-			    });
 			}
+			resultsDatas = validateService.submitData('.j-form');
+			var promise = httpService.getData('../../json/change-password.json', resultsDatas);
+		    promise.then(function(data) {
+		    	messages.tips('修改成功');
+		    	window.location = '../../#/home';
+		    }, function(data) {
+		    	messages.tips(data);
+		    });
 		};
 
 		// 操作表
