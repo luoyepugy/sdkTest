@@ -1,2 +1,2 @@
 # sdkTest
-angularJs / requireJs / zepto.js / underscore.js / gulp / bower / lonic
+angularJs / requireJs / zepto.js / gulp / bower / lonic
