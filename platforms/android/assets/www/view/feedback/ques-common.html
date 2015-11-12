@@ -1,0 +1,26 @@
+
+<ion-view view-title="常见问题">
+	<ion-content>
+		<ion-refresher
+		      pulling-text="下拉刷新..."  
+		      on-refresh="doRefresh()">
+		</ion-refresher>
+		<ion-list class="list list-inset list-space">
+			<ion-item ng-repeat="item in list" class="ques-common">
+				<div ng-click="toggle()" class="pointer">
+					<div class="inline-left orange">Q：</div>
+					<div class="inline-right">{{item.question}}</div>
+				</div>
+				<div ng-if="show" class="division">
+					<div class="inline-left green">A：</div>
+					<div class="inline-right">{{item.answer}}</div>
+				</div>
+			</ion-item>
+		</ion-list>
+		<ion-infinite-scroll 
+				ng-if="hasMore"
+				on-infinite="loadMore()" 
+				distance="1%">
+		</ion-infinite-scroll>
+    </ion-content>
+</ion-view>

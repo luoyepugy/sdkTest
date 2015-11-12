@@ -1,0 +1,35 @@
+
+<ion-view view-title="反馈问题">
+	<ion-content>
+		<ion-list class="list mt15 j-form">
+			<ion-item class="item-input">
+                <span class="input-label"><b class="red">*</b>意见描述</span>
+                <textarea class="j-input" data-empty="请输入反馈内容" name="content" placeholder="力天游戏中心诚恳倾听您的建议，您的反馈对我们非常重要。"></textarea>
+            </ion-item>
+            <ion-item class="item-select">
+		     	<span class="input-label">反馈类型</span>
+		        <select name="feedbackType" id="">
+		          	<option value="0" selected>游戏分类</option>
+		         	<option value="1">游戏分类游戏分类</option>
+		          	<option value="2">游戏分类游戏分类</option>
+		        </select>
+		    </ion-item>
+		    <ion-item class="item-select">
+		     	<span class="input-label">问题类型</span>
+		        <select name="questionType" id="">
+		          	<option value="0" selected>咨询或建议</option>
+		         	<option value="1">投诉</option>
+		        </select>
+		    </ion-item>
+		    <ion-item class="item-input">
+                <span class="input-label">Email</span>
+                <Input name="email" type="email" placeholder="好的建议可能收到我们的回复哦！" />
+            </ion-item>
+            <ion-item class="item-input">
+                <span class="input-label">联系电话</span>
+                <Input name="mobile" type="text" placeholder="好的建议可能收到我们的回复哦！" />
+            </ion-item>
+		</ion-list>
+		<p class="tc mt10"><button class="button button-balanced" ng-click="submit()" >提交反馈</button></p>
+    </ion-content>
+</ion-view>

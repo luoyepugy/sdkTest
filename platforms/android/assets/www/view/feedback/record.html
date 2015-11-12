@@ -1,36 +1,23 @@
-<!DOCTYPE html>
-<html lang="zh-cn">
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="-webkit-tap-highlight" content="no"/>
-<meta content="IE=10" http-equiv="x-ua-compatible"/>
-<title>我的反馈记录</title>
-<link rel="stylesheet" href="../css/fonts.css" />
-<link rel="stylesheet" href="../css/apps.min.css" />
-<script type="text/javascript" src="../js/Qmik.min.js"></script>
-<script type="text/javascript" src="../js/pages.min.js"></script>
-<body q-ctrl="chat_record">
-    <!-- 头部导航 -->
-    <header class="header">
-        <div class="header_nav">
-            <a href="../index.html" class="link_white"><i class="icon-arrow-left"></i></a>
-            <span class="header_nav_title">我的反馈记录</span>
-            <a href="#" class="header_nav_button link_white">返回游戏</a>
-        </div>
-    </header>
-    <!-- /头部导航 -->   
-    <!-- 中间内容 -->
-    <article class="content pb20 jq-record">        
-    </article>
-    <!-- /中间内容 -->
-    <!-- 底部输入消息框 -->
-    <footer class="footer">
-        <section class="chat_box">
-            <input type="text" class="input inline_left" placeholder="请输入信息" name="messages" value="" />
-            <span class="chat_box_sendBtn inline_right" q-onclick="send_message">发送</span>
-        </section>
-    </footer>
-    <!-- /底部输入消息框 -->
-</body>
-</html>
+
+<ion-view view-title="我的反馈记录">
+	<ion-content>
+		<ion-refresher
+		      pulling-text="下拉刷新..."  
+		      on-refresh="doRefresh()">
+		</ion-refresher>
+		<ion-list class="list list-inset list-space">
+			<ion-item ng-repeat="item in list">
+				<div class="record-item">
+					<div class="inline-left">{{item.content}}</div>
+					<div class="inline-right" ng-class="{'已回复': 'gray_light', '未回复': 'green', '已结束': 'gray_light'}[item.status]">{{item.status}}</div>
+				</div>
+				<p>最后更新时间：{{item.time}}</p>
+			</ion-item>
+		</ion-list>
+		<ion-infinite-scroll 
+				ng-if="hasMore"
+				on-infinite="loadMore()" 
+				distance="1%">
+		</ion-infinite-scroll>
+    </ion-content>
+</ion-view>

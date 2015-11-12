@@ -1,5 +1,1 @@
-
-define(['angular'], function(angular) {
-	'use strict';
-	return angular.module('myApp.filters', []);
-});
+define(["angular"],function(e){"use strict";return e.module("myApp.filters",[])});

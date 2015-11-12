@@ -53,10 +53,10 @@ define(['./module'], function(directives) {
 					var promise = httpService.getData('../../json/trade-more.json', {'page': page, 'status': 'loadmore', 'id': lastId});
 				    promise.then(function(data) {
 				    	var datas = data.data.items;
-			            // for(var i = 0; i < datas.length; i++) {
-			            // 	scope.list.push(datas[i]);
-			            // 	lastId = datas[datas.length-1].id;
-			            // }
+			            for(var i = 0; i < datas.length; i++) {
+			            	scope.list.push(datas[i]);
+			            	lastId = datas[datas.length-1].id;
+			            }
 			            if(datas.length === 0) {
 			            	scope.hasMore = false;
 			            }
