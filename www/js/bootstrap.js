@@ -1,0 +1,1 @@
+define(["angular","domReady","routes"],function(t,n){"use strict";n(function(){t.bootstrap(document,["myApp"])})});

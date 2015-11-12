@@ -1,0 +1,1 @@
+define(["angular","./controllers/index","./directives/index","./services/index"],function(e,i,n,r){return e.module("myApp",["ionic","myApp.controllers","myApp.directives","myApp.services"])});

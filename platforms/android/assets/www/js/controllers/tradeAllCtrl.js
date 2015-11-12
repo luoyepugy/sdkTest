@@ -1,1 +1,1 @@
-define(["./module"],function(e){e.controller("tradeAllCtrl",["$scope","$ionicLoading","tradeService","messageService",function(e,t,n,r){}])});
+define(["./module"],function(e){e.controller("tradeAllCtrl",["$scope","$ionicLoading","tradeService","messageService",function(e,i,n,o){}])});

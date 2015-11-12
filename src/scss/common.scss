@@ -6,6 +6,20 @@
 // 图片大小
 @include size-icon(120px);
 
+
+// 设置顶部header
+// .bar-header {
+//   height: 65px;
+// }
+// .bar-header .title,
+// .bar-header .button {
+//   margin-top: 10px;
+// }
+// .has-header {
+//   top: 64px;
+// }
+
+
 // 设置textarea
 .item-input textarea {
   width: calc(100% - 155px);

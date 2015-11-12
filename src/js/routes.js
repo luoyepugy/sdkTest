@@ -27,6 +27,11 @@ define(['./app'], function (app) {
 			url: "/retrieve-pwd",
 		    templateUrl: "view/retrieve-pwd/identity.html"
 		})
+		.state('record-detail', {
+			url: "/record-detail",
+		    templateUrl: "view/feedback/record-detail.html",
+		    controller: 'recordDetailCtrl'
+		})
 
 		.state('feedback', {
 			url: "/feedback",
@@ -55,8 +60,8 @@ define(['./app'], function (app) {
 		    url: '/record',
 		    views:{
 		        'feedback-record':{
-		            templateUrl: "view/feedback/record.html",
-		            controller: 'recordCtrl'
+		            templateUrl: "view/feedback/record-list.html",
+		            controller: 'recordListCtrl'
 		        }
 		    }
 		 })

@@ -12,7 +12,8 @@ define(['./module'], function(controllers) {
 
 		// 预加载
 	    $ionicLoading.show({
-	        template: '<ion-spinner></ion-spinner><h3>加载中...</h3>'
+	        template: '<ion-spinner></ion-spinner><h3>加载中...</h3>',
+	        duration: 3000
 	    });
 
 	    // 切换状态

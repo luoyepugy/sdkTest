@@ -1,8 +1,8 @@
 
 define(['./module'], function(controllers) {
 	controllers.controller('editCtrl', 
-	['$scope', '$rootScope', '$http', '$ionicActionSheet', 'validateService', 'userService', 'httpService', 'messageService',  
-	function($scope, $rootScope, $http, $ionicActionSheet, validateService, userService, httpService, messageService) {
+	['$scope', '$ionicActionSheet', 'validateService', 'userService', 'httpService', 'messageService',  
+	function($scope, $ionicActionSheet, validateService, userService, httpService, messageService) {
 		$scope.user =  userService.user;
 		$scope.submit = function() {
 			var resultsIsEmpty,

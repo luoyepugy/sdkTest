@@ -1,0 +1,1 @@
+define(["./module"],function(e){e.service("httpService",["$q","$http",function(e,t){this.getData=function(r,c){var s=e.defer();return t.get(r,{params:c}).success(function(e){e.success===!0?s.resolve(e):s.reject(e.message)}).error(function(e){s.reject("服务器请求失败")}),s.promise}}])});

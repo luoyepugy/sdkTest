@@ -1,0 +1,1 @@
+define(["./module","zepto"],function(e,r){e.factory("messageService",function(){var e={};return e.show=function(e){r(".error_tip").length<1&&(r("body").append('<p class="error_tip">'+e+"</p>"),setTimeout(function(){r(".error_tip").remove()},2500))},e})});

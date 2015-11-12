@@ -1,0 +1,17 @@
+{
+    "success": true,
+    "message": "失败",
+    "data": {
+        "total": 10,
+        "items": [
+            {
+                "id": 1,
+                "content": "hello",
+                "time": "2014-11-3 10:10:30",
+                "username": "zh",
+                "avatar_url": "/images/portrait.jpg",
+                "user_type": "user"
+            }
+        ]
+    }
+}
