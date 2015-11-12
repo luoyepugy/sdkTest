@@ -7,7 +7,7 @@ define(['./module'], function(services) {
 	        $http.get(url, {params: datas})	// 此处应用post请求，get请求测试
 	        	.success(function(response) {
 	                if(response.success === true) {
-	                	deferred.resolve(response.message);
+	                	deferred.resolve(response);
 					} else {
 						deferred.reject(response.message);
 					}

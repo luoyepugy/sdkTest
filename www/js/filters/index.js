@@ -1,2 +1,2 @@
 
-define(['./tradeFilter'], function() {});
+define([], function() {});

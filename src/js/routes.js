@@ -78,8 +78,7 @@ define(['./app'], function (app) {
 		    url: '/success',
 		    views:{
 		        'trade-success':{
-		            templateUrl: "view/trade/trade-success.html",
-		            controller: 'tradeAllCtrl'
+		            templateUrl: "view/trade/trade-success.html"
 		        }
 		    }
 		 })

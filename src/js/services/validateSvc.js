@@ -1,5 +1,5 @@
 
-define(['./module', 'zepto', '../modules/validate-tips'], function(services, $, messages) {
+define(['./module', 'zepto'], function(services, $) {
 	services.service('validateService', function() {
 		this.isEmpty = function(form) {
 			var inputs = {},
@@ -11,6 +11,7 @@ define(['./module', 'zepto', '../modules/validate-tips'], function(services, $, 
                 var val = $.trim($(this).val());
                 if(val === '' || val === undefined || val === null) {
                     results = $(this).data('empty');
+                    return false;
                 } else {
                     num++;
                 }
@@ -29,6 +30,6 @@ define(['./module', 'zepto', '../modules/validate-tips'], function(services, $, 
                 datas[key] = val;
             });
             return datas;
-        }
+        };
 	});
 });

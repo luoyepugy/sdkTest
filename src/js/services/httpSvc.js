@@ -1,14 +1,13 @@
 
 define(['./module'], function(services) {
-	services.service('tradeService',['$http','$q', function($http, $q) {
-		var baseUrl = '../../json/trade.json';	
-		this.getData = function(datas, urls) {
-			var deferred = $q.defer(),
-				url = urls || baseUrl;
-	        $http.get(url, {params: datas})
+	services.service('httpService', ['$q', '$http', function($q, $http) {
+		this.getData = function(url, datas) {
+			var deferred = $q.defer();
+	        // $http.post(url, datas)
+	        $http.get(url, {params: datas})	// 此处应用post请求，get请求测试
 	        	.success(function(response) {
 	                if(response.success === true) {
-	                	deferred.resolve(response.data.items);
+	                	deferred.resolve(response);
 					} else {
 						deferred.reject(response.message);
 					}

@@ -1,25 +1,26 @@
 <div>
 	<ion-refresher
-	      pulling-text="下拉刷新..."  
+	      pulling-text="下拉刷新..." 
+	      refreshing-text="刷新成功" 
 	      on-refresh="doRefresh()">
 	</ion-refresher>
 	<ion-list class="list list-inset list-space">
 		<ion-item class="item trade-item" ng-repeat="item in list">
-			<div ng-click="toggle($index)" class="pointer">
+			<div ng-click="toggle()" class="pointer">
 				<span class="black">{{item.stuff}}</span>
 				<span class="fr" ng-class="{true: 'green', false: 'orange'}[item.status]">{{item.status ? '成功': '未成功'}}</span>
 				<p><span>{{item.payment}}支付<b class="orange">{{item.money}}</b>元</span>
 				<time class="fr">{{item.time}}</time>
 				</p>
 			</div>
-			<div ng-show="$index===clickRow">
+			<div ng-if="show">
 				<p class="division">订单号：{{item.order_number}}</p>
 				<p>说明： {{item.content}}</p>
 			</div>
-			<input type="hidden" ng-model="item.id" value="{{item.id}}" />
 		</ion-item>
 	</ion-list>
 	<ion-infinite-scroll 
+			ng-if="hasMore"
 			on-infinite="loadMore()" 
 			distance="1%">
 	</ion-infinite-scroll>

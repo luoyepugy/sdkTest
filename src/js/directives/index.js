@@ -1,2 +1,2 @@
 
-define(['./tradeDire', './messageBoxDire'], function() {});
+define(['./tradeDctv'], function() {});

@@ -1,6 +1,8 @@
 
-define(['./module', '../modules/validate-tips'], function(controllers, messages) {
-	controllers.controller('quesSubmitCtrl', function($scope, validateService, httpService) {
+define(['./module'], function(controllers) {
+	controllers.controller('quesSubmitCtrl', 
+		['$scope', 'validateService', 'httpService', 'messageService', 
+		function($scope, validateService, httpService, messageService) {
 		$scope.submit = function() {
 			var resultsIsEmpty,
 				resultsDatas;
@@ -11,10 +13,10 @@ define(['./module', '../modules/validate-tips'], function(controllers, messages)
 			resultsDatas = validateService.submitData('.j-form');
 			var promise = httpService.getData('../../json/change-password.json', resultsDatas);
 		    promise.then(function(data) {
-		    	messages.tips('反馈成功');
+		    	messageService.show('反馈成功');
 		    },function(data) {
-		    	messages.tips(data);
+		    	messageService.show(data);
 		    });
-		}		
-	});
+		};		
+	}]);
 });

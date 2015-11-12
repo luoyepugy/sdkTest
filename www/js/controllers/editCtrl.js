@@ -1,22 +1,24 @@
 
-define(['./module', '../modules/validate-tips'], function(controllers, messages) {
-	controllers.controller('editCtrl', ['$scope', '$rootScope', '$http', '$ionicActionSheet', 'validateService', 'userService', 'httpService',  
-	function($scope, $rootScope, $http, $ionicActionSheet, validateService, userService, httpService) {
+define(['./module'], function(controllers) {
+	controllers.controller('editCtrl', 
+	['$scope', '$rootScope', '$http', '$ionicActionSheet', 'validateService', 'userService', 'httpService', 'messageService',  
+	function($scope, $rootScope, $http, $ionicActionSheet, validateService, userService, httpService, messageService) {
 		$scope.user =  userService.user;
 		$scope.submit = function() {
 			var resultsIsEmpty,
 				resultsDatas;
 			resultsIsEmpty = validateService.isEmpty('.j-form input');
-			if(resultsIsEmpty === 0) {
+			if(resultsIsEmpty !== 1) {
+				messageService.show(resultsIsEmpty);
 				return false;
 			}
 			resultsDatas = validateService.submitData('.j-form');
 			var promise = httpService.getData('../../json/change-password.json', resultsDatas);
 		    promise.then(function(data) {
-		    	messages.tips('修改成功');
+		    	messageService.show('修改成功');
 		    	window.location = '../../#/home';
 		    }, function(data) {
-		    	messages.tips(data);
+		    	messageService.show(data);
 		    });
 		};
 
@@ -28,7 +30,7 @@ define(['./module', '../modules/validate-tips'], function(controllers, messages)
 	                text: '拍照'
 	            }, {
 	                text: '从相册选择'
-	            }, ],
+	            }],
 	            cancelText: '取消',
 	            cancel: function() {
 	                return true;

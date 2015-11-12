@@ -1,2 +1,2 @@
 
-define(['./userSer', './tradeSer', './validateSer', './httpSer'], function() {});
+define(['./userSvc', './validateSvc', './httpSvc', './messageSvc'], function() {});

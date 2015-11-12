@@ -1,6 +1,6 @@
 
-define(['./module', '../modules/validate-tips'], function(directives, messages) {
-	directives.directive('tradeList', function(tradeService, $document, $ionicLoading, $rootScope) {
+define(['./module'], function(directives) {
+	directives.directive('tradeList', ['httpService', '$ionicLoading', 'messageService', function(httpService, $ionicLoading, messageService) {
 		return {
 			restrict: 'E',
 			templateUrl: './js/views/tradeTemp.html',
@@ -11,8 +11,8 @@ define(['./module', '../modules/validate-tips'], function(directives, messages) 
 			},
 			link: function(scope, element, attrs) {
 				// 最后一个item的id
-				var lastId = 0;
-				var page = scope.page;
+				var lastId = attrs.lastId;
+				var page = attrs.page;
 				// 默认不显示每个item的详情
 				scope.show = false;
 				// 更多数据判断
@@ -24,42 +24,45 @@ define(['./module', '../modules/validate-tips'], function(directives, messages) 
 			    });
 
 			    // 初始化
-			    var promise = tradeService.getData({'page': page});
+			    var promise = httpService.getData('../../json/trade.json', {'page': page});
 			    promise.then(function(data) {
 			    	$ionicLoading.hide();
-			    	scope.list = data;
-			    	lastId = data[data.length-1].id;
+			    	var datas = data.data.items;
+			    	scope.list = datas;
+			    	lastId = datas[datas.length-1].id;
 			    },function(data) {
-			    	messages.tips(data);
+			    	messageService.show(data);
 			    });
 
 			    // 刷新
 				scope.doRefresh = function() {
-					var promise = tradeService.getData({'page': page, 'status': 'refresh'}, '../../json/trade-more.json');
+					var promise = httpService.getData('../../json/trade-more.json', {'page': page, 'status': 'refresh'});
 				    promise.then(function(data) {
 				    	$ionicLoading.hide();
-				    	scope.list = data;
-				    	lastId = data[data.length-1].id;
+				    	var datas = data.data.items;
+				    	scope.list = datas;
+				    	lastId = datas[datas.length-1].id;
 				    	scope.$broadcast('scroll.refreshComplete');
 				    },function(data) {
-				    	messages.tips(data);
+				    	messageService.show(data);
 				    });
 				};
 
 				// 加载更多
 				scope.loadMore = function() {
-					var promise = tradeService.getData({'page': page, 'status': 'loadmore', 'id': lastId}, '../../json/trade-more.json');
+					var promise = httpService.getData('../../json/trade-more.json', {'page': page, 'status': 'loadmore', 'id': lastId});
 				    promise.then(function(data) {
-			            for(var i = 0; i < data.length; i++) {
-			            	scope.list.push(data[i]);
-			            	lastId = data[data.length-1].id;
-			            }
-			            if(data.length === 0) {
+				    	var datas = data.data.items;
+			            // for(var i = 0; i < datas.length; i++) {
+			            // 	scope.list.push(datas[i]);
+			            // 	lastId = datas[datas.length-1].id;
+			            // }
+			            if(datas.length === 0) {
 			            	scope.hasMore = false;
 			            }
 			            scope.$broadcast('scroll.infiniteScrollComplete');
 				    },function(data) {
-				    	messages.tips(data);
+				    	messageService.show(data);
 				    });
 				};
 
@@ -69,5 +72,5 @@ define(['./module', '../modules/validate-tips'], function(directives, messages) 
 				};
 			}
 		};
-	});
+	}]);
 });
