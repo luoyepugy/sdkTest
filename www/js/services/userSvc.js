@@ -10,7 +10,9 @@ define(['./module'], function(services) {
             birthday: '1992-09-30',
             location: '湖北省-仙桃市',
             password: '1234',
-            autoLogin: true
+            autoLogin: true,
+            phone: '13008885784',
+            email: '1129432095@qq.com'
 		};
 		return service;
 	});

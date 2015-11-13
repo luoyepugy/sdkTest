@@ -130,3 +130,36 @@
 .ques-common {
 	@include display-inline(30px, calc(100% - 35px));
 }
+
+
+// ==================================
+// ============= 找回密码 =============
+// ==================================
+.stepImg {
+	position: relative;
+	.num, .content {
+		text-align: center;
+		i {
+			font-size: 40px;
+		}
+		em {
+			position: relative;
+			right: 20px;
+			bottom: 10px;
+			font-weight: 700;
+		}
+	}
+	.line {
+		border-top: 1px solid #bbb;
+		position: absolute;
+		top: 38px;
+		width: 60%;
+		left: 50%;
+		margin-left: -30%;
+		z-index: -1;
+	}
+}
+.identity-type {
+	position: relative;
+	bottom: 5px;
+}

@@ -23,9 +23,15 @@ define(['./app'], function (app) {
 			url: "/terms",
 		    templateUrl: "view/terms.html"
 		})
-		.state('retrieve-pwd', {
-			url: "/retrieve-pwd",
-		    templateUrl: "view/retrieve-pwd/identity.html"
+		.state('identity', {
+			url: "/identity",
+		    templateUrl: "view/retrieve-pwd/identity.html",
+		    controller: 'identityCtrl'
+		})
+		.state('reset-pwd', {
+			url: "/reset-pwd",
+		    templateUrl: "view/retrieve-pwd/reset-pwd.html",
+		    controller: 'resetPwdCtrl'
 		})
 		.state('record-detail', {
 			url: "/record-detail",

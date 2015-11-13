@@ -64,6 +64,10 @@
   z-index: 10;
 }
 
+// 链接
+.link-green {
+  @include link(#33cd5f);
+}
 
 // 颜色
 @include color('gray_light', '#bbb');
