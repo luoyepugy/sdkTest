@@ -1,1 +1,5 @@
-define(["angular"],function(e){"use strict";return e.module("myApp.controllers",[])});
+
+define(['angular'], function(angular) {
+	'use strict';
+	return angular.module('myApp.controllers', []);
+});

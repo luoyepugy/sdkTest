@@ -1,1 +1,15 @@
-define(["./module","zepto"],function(e,r){e.factory("messageService",function(){var e={};return e.show=function(e){r(".error_tip").length<1&&(r("body").append('<p class="error_tip">'+e+"</p>"),setTimeout(function(){r(".error_tip").remove()},2500))},e})});
+
+define(['./module', 'zepto'], function(services, $) {
+	services.factory('messageService', function() {
+		var messages = {};
+		messages.show = function(tips) {
+			if($('.error_tip').length < 1) {
+                $('body').append('<p class="error_tip">' + tips +'</p>');
+                setTimeout(function(){
+                    $('.error_tip').remove();
+                }, 2500);
+            }
+		};
+		return messages;
+	});
+});

@@ -1,67 +1,46 @@
-<!DOCTYPE html>
-<html lang="zh-cn">
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="-webkit-tap-highlight" content="no"/>
-<meta content="IE=10" http-equiv="x-ua-compatible"/>
-<title>找回密码</title>
-<link rel="stylesheet" href="../css/fonts.css" />
-<link rel="stylesheet" href="../css/apps.min.css" />
-<script type="text/javascript" src="../js/Qmik.min.js"></script>
-<script type="text/javascript" src="../js/pages.min.js"></script>
-<body>
-    <!-- 头部导航 -->
-    <header class="header">
-        <div class="header_nav">
-            <a href="../index.html" class="link_white"><i class="icon-arrow-left"></i></a>
-            <span class="header_nav_title">找回密码</span>
-            <a href="phone-check.html" class="header_nav_button link_white">返回游戏</a>
+<ion-view view-title="找回密码">
+    <ion-content>
+        <div class="stepImg">
+            <div class="row">
+                <div class="col col-25 col-offset-25">
+                    <div class="num">
+                        <i class="ion-record orange"></i><em class="white">1</em>
+                    </div>
+                    <div class="content">身份验证</div>
+                </div>
+                <div class="col col-25">
+                    <div class="num"><i class="ion-record white"></i><em class="gray_light">2</em></div>
+                    <div class="content gray_light">重置密码</div>
+                </div>
+            </div>
+            <div class="line"></div>
         </div>
-    </header>
-    <!-- /头部导航 -->   
-    <!-- 中间内容 -->
-    <article class="content" q-ctrl="identity">
-        <!-- 步骤图 -->
-        <div class="step">
-            <section class="inline_left font_root_normal">
-                <i class="icon-number orange font_xxg"></i>
-                <span class="step_img">身份验证</span>
-            </section>
-            <section class="inline_right font_root_normal">
-                <i class="icon-number2 white font_xxg"></i>
-                <span class="gray_light step_img">重置密码</span>
-            </section>
-        </div>
-        <!-- /步骤图 -->
-        <p class="p">请选择注册账号类别：</p>
-        <ul class="list m0">
-            <li>
-                <p class="jq-list mb3" q-onclick="checked" data-url="phone-check.html" data-identity="phone">
-                    <i class="icon-checked font_icon"></i><span>手机号码注册</span>
-                </p>
-                <section class="division">
-                    <p class="mb3"><input class="input" type="text" name="phone" placeholder="请输入11位数的手机号" /></p>
-                    <p class="identity_code">
-                        <input class="input inline_left" type="text" name="verification_code" placeholder="请输入验证码" />
-                        <span class="button inline_right" q-onclick="get_code">获取验证码</span>
-                    </p>
-                </section>
-            </li>      
-            <li>
-                <p class="jq-list" q-onclick="checked" data-url="email-check.html" data-identity="email">
-                    <i class="icon-checked icon-radio-unchecked font_icon"></i><span>邮箱注册</span>
-                </p>
-                <section class="division none">
-                    <p><input class="input" type="email" name="email" placeholder="请输入邮箱账号" /></p>
-                </section>
-            </li>    
-        </ul>
-        <aside>
-            <p class="green_button mt5" q-onclick="next_step"><a href="javascript:;" data-url="phone-check.html" class="link_white jq-next-btn">下一步</a></p>
-            <p class="tr mt3 none"><a href="#" class="link_green">联系客服&nbsp;&gt;</a></p>
-        </aside>  
-    </article>
-    <!-- /中间内容 -->
-</body>
-</html>
+        <p class="ml10 mt15">请选择注册账号类别：</p>
+        <ion-list class="card list j-valiPhone">
+            <ion-item class="pointer" ng-click="choosePhone()">
+                <button class="button-icon icon balanced" ng-class="{true: 'ion-ios-checkmark', false: 'ion-ios-circle-outline'}[showPhone]"></button>
+                <span class="identity-type">手机号码注册</span>
+            </ion-item>
+            <ion-item class="item-input" ng-if="showPhone"> 
+                <input type="text" name="phone" ng-model="user.phone" value="" data-empty="请输入手机号码" placeholder="请输入11位数的手机号" />
+            </ion-item>
+            <ion-item class="item-input" ng-if="showPhone"> 
+                <input type="text" name="valiCode" ng-model="valiCode" value="" data-empty="请输入验证码" placeholder="请输入验证码" />
+                <button class="button button-balanced mr5" ng-click="getValiCode()">获取验证码</button>
+            </ion-item>
+        </ion-list>
+        <ion-list class="card list j-valiEmail">
+            <ion-item class="pointer" ng-click="chooseEmail()">
+                <button class="button-icon icon balanced" ng-class="{true: 'ion-ios-checkmark', false: 'ion-ios-circle-outline'}[showEmail]"></button>
+                <span class="identity-type">邮箱注册</span>
+            </ion-item>
+            <ion-item class="item-input" ng-if="showEmail"> 
+                <input type="email" name="email" ng-model="user.email" value="" data-empty="请输入邮箱账号" placeholder="请输入邮箱账号" />
+            </ion-item>
+            <ion-item class="tr" ng-if="showEmail">
+                <a class="link-green" href="#">联系客服</a>
+            </ion-item>
+        </ion-list>
+        <p class="tc mt10"><button class="button button-balanced" ng-click="submit()">下一步</button></p>
+    </ion-content>
+</ion-view>

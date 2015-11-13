@@ -1,1 +1,2 @@
-define(["./userSvc","./validateSvc","./httpSvc","./messageSvc"],function(){});
+
+define(['./userSvc', './validateSvc', './httpSvc', './messageSvc'], function() {});

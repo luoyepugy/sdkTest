@@ -7,7 +7,8 @@ define(['./module'], function(controllers) {
 			var resultsIsEmpty,
 				resultsDatas;
 			resultsIsEmpty = validateService.isEmpty('.j-form .j-input');
-			if(resultsIsEmpty === 0) {
+			if(resultsIsEmpty !== 1) {
+				messageService.show(resultsIsEmpty);
 				return false;
 			}
 			resultsDatas = validateService.submitData('.j-form');

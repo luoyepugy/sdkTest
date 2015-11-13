@@ -1,1 +1,2 @@
-define(["./tradeDctv"],function(){});
+
+define(['./tradeDctv'], function() {});

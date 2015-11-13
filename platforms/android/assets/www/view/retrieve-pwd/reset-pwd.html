@@ -1,0 +1,39 @@
+
+<ion-view view-title="重置密码">
+    <ion-content>
+        <div class="stepImg">
+            <div class="row">
+                <div class="col col-25 col-offset-25">
+                    <div class="num">
+                        <i class="ion-record white"></i><em class="gray_light">1</em>
+                    </div>
+                    <div class="content gray_light">身份验证</div>
+                </div>
+                <div class="col col-25">
+                    <div class="num"><i class="ion-record orange"></i><em class="white">2</em></div>
+                    <div class="content">重置密码</div>
+                </div>
+            </div>
+            <div class="line"></div>
+        </div>
+        <div class="j-form" ng-if="showPhone">
+            <p class="gray_mid mt15 mb10 ml10">请为账号设置新登录密码。建议使用字母、数字与标点的组合，可大幅提高账号安全度。</p>
+            <ion-list class="j-form">
+                <ion-item class="item-input">
+                    <span class="input-label">新密码</span>
+                    <input type="password" name="newPwd" ng-model="user.newPwd" placeholder="请输入新密码" value="" data-empty="请输入新密码" />
+                </ion-item>
+                <ion-item class="item-input">
+                    <span class="input-label">确认新密码</span>
+                    <input type="password" name="confirmPwd" placeholder="请再次输入新密码" value="" data-empty="请再次输入新密码" />
+                </ion-item>
+            </ion-list>
+            <p class="tc mt10"><button class="button button-balanced" ng-click="submit()">完成</button></p>
+        </div>
+        <div ng-if="showEmail">
+            <p class="mb10 mt15 ml10">校验码已发送至：<span class="green">{{user.email}}</span></p>
+            <p class="gray_mid ml10">重置密码邮件已发送至邮箱，请登录邮箱完成重置密码。请妥善管理账户安全，祝您游戏愉快！</p>
+            <p class="tc mt15"><a class="button button-balanced" href="#/home">完成</a></p>
+        </div>
+    </ion-content>
+</ion-view>
