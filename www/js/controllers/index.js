@@ -1,1 +1,2 @@
-define(["./homeCtrl","./changePwdCtrl","./editCtrl","./quesCommonCtrl","./quesSubmitCtrl","./recordListCtrl","./recordDetailCtrl"],function(){});
+
+define(['./homeCtrl', './changePwdCtrl', './editCtrl', './quesCommonCtrl', './quesSubmitCtrl', './recordListCtrl', './recordDetailCtrl'], function() {});

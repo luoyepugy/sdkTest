@@ -1,6 +1,10 @@
 
 <ion-view view-title="我的反馈记录">
-	<ion-content class="j-swipe">
+	<ion-content>
+		<ion-refresher
+		      pulling-text="加载更多..."  
+		      on-refresh="loadMore()">
+		</ion-refresher>
 		<ion-list class="record-detail">
 			<ion-item ng-repeat="item in list">
 				<p class="tc">{{item.time}}</p>

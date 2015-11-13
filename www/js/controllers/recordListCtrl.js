@@ -1,1 +1,68 @@
-define(["./module"],function(t){t.controller("recordListCtrl",["$scope","httpService","$ionicLoading","messageService",function(t,e,o,n){var i=0,a="../../json/myfeedback.json";t.hasMore=!0,o.show({template:"<ion-spinner></ion-spinner><h3>加载中...</h3>",duration:3e3}),t.toggle=function(){t.show=!t.show};var s=e.getData(a);s.then(function(e){var n=e.data.items;o.hide(),t.list=n},function(t){n.show(t)}),t.doRefresh=function(){var i=e.getData(a,{status:"refresh"});i.then(function(e){var n=e.data.items;o.hide(),t.list=n,t.$broadcast("scroll.refreshComplete")},function(t){n.show(t)})},t.loadMore=function(){var o=e.getData(a,{status:"loadmore",id:i});o.then(function(e){for(var o=e.data.items,n=0;n<o.length;n++)t.list.push(o[n]);0===e.length&&(t.hasMore=!1),t.$broadcast("scroll.infiniteScrollComplete")},function(t){n.show(t)})}}])});
+
+define(['./module'], function(controllers) {
+	controllers.controller('recordListCtrl', 
+		['$scope', 'httpService', '$ionicLoading', 'messageService', 
+		function($scope, httpService, $ionicLoading, messageService) {
+
+		// 最后一个item的id
+		var lastId = 0;
+		var baseUrl = '../../json/myfeedback.json';
+		// 更多数据判断
+		$scope.hasMore = true;
+
+		// 预加载
+	    $ionicLoading.show({
+	        template: '<ion-spinner></ion-spinner><h3>加载中...</h3>',
+	        duration: 3000
+	    });
+
+	    // 切换状态
+	    $scope.toggle = function() {
+	    	$scope.show = !$scope.show;
+	    };
+
+	    // 初始化
+	    var promise = httpService.getData(baseUrl);
+	    promise.then(function(data) {
+	    	var datas = data.data.items;
+	    	$ionicLoading.hide();
+	    	$scope.list = datas;
+	    	// lastId = datas[datas.length-1].id;
+	    },function(data) {
+	    	messageService.show(data);
+	    });
+
+	    // 刷新
+	    $scope.doRefresh = function() {
+	    	var promise = httpService.getData(baseUrl, {'status': 'refresh'});
+		    promise.then(function(data) {
+		    	var datas = data.data.items;
+		    	$ionicLoading.hide();
+		    	$scope.list = datas;
+		    	// lastId = datas[datas.length-1].id;
+		    	$scope.$broadcast('scroll.refreshComplete');
+		    },function(data) {
+		    	messageService.show(data);
+		    });
+	    };
+
+	    // 加载更多
+	    $scope.loadMore = function() {
+	    	var promise = httpService.getData(baseUrl, {'status': 'loadmore', 'id': lastId});
+		    promise.then(function(data) {
+		    	var datas = data.data.items;
+		    	for(var i = 0; i < datas.length; i++) {
+	            	$scope.list.push(datas[i]);
+	            	// lastId = datas[datas.length-1].id;
+	            }
+	            if(data.length === 0) {
+	            	$scope.hasMore = false;
+	            }
+	            $scope.$broadcast('scroll.infiniteScrollComplete');
+		    },function(data) {
+		    	messageService.show(data);
+		    });
+	    };
+
+	}]);
+});

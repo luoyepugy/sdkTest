@@ -1,11 +1,11 @@
 
-define(['./module', 'zepto'], function(controllers, $) {
+define(['./module'], function(controllers) {
 	controllers.controller('recordDetailCtrl', 
         ['$scope', 'validateService', 'httpService', 'messageService', '$ionicLoading',
         function($scope, validateService, httpService, messageService, $ionicLoading) {
 
         // 最后一个item的id
-		var lastId = 0;
+		var firstId = 0;
 		// 更多数据判断
 		$scope.hasMore = true;
         var baseUrl = '../../json/record.json';
@@ -47,27 +47,21 @@ define(['./module', 'zepto'], function(controllers, $) {
 		    });
 	    };
 
-	 //    $('.j-swipe').swipeDown(function(){
-		// 	console.log('hel');
-		// });
 
 	    // 加载更多
-	    // $scope.loadMore = function() {
-	    // 	var promise = httpService.getData(baseUrl, {'status': 'loadmore', 'id': lastId});
-		   //  promise.then(function(data) {
-		   //  	var datas = data.data.items;
-		   //  	for(var i = 0; i < datas.length; i++) {
-	    //         	$scope.list.push(datas[i]);
-	    //         	// lastId = datas[datas.length-1].id;
-	    //         }
-	    //         if(data.length === 0) {
-	    //         	$scope.hasMore = false;
-	    //         }
-	    //         $scope.$broadcast('scroll.infiniteScrollComplete');
-		   //  },function(data) {
-		   //  	messageService.show(data);
-		   //  });
-	    // };
+	    $scope.loadMore = function() {
+	    	var promise = httpService.getData(baseUrl, {'status': 'loadmore', 'id': firstId});
+		    promise.then(function(data) {
+		    	var datas = data.data.items;
+		    	for(var i = 0; i < datas.length; i++) {
+	            	$scope.list.push(datas[i]);
+	            	// lastId = datas[datas.length-1].id;
+	            }
+	            $scope.$broadcast('scroll.refreshComplete');
+		    },function(data) {
+		    	messageService.show(data);
+		    });
+	    };
 
 	}]);
 });

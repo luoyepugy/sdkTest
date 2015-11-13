@@ -1,1 +1,21 @@
-define(["./module"],function(e){e.service("httpService",["$q","$http",function(e,t){this.getData=function(r,c){var s=e.defer();return t.get(r,{params:c}).success(function(e){e.success===!0?s.resolve(e):s.reject(e.message)}).error(function(e){s.reject("服务器请求失败")}),s.promise}}])});
+
+define(['./module'], function(services) {
+	services.service('httpService', ['$q', '$http', function($q, $http) {
+		this.getData = function(url, datas) {
+			var deferred = $q.defer();
+	        // $http.post(url, datas)
+	        $http.get(url, {params: datas})	// 此处应用post请求，get请求测试
+	        	.success(function(response) {
+	                if(response.success === true) {
+	                	deferred.resolve(response);
+					} else {
+						deferred.reject(response.message);
+					}
+	            })
+	            .error(function(data){
+	            	deferred.reject('服务器请求失败');
+	            });
+	        return deferred.promise;
+		};
+	}]);
+});

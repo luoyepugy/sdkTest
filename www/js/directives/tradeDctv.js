@@ -1,1 +1,77 @@
-define(["./module"],function(e){e.directive("tradeList",["httpService","$ionicLoading","messageService",function(e,t,n){return{restrict:"E",templateUrl:"./js/views/tradeTemp.html",replace:!0,scope:{list:"=",page:"@"},link:function(o,i,a){var s=a.lastId,r=a.page;o.show=!1,o.hasMore=!0,t.show({template:"<ion-spinner></ion-spinner><h3>加载中...</h3>",duration:3e3});var h=e.getData("../../json/trade.json",{page:r});h.then(function(e){t.hide();var n=e.data.items;o.list=n,s=n[n.length-1].id},function(e){n.show(e)}),o.doRefresh=function(){var i=e.getData("../../json/trade-more.json",{page:r,status:"refresh"});i.then(function(e){t.hide();var n=e.data.items;o.list=n,s=n[n.length-1].id,o.$broadcast("scroll.refreshComplete")},function(e){n.show(e)})},o.loadMore=function(){var t=e.getData("../../json/trade-more.json",{page:r,status:"loadmore",id:s});t.then(function(e){for(var t=e.data.items,n=0;n<t.length;n++)o.list.push(t[n]),s=t[t.length-1].id;0===t.length&&(o.hasMore=!1),o.$broadcast("scroll.infiniteScrollComplete")},function(e){n.show(e)})},o.toggle=function(){this.show=!this.show}}}}])});
+
+define(['./module'], function(directives) {
+	directives.directive('tradeList', ['httpService', '$ionicLoading', 'messageService', function(httpService, $ionicLoading, messageService) {
+		return {
+			restrict: 'E',
+			templateUrl: './js/views/tradeTemp.html',
+			replace: true,
+			scope: {
+				list: '=',
+				page: '@'
+			},
+			link: function(scope, element, attrs) {
+				// 最后一个item的id
+				var lastId = attrs.lastId;
+				var page = attrs.page;
+				// 默认不显示每个item的详情
+				scope.show = false;
+				// 更多数据判断
+				scope.hasMore = true;
+
+				// 预加载
+			    $ionicLoading.show({
+			        template: '<ion-spinner></ion-spinner><h3>加载中...</h3>',
+			        duration: 3000
+			    });
+
+			    // 初始化
+			    var promise = httpService.getData('../../json/trade.json', {'page': page});
+			    promise.then(function(data) {
+			    	$ionicLoading.hide();
+			    	var datas = data.data.items;
+			    	scope.list = datas;
+			    	lastId = datas[datas.length-1].id;
+			    },function(data) {
+			    	messageService.show(data);
+			    });
+
+			    // 刷新
+				scope.doRefresh = function() {
+					var promise = httpService.getData('../../json/trade-more.json', {'page': page, 'status': 'refresh'});
+				    promise.then(function(data) {
+				    	$ionicLoading.hide();
+				    	var datas = data.data.items;
+				    	scope.list = datas;
+				    	lastId = datas[datas.length-1].id;
+				    	scope.$broadcast('scroll.refreshComplete');
+				    },function(data) {
+				    	messageService.show(data);
+				    });
+				};
+
+				// 加载更多
+				scope.loadMore = function() {
+					var promise = httpService.getData('../../json/trade-more.json', {'page': page, 'status': 'loadmore', 'id': lastId});
+				    promise.then(function(data) {
+				    	var datas = data.data.items;
+			            for(var i = 0; i < datas.length; i++) {
+			            	scope.list.push(datas[i]);
+			            	lastId = datas[datas.length-1].id;
+			            }
+			            if(datas.length === 0) {
+			            	scope.hasMore = false;
+			            }
+			            scope.$broadcast('scroll.infiniteScrollComplete');
+				    },function(data) {
+				    	messageService.show(data);
+				    });
+				};
+
+				// 切换状态
+				scope.toggle = function() {
+					this.show = !this.show;
+				};
+			}
+		};
+	}]);
+});
