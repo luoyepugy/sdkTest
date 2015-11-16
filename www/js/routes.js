@@ -6,67 +6,67 @@ define(['./app'], function (app) {
     	$stateProvider
     	.state('home', {
 		    url: "/home",
-		    templateUrl: "view/home.html",
+		    templateUrl: "views/home.html",
 		    controller: 'homeCtrl'
 		})
 		.state('edit-user', {
 		    url: "/edit-user",
-		    templateUrl: "view/edit-user.html",
+		    templateUrl: "views/edit-user.html",
 		    controller: 'editCtrl'
 		})
 		.state('change-password', {
 			url: "/change-password",
-		    templateUrl: "view/change-password.html",
+		    templateUrl: "views/change-password.html",
 		    controller: 'changePwdCtrl'
 		})
 		.state('terms', {
 			url: "/terms",
-		    templateUrl: "view/terms.html"
+		    templateUrl: "views/terms.html"
 		})
 		.state('identity', {
 			url: "/identity",
-		    templateUrl: "view/retrieve-pwd/identity.html",
+		    templateUrl: "views/retrieve-pwd/identity.html",
 		    controller: 'identityCtrl'
 		})
 		.state('reset-pwd', {
 			url: "/reset-pwd",
-		    templateUrl: "view/retrieve-pwd/reset-pwd.html",
+		    templateUrl: "views/retrieve-pwd/reset-pwd.html",
 		    controller: 'resetPwdCtrl'
 		})
 		.state('record-detail', {
 			url: "/record-detail",
-		    templateUrl: "view/feedback/record-detail.html",
+		    templateUrl: "views/feedback/record-detail.html",
 		    controller: 'recordDetailCtrl'
 		})
 
 		.state('feedback', {
 			url: "/feedback",
 		    "abstract": true,
-		    templateUrl: "view/feedback/feedback.html"
+		    templateUrl: "views/feedback/feedback.html"
 		})
 		.state('feedback.common', {
 		    url: '/common',
-		    views:{
+		    viewss:{
 		        'feedback-common':{
-		            templateUrl: "view/feedback/ques-common.html",
+		            templateUrl: "views/feedback/ques-common.html",
 		            controller: 'quesCommonCtrl'
 		        }
 		    }
 		 })
 		.state('feedback.submit', {
 		    url: '/submit',
-		    views:{
+		    viewss:{
 		        'feedback-submit':{
-		            templateUrl: "view/feedback/ques-submit.html",
+		            templateUrl: "views/feedback/ques-submit.html",
 		            controller: 'quesSubmitCtrl'
 		        }
 		    }
 		 })
 		.state('feedback.record', {
 		    url: '/record',
-		    views:{
+		    viewss:{
 		        'feedback-record':{
-		            templateUrl: "view/feedback/record-list.html",
+		            templateUrl: "views/feedback/record-list.html",
 		            controller: 'recordListCtrl'
 		        }
 		    }
@@ -75,29 +75,29 @@ define(['./app'], function (app) {
 		.state('trade', {
 			url: "/trade",
 		    "abstract": true,
-		    templateUrl: "view/trade/trade.html"
+		    templateUrl: "views/trade/trade.html"
 		})
 		.state('trade.all', {
 		    url: '/all',
-		    views:{
+		    viewss:{
 		        'trade-all':{
-		            templateUrl: "view/trade/trade-all.html"
+		            templateUrl: "views/trade/trade-all.html"
 		        }
 		    }
 		 })
 		.state('trade.success', {
 		    url: '/success',
-		    views:{
+		    viewss:{
 		        'trade-success':{
-		            templateUrl: "view/trade/trade-success.html"
+		            templateUrl: "views/trade/trade-success.html"
 		        }
 		    }
 		 })
 		.state('trade.fail', {
 		    url: '/fail',
-		    views:{
+		    viewss:{
 		        'trade-fail':{
-		            templateUrl: "view/trade/trade-fail.html"
+		            templateUrl: "views/trade/trade-fail.html"
 		        }
 		    }
 		 });
