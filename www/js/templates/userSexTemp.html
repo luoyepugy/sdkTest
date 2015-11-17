@@ -1,18 +1,17 @@
-<div  class="sex-picker-bg">
+<div  class="ios-picker-bg">
 	<ion-modal-view>
-		<div class="sex-picker">
+		<div class="ios-picker">
 			<ion-header-bar ng-class="barCssClass">
 				<h1 class="title"></h1>
 				<button class="button" ng-click="returnOk()">{{okText}}</button>
 			</ion-header-bar>
-			<div class="sex-picker-content">
-				<ion-scroll on-scroll="getData()" delegate-handle="mainScroll" scrollbar-y=false  class="sex-picker-scroll">
+			<div class="ios-picker-content">
+				<ion-scroll on-scroll="getData()" has-bouncing=true padding=false delegate-handle="mainScroll" scrollbar-y=false  class="ios-picker-scroll">
 					<ul>
 						<li ng-repeat="sex in datas">{{sex.value}}</li>
 					</ul>
 				</ion-scroll>
 			</div>
-			<div class="picker-center-highlight"></div>
 		</div>
 	</ion-modal-view>
 </div>
