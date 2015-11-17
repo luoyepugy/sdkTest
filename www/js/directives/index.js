@@ -1,2 +1,2 @@
 
-define(['./tradeDctv', './userSexDctv'], function() {});
+define(['./tradeDctv', './sexDctv', './dateDctv'], function() {});

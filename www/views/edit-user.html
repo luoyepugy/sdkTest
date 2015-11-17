@@ -13,11 +13,12 @@
             </ion-item>
             <ion-item class="item-input">
                 <span class="input-label">性别</span>
-                <ionic-user-sex oktext="确定"></ionic-user-sex>
+                <ionic-sex oktext="确定"></ionic-sex>
             </ion-item>
             <ion-item class="item-input">
                 <span class="input-label">生日</span>
-                <input type="text" name="birthday" placeholder="未设置" ng-model="user.birthday" value="{{user.birthday}}" readonly />
+                <ionic-date></ionic-date>
+                <!-- <input type="text" name="birthday" placeholder="未设置" ng-model="user.birthday" value="{{user.birthday}}" readonly /> -->
             </ion-item>
             <ion-item class="item-input">
                 <span class="input-label">地区</span>
