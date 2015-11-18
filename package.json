@@ -19,7 +19,6 @@
     "gulp-load-plugins": "^0.10.0",
     "gulp-spritesmith": "0.0.2",
     "gulp-uglify": "^1.4.1",
-    "imagemin-pngquant": "^4.2.0",
-    "make-livereload": "^0.1.2"
+    "imagemin-pngquant": "^4.2.0"
   }
 }

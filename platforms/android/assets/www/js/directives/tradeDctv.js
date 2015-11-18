@@ -3,7 +3,7 @@ define(['./module'], function(directives) {
 	directives.directive('tradeList', ['httpService', '$ionicLoading', 'messageService', function(httpService, $ionicLoading, messageService) {
 		return {
 			restrict: 'E',
-			templateUrl: './js/views/tradeTemp.html',
+			templateUrl: './js/templates/tradeTemp.html',
 			replace: true,
 			scope: {
 				list: '=',

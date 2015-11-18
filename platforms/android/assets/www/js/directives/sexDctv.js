@@ -1,24 +1,21 @@
 
 define(['./module'], function(directives) {
-	directives.directive('ionicUserSex', ['$ionicModal', '$timeout', '$ionicScrollDelegate',
+	directives.directive('ionicSex', ['$ionicModal', '$timeout', '$ionicScrollDelegate',
 		function($ionicModal, $timeout, $ionicScrollDelegate) {
 		return {
 			restrict: 'E',
-			scope: true,
+			scope: {},
 			replace: true,
 			template: '<input type="text" name="sex" placeholder={{placeholder}} ng-model="user.sex" value="{{user.sex}}" readonly>',
-			scope: {
-
-			},
 			link: function(scope, element, attrs) {
-				userSexModel = null;
+				sexModel = null;
 				scope.user = {};
 				scope.placeholder = attrs.placeholder || '未设置';
 				scope.okText = attrs.oktext || '完成';
 				scope.barCssClass = attrs.barcssclass || "bar-dark";
 				scope.datas = [{'value': '男'}, {'value': '女'}];
 				scope.returnOk = function(){
-		            userSexModel && userSexModel.hide();
+		            sexModel && sexModel.hide();
 		        };
 		        scope.getData = function() {
 		        	$timeout.cancel(scope.scrolling);//取消之前的scrollTo.让位置一次性过渡到最新
@@ -49,29 +46,29 @@ define(['./module'], function(directives) {
 		        element.on("click", function() {
 		            //零时处理 点击过之后直接显示不再创建
 		            if (!attrs.checked) {
-		              userSexModel && userSexModel.remove();
+		              sexModel && sexModel.remove();
 		            } else {
-		              userSexModel && userSexModel.show();  
+		              sexModel && sexModel.show();  
 		              return;
 		            }
 		            attrs.checked = true;
 		            // 显示模型
-		            $ionicModal.fromTemplateUrl('../js/templates/userSexTemp.html', {
+		            $ionicModal.fromTemplateUrl('../js/templates/sexTemp.html', {
 		              scope: scope,
 		              animation: 'slide-in-up',
 		              backdropClickToClose: true
 		            }).then(function(modal) {
-		              userSexModel = modal;
+		              sexModel = modal;
 		              //初始化 先获取数据后展示
 		              $timeout(function () {
 		                scope.getData();
-		                userSexModel && userSexModel.show();
+		                sexModel && sexModel.show();
 		              },100);
 		            });
 		        });
 		        //销毁模型
 		        scope.$on('$destroy', function() {
-		          userSexModel && userSexModel.remove();
+		          sexModel && sexModel.remove();
 		        });
 		    }
 

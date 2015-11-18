@@ -9,23 +9,23 @@
             <div class="ios-picker-content">
                 <div class="row ">
                     <div class="col col-33">
-                        <ion-scroll class="ios-picker-scroll" delegate-handle={{yearHandle}}  on-scroll="getData('year')" scrollbar-y=false has-bouncing=true padding=false>
+                        <ion-scroll class="ios-picker-scroll" delegate-handle={{provinceHandle}}  on-scroll="getData('province')" scrollbar-y=false has-bouncing=true padding=false>
                         <ul >
-                            <li ng-repeat="year in yearData" >{{year.name}}</li>
+                            <li ng-repeat="province in cityData" >{{province.name}}</li>
                         </ul>
                         </ion-scroll>
                     </div>
                     <div class="col col-33">
-                        <ion-scroll class="ios-picker-scroll" delegate-handle={{monthHandle}}  on-scroll="getData('month')" scrollbar-y=false has-bouncing=true padding=false>
+                        <ion-scroll class="ios-picker-scroll" delegate-handle={{cityHandle}}  on-scroll="getData('city')" scrollbar-y=false has-bouncing=true padding=false>
                         <ul >
-                            <li ng-repeat="month in monthData">{{month.name}}</li>
+                            <li ng-repeat="city in province.sub">{{city.name}}</li>
                         </ul>
                         </ion-scroll>
                     </div>
                     <div class="col col-33">
-                        <ion-scroll class="ios-picker-scroll" delegate-handle={{dayHandle}} on-scroll="getData('day')" scrollbar-y=false has-bouncing=true padding=false>
+                        <ion-scroll class="ios-picker-scroll" delegate-handle={{countryHandle}} on-scroll="getData('country')" scrollbar-y=false has-bouncing=true padding=false>
                         <ul >
-                            <li ng-repeat="day in dayData" >{{day.name}}</li>
+                            <li ng-repeat="country in city.sub" >{{country.name}}</li>
                         </ul>
                         </ion-scroll>
                     </div>
