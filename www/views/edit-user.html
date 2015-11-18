@@ -18,11 +18,10 @@
             <ion-item class="item-input">
                 <span class="input-label">生日</span>
                 <ionic-date></ionic-date>
-                <!-- <input type="text" name="birthday" placeholder="未设置" ng-model="user.birthday" value="{{user.birthday}}" readonly /> -->
             </ion-item>
             <ion-item class="item-input">
                 <span class="input-label">地区</span>
-                <input type="text" name="location" placeholder="未设置" ng-model="user.location" value="{{user.location}}" readonly />
+                <ionic-city></ionic-city>
             </ion-item>
         </ion-list>
         <p class="tc mt10"><button class="button button-balanced" ng-click="submit()">提交保存</button></p>
