@@ -10,6 +10,9 @@ define(['./module'], function(directives) {
 			link: function(scope, element, attrs) {
 				dateModel = null;
 				scope.user = {};
+				scope.yearHandle="yearHandle";
+        		scope.monthHandle="monthHandle";
+        		scope.dayHandle="dayHandle";
 				scope.placeholder = attrs.placeholder || '未设置';
 				scope.okText = attrs.oktext || '完成';
 				scope.barCssClass = attrs.barcssclass || "bar-dark";
@@ -18,26 +21,32 @@ define(['./module'], function(directives) {
 				scope.returnOk = function(){
 		            dateModel && dateModel.hide();
 		        };
-		        scope.getData = function() {
+		        scope.getData = function(name) {
 		        	$timeout.cancel(scope.scrolling);//取消之前的scrollTo.让位置一次性过渡到最新
 			        $timeout.cancel(scope.dataing);//取消之前的数据绑定.让数据一次性过渡到最新
+			        scope.yearData=scope.datas.yearData;
+			        scope.monthData=scope.datas.monthData;
+			        scope.dayData=scope.datas.dayData;
 			        switch(name)
 			        {
 			            case 'year':
-			              if (!scope.datas.yearData) return false;
-			              var year=true,length=scope.datas.yearData.length,Handle=scope.yearHandle;
-			            break;
+			              	if (!scope.yearData) return false;
+			             	var year = true, length=scope.yearData.length, Handle=scope.yearHandle;
+			            	break;
 			            case 'month':
-			              if (!scope.datas.monthData) return false;
-			              var month=true,length=scope.datas.monthData.length,Handle=scope.monthHandle;
-			            break;
+			              	if (!scope.monthData) return false;
+			              	var month = true, length=scope.monthData.length, Handle=scope.monthHandle;
+			            	break;
 			            case 'day':
-			              if (!scope.datas.dayData) return false;
-			              var day=true,Handle=scope.dayHandle,length=scope.datas.dayData.length;
-			            break;
+			              	if (!scope.dayData) return false;
+			              	var day = true, length=scope.dayData.length, Handle=scope.dayHandle;
+			            	break;
+			            default: 
+			            	scope.year = scope.yearData[0];
+			        		scope.month = scope.monthData[0];
+			        		scope.day = scope.dayData[0];
 			        }
 	          		var top = $ionicScrollDelegate.$getByHandle(Handle).getScrollPosition().top;//当前滚动位置
-	          		var length = scope.datas.length;
 		            var index = Math.round(top / 36);
 		            //iOS bouncing超出头
 		            if (index < 0 ) {
@@ -49,6 +58,9 @@ define(['./module'], function(directives) {
 		            } 
 		            if (top===index*36) {
 		            	scope.dataing = $timeout(function() {
+		            		year && (scope.year = scope.yearData[index]); 
+		            		month && (scope.month = scope.monthData[index]);
+		            		day && (scope.day = scope.dayData[index]);
 		            		//数据同步
 				        	scope.user.birthday = scope.year.name + scope.tag + scope.month.name + scope.tag + scope.day.name;
 				        }, 150);
@@ -78,7 +90,7 @@ define(['./module'], function(directives) {
 		              dateModel = modal;
 		              //初始化 先获取数据后展示
 		              $timeout(function () {
-		                // scope.getData();
+		                scope.getData();
 		                dateModel && dateModel.show();
 		              },100);
 		            });

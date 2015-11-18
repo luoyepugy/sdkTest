@@ -18,34 +18,34 @@ define(['./module'], function(services) {
 				'name': '1997'
 			}],
 			'monthData': [{
-				'name': '1'
+				'name': '01'
 			}, {
-				'name': '2'
+				'name': '02'
 			},{
-				'name': '3'
+				'name': '03'
 			}, {
-				'name': '4'
+				'name': '04'
 			},{
-				'name': '5'
+				'name': '05'
 			}, {
-				'name': '6'
+				'name': '06'
 			},{
-				'name': '7'
+				'name': '07'
 			}],
 			'dayData': [{
-				'name': '1'
+				'name': '01'
 			}, {
-				'name': '2'
+				'name': '02'
 			},{
-				'name': '3'
+				'name': '03'
 			}, {
-				'name': '4'
+				'name': '04'
 			},{
-				'name': '5'
+				'name': '05'
 			}, {
-				'name': '6'
+				'name': '06'
 			},{
-				'name': '7'
+				'name': '07'
 			}]
 		}
 	});

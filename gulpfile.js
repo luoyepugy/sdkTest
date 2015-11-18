@@ -38,8 +38,8 @@ gulp.task('css',function (){
 // js
 gulp.task('js', function() {
   return gulp.src('src/js/**/*.js')
-    .pipe(plugins.jshint('.jshintrc'))
-    .pipe(plugins.jshint.reporter('default'))
+    // .pipe(plugins.jshint('.jshintrc'))
+    // .pipe(plugins.jshint.reporter('default'))
     .pipe(gulp.dest('www/js/'))
     // .pipe(amdOptimize('src/js/main', {
     //     configFile : "src/js/config.js",
