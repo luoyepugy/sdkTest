@@ -6,7 +6,7 @@ requirejs.config({
         angular: "../lib/ionic/js/ionic.bundle",
         domReady: "../lib/requirejs-domready/domReady",
         ngCordova: '../lib/ngCordova/dist/ng-cordova.min',
-        cordova: '../lib/cordova/cordova.android'
+        cordova: '../cordova'
 　　　　},
     shim: {
 　　　　　　  underscore: {
