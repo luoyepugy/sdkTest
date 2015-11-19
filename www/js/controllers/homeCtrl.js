@@ -5,7 +5,7 @@ define(['./module'], function(controllers) {
         function($scope, userService, httpService, messageService) {
         $scope.user = userService.user;
 		$scope.statusToggle = function() {
-            var promise = httpService.getData('../../json/change-password.json', {'on': $scope.user.autoLogin });
+            var promise = httpService.getData('./json/change-password.json', {'on': $scope.user.autoLogin });
             promise.then(function(data) {
                 messageService.show('修改成功');
             }, function(data) {

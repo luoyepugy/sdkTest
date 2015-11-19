@@ -9,7 +9,7 @@
                 "content": "hello",
                 "time": "2014-11-3 10:10:30",
                 "username": "zh",
-                "avatar_url": "/images/portrait.jpg",
+                "avatar_url": "./images/portrait.jpg",
                 "user_type": "user"
             }
         ]

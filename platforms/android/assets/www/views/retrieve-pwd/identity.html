@@ -2,13 +2,13 @@
     <ion-content>
         <div class="stepImg">
             <div class="row">
-                <div class="col col-25 col-offset-25">
+                <div class="col col-50">
                     <div class="num">
                         <i class="ion-record orange"></i><em class="white">1</em>
                     </div>
                     <div class="content">身份验证</div>
                 </div>
-                <div class="col col-25">
+                <div class="col col-50">
                     <div class="num"><i class="ion-record white"></i><em class="gray_light">2</em></div>
                     <div class="content gray_light">重置密码</div>
                 </div>
@@ -26,7 +26,7 @@
             </ion-item>
             <ion-item class="item-input" ng-if="showPhone"> 
                 <input type="text" name="valiCode" ng-model="valiCode" value="" data-empty="请输入验证码" placeholder="请输入验证码" />
-                <button class="button button-balanced mr5" ng-click="getValiCode()">获取验证码</button>
+                <button class="button button-balanced mr5" ng-click="getValiCode()">验证码</button>
             </ion-item>
         </ion-list>
         <ion-list class="card list j-valiEmail">

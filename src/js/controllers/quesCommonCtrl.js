@@ -6,7 +6,7 @@ define(['./module'], function(controllers) {
 
 		// 最后一个item的id
 		var lastId = 0;
-		var baseUrl = '../../json/commonquestion.json';
+		var baseUrl = './json/commonquestion.json';
 		// 更多数据判断
 		$scope.hasMore = true;
 

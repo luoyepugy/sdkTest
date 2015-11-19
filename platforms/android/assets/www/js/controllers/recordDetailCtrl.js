@@ -8,7 +8,7 @@ define(['./module'], function(controllers) {
 		var firstId = 0;
 		// 更多数据判断
 		$scope.hasMore = true;
-        var baseUrl = '../../json/record.json';
+        var baseUrl = './json/record.json';
 
         // 预加载
 	    $ionicLoading.show({
@@ -35,7 +35,7 @@ define(['./module'], function(controllers) {
 				messageService.show(resultsIsEmpty);
 				return false;
 			}
-	    	var promise = httpService.getData('../../json/record-send.json', {'msg': val});
+	    	var promise = httpService.getData('./json/record-send.json', {'msg': val});
 		    promise.then(function(data) {
 		    	$scope.sendMessage = '';
 		    	var datas = data.data.items;

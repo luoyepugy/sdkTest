@@ -1,5 +1,16 @@
 
-define(['app'], function(app) {
+define(['app', 'ngCordova'], function(app) {
+	// app.config(function($ionicConfigProvider, $cordovaPlugin) {
+ //  		$ionicConfigProvider.tabs.position("top");
+ //  	})
+ //  	.run(function($ionicPlatform) {
+	// // OR with Ionic
+	// 	$ionicPlatform.ready(function() {
+	// 	  $cordovaPlugin.someFunction().then(success, error);
+	// 	  console.log('su');
+	// 	});
+	// });
+
 	// app.config(function($ionicConfigProvider) {
  //  		$ionicConfigProvider.tabs.position("top");
  //  	})

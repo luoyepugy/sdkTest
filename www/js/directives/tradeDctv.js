@@ -25,7 +25,7 @@ define(['./module'], function(directives) {
 			    });
 
 			    // 初始化
-			    var promise = httpService.getData('../../json/trade.json', {'page': page});
+			    var promise = httpService.getData('./json/trade.json', {'page': page});
 			    promise.then(function(data) {
 			    	$ionicLoading.hide();
 			    	var datas = data.data.items;
@@ -37,7 +37,7 @@ define(['./module'], function(directives) {
 
 			    // 刷新
 				scope.doRefresh = function() {
-					var promise = httpService.getData('../../json/trade-more.json', {'page': page, 'status': 'refresh'});
+					var promise = httpService.getData('./json/trade-more.json', {'page': page, 'status': 'refresh'});
 				    promise.then(function(data) {
 				    	$ionicLoading.hide();
 				    	var datas = data.data.items;
@@ -51,7 +51,7 @@ define(['./module'], function(directives) {
 
 				// 加载更多
 				scope.loadMore = function() {
-					var promise = httpService.getData('../../json/trade-more.json', {'page': page, 'status': 'loadmore', 'id': lastId});
+					var promise = httpService.getData('./json/trade-more.json', {'page': page, 'status': 'loadmore', 'id': lastId});
 				    promise.then(function(data) {
 				    	var datas = data.data.items;
 			            for(var i = 0; i < datas.length; i++) {

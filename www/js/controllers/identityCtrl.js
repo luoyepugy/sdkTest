@@ -26,7 +26,7 @@ define(['./module'], function(controllers) {
 			} else if(!phone_regexp.test(phone)) {
 				messageService.show('请输入正确的手机号码格式');
 			} else {
-				var promiseCode = httpService.getData('../../json/change-password.json', $scope.user.phone);
+				var promiseCode = httpService.getData('./json/change-password.json', $scope.user.phone);
 			    promiseCode.then(function(data) {
 			    	messageService.show('获取短信成功');
 			    },function(data) {
@@ -50,10 +50,10 @@ define(['./module'], function(controllers) {
 					messageService.show('请输入正确的手机号码格式');
 				} else {
 					phoneDatas = validateService.submitData('.j-valiPhone');
-					var promisePhone = httpService.getData('../../json/change-password.json', phoneDatas);
+					var promisePhone = httpService.getData('./json/change-password.json', phoneDatas);
 				    promisePhone.then(function(data) {
 				    	userService.user.phone = $scope.user.phone;
-				    	window.location = '../../#/reset-pwd';
+				    	window.location = './#/reset-pwd';
 				    },function(data) {
 				    	messageService.show(data);
 				    });
@@ -71,10 +71,10 @@ define(['./module'], function(controllers) {
 					messageService.show('请输入正确的邮箱格式');
 				} else {
 					emailDatas = validateService.submitData('.j-valiEmail');
-					var promiseEmail = httpService.getData('../../json/change-password.json', emailDatas);
+					var promiseEmail = httpService.getData('./json/change-password.json', emailDatas);
 				    promiseEmail.then(function(data) {
 				    	userService.user.email = $scope.user.email;
-				    	window.location = '../../#/reset-pwd';
+				    	window.location = './#/reset-pwd';
 				    },function(data) {
 				    	messageService.show(data);
 				    });

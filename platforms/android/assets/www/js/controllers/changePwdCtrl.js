@@ -18,12 +18,12 @@ define(['./module'], function(controllers) {
 			} else if(resultsDatas['newPwd'] !== resultsDatas['confirmPwd']) {
 				messageService.show('两次密码输入不一致');
 			} else {
-				var promise = httpService.getData('../../json/change-password.json', resultsDatas);
+				var promise = httpService.getData('./json/change-password.json', resultsDatas);
 			    promise.then(function(data) {
 			    	messageService.show(data.message);
 			    	userService.user.password = $scope.user.newPwd;
 			    	delete userService.user.newPwd;
-			    	window.location = '../../#/home';
+			    	window.location = './#/home';
 			    },function(data) {
 			    	messageService.show(data);
 			    });

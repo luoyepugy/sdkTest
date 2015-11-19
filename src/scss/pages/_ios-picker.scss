@@ -1,9 +1,8 @@
 
 // 仿ios选择器
 .ios-picker-bg {
-  background-color: #fff;
   .modal {
-    min-height: auto;
+    min-height: 240px;
     bottom: 0;
     height: 240px;
     top: auto;
@@ -39,17 +38,17 @@
   &:before {
     @include position-basic(absolute, top,35px, left, 0);
     content: '';
-    height: 110px;
+    height: 90px;
     width: 100%;
-    @include gradient(linear, no, to bottom, rgba(255,255,255,.4) 0px, rgba(255,255,255,.4) 45px, rgba(255,255,255,.8) 45px, rgba(255,255,255,.8) 110px);
+    @include gradient(linear, no, to bottom, rgba(255,255,255,.4) 0px, rgba(255,255,255,.4) 45px, rgba(255,255,255,.8) 45px, rgba(255,255,255,.8) 90px);
     z-index: 3;
   }
   &:after {
     @include position-basic(absolute, bottom,35px, left, 0);
     content: '';
-    height: 110px;
+    height: 90px;
     width: 100%;
-    @include gradient(linear, no, to top, rgba(255,255,255,.4) 0px, rgba(255,255,255,.4) 45px, rgba(255,255,255,.8) 45px, rgba(255,255,255,.8) 110px);
+    @include gradient(linear, no, to top, rgba(255,255,255,.4) 0px, rgba(255,255,255,.4) 45px, rgba(255,255,255,.8) 45px, rgba(255,255,255,.8) 90px);
     z-index: 3;
   }
 }

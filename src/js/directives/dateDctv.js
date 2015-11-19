@@ -1,7 +1,7 @@
 
 define(['./module'], function(directives) {
-	directives.directive('ionicDate', ['$ionicModal', '$timeout', '$ionicScrollDelegate', 'dateService',
-		function($ionicModal, $timeout, $ionicScrollDelegate, dateService) {
+	directives.directive('ionicDate', ['$ionicModal', '$timeout', '$ionicScrollDelegate', 'dateService', 'messageService',
+		function($ionicModal, $timeout, $ionicScrollDelegate, dateService, messageService) {
 		return {
 			restrict: 'E',
 			scope: {},
@@ -82,18 +82,19 @@ define(['./module'], function(directives) {
 		            }
 		            attrs.checked = true;
 		            // 显示模型
-		            $ionicModal.fromTemplateUrl('../js/templates/dateTemp.html', {
+		            $ionicModal.fromTemplateUrl('./js/templates/dateTemp.html', {
 		              scope: scope,
 		              animation: 'slide-in-up',
 		              backdropClickToClose: true
 		            }).then(function(modal) {
-		              dateModel = modal;
+		              	dateModel = modal;
 		              //初始化 先获取数据后展示
 		              $timeout(function () {
 		                scope.getData();
 		                dateModel && dateModel.show();
 		              },100);
 		            });
+
 		        });
 		        //销毁模型
 		        scope.$on('$destroy', function() {

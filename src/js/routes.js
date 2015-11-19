@@ -46,7 +46,7 @@ define(['./app'], function (app) {
 		})
 		.state('feedback.common', {
 		    url: '/common',
-		    viewss:{
+		    views:{
 		        'feedback-common':{
 		            templateUrl: "views/feedback/ques-common.html",
 		            controller: 'quesCommonCtrl'
@@ -55,7 +55,7 @@ define(['./app'], function (app) {
 		 })
 		.state('feedback.submit', {
 		    url: '/submit',
-		    viewss:{
+		    views:{
 		        'feedback-submit':{
 		            templateUrl: "views/feedback/ques-submit.html",
 		            controller: 'quesSubmitCtrl'
@@ -64,7 +64,7 @@ define(['./app'], function (app) {
 		 })
 		.state('feedback.record', {
 		    url: '/record',
-		    viewss:{
+		    views:{
 		        'feedback-record':{
 		            templateUrl: "views/feedback/record-list.html",
 		            controller: 'recordListCtrl'
@@ -79,7 +79,7 @@ define(['./app'], function (app) {
 		})
 		.state('trade.all', {
 		    url: '/all',
-		    viewss:{
+		    views:{
 		        'trade-all':{
 		            templateUrl: "views/trade/trade-all.html"
 		        }
@@ -87,7 +87,7 @@ define(['./app'], function (app) {
 		 })
 		.state('trade.success', {
 		    url: '/success',
-		    viewss:{
+		    views:{
 		        'trade-success':{
 		            templateUrl: "views/trade/trade-success.html"
 		        }
@@ -95,7 +95,7 @@ define(['./app'], function (app) {
 		 })
 		.state('trade.fail', {
 		    url: '/fail',
-		    viewss:{
+		    views:{
 		        'trade-fail':{
 		            templateUrl: "views/trade/trade-fail.html"
 		        }

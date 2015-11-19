@@ -79,7 +79,7 @@ define(['./module'], function(directives) {
 		            }
 		            attrs.checked = true;
 		            // 显示模型
-		            $ionicModal.fromTemplateUrl('../js/templates/timeTemp.html', {
+		            $ionicModal.fromTemplateUrl('./js/templates/timeTemp.html', {
 		              scope: scope,
 		              animation: 'slide-in-up',
 		              backdropClickToClose: true

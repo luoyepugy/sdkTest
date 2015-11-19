@@ -1,11 +1,11 @@
 
 define(['./module'], function(services) {
-	services.factory('userService', function() {
-		var service = {};
-		service.user = {
-	     name: '齐天大圣s',
+    services.factory('userService', function() {
+        var service = {};
+        service.user = {
+            name: '齐天大圣s',
             id: '77878556999',
-            portrait: '../../images/default_portrait.png',
+            portrait: './images/default_portrait.png',
             sex: '女',
             birthday: '1992-09-30',
             city: '湖北省-仙桃市',
@@ -13,7 +13,7 @@ define(['./module'], function(services) {
             autoLogin: true,
             phone: '13008885784',
             email: '1129432095@qq.com'
-		};
-		return service;
-	});
+        };
+        return service;
+    });
 });

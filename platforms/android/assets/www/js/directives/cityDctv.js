@@ -75,7 +75,7 @@ define(['./module'], function(directives) {
 		            }
 		            attrs.checked = true;
 		            // 显示模型
-		            $ionicModal.fromTemplateUrl('../js/templates/cityTemp.html', {
+		            $ionicModal.fromTemplateUrl('./js/templates/cityTemp.html', {
 		              scope: scope,
 		              animation: 'slide-in-up',
 		              backdropClickToClose: true
