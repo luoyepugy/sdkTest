@@ -4,7 +4,7 @@ define(['app', 'cordova'], function(app) {
   		$ionicConfigProvider.tabs.position("top");
   		// $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|  tel):/);
   	})
-  	.run(function($ionicPlatform, $cordovaKeyboard, $cordovaStatusbar) {
+  	.run(function($ionicPlatform) {
 		$ionicPlatform.ready(function() {
 		    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
 		    // for form inputs)
