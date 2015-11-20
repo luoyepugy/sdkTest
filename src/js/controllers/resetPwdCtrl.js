@@ -26,7 +26,7 @@ define(['./module'], function(controllers) {
 			    	messageService.show(data.message);
 			    	userService.user.password = $scope.user.newPwd;
 			    	delete userService.user.newPwd;
-			    	window.location = './#/home';
+			    	window.location = '#/home';
 			    },function(data) {
 			    	messageService.show(data);
 			    });

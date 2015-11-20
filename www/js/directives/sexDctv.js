@@ -6,7 +6,7 @@ define(['./module'], function(directives) {
 			restrict: 'E',
 			scope: {},
 			replace: true,
-			template: '<input type="text" name="sex" placeholder={{placeholder}} ng-model="user.sex" value="{{user.sex}}" readonly>',
+			template: '<input type="text" name="sex" placeholder={{placeholder}} ng-model="$parent.user.sex" value="{{$parent.user.sex}}" readonly>',
 			link: function(scope, element, attrs) {
 				sexModel = null;
 				scope.user = {};
@@ -33,7 +33,7 @@ define(['./module'], function(directives) {
 		            } 
 		            if (top===index*36) {
 		            	scope.dataing = $timeout(function() {
-				        	scope.user.sex = scope.datas[index].value;
+				        	scope.$parent.user.sex = scope.datas[index].value;
 				        }, 150);
 				    } else {
 				    	scope.scrolling = $timeout(function() {

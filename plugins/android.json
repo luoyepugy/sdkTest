@@ -31,6 +31,10 @@
                         {
                             "xml": "<feature name=\"Camera\"><param name=\"android-package\" value=\"org.apache.cordova.camera.CameraLauncher\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"StatusBar\"><param name=\"android-package\" value=\"org.apache.cordova.statusbar.StatusBar\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -66,7 +70,10 @@
         "org.apache.cordova.file": {
             "PACKAGE_NAME": "com.ionicframework.mytest828088"
         },
-        "cordova-plugin-camera": {
+        "org.apache.cordova.camera": {
+            "PACKAGE_NAME": "com.ionicframework.mytest828088"
+        },
+        "org.apache.cordova.statusbar": {
             "PACKAGE_NAME": "com.ionicframework.mytest828088"
         }
     },

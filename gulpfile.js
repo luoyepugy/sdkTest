@@ -5,41 +5,40 @@ var gulp = require('gulp'),
     browserSync = require('browser-sync').create(),
     amdOptimize = require('amd-optimize');
 
-// scss文件对象
-var sassFiles = {
-    "xxx" : {
-        src: "./src/scss/*.scss",
-        dest: "./www/css/"
-    },
-    "yyy": {
-        src: "./www/lib/ionic/scss/*.scss",
-        dest: "./www/lib/ionic/css/"
-    }
-};
+// ionicss
+gulp.task('ionicss',function (){
+    return gulp.src("www/lib/ionic/scss/ionic.scss")
+        .pipe(plugins.sass({
+          errLogToConsole: true,
+          outputStyle: 'compressed'
+        }))
+        .pipe(gulp.dest("www/lib/ionic/css/"))
+        .pipe(plugins.rename({ suffix: '.min' }))
+        .pipe(gulp.dest("www/lib/ionic/css/"));
+});
+
 // css
 gulp.task('css',function (){
-    return plugins.groupFiles(sassFiles,function (key,fileset){
-        return gulp.src(fileset.src)
-            .pipe(plugins.sass({
-              errLogToConsole: true,
-              outputStyle: 'compressed'
-            }))
-            .pipe(plugins.autoprefixer({
-                browsers: ['last 2 versions','safari 5', 'ie 8', 'ie 9', 'opera 12.1'],
-                cascade: false,
-                remove:true
-            }))
-            .pipe(plugins.rename({ suffix: '.min' }))
-            .pipe(gulp.dest(fileset.dest));
-    })();
+    return gulp.src("./src/scss/*.scss")
+        .pipe(plugins.sass({
+          errLogToConsole: true,
+          outputStyle: 'compressed'
+        }))
+        .pipe(plugins.autoprefixer({
+            browsers: ['last 2 versions','safari 5', 'ie 8', 'ie 9', 'opera 12.1'],
+            cascade: false,
+            remove:true
+        }))
+        .pipe(plugins.rename({ suffix: '.min' }))
+        .pipe(gulp.dest("./www/css/"));
 });
 
 
 // js
 gulp.task('js', function() {
   return gulp.src('src/js/**/*.js')
-    // .pipe(plugins.jshint('.jshintrc'))
-    // .pipe(plugins.jshint.reporter('default'))
+    .pipe(plugins.jshint('.jshintrc'))
+    .pipe(plugins.jshint.reporter('default'))
     .pipe(gulp.dest('www/js/'))
     // .pipe(amdOptimize('src/js/main', {
     //     configFile : "src/js/config.js",
@@ -87,6 +86,7 @@ gulp.task('clean', function() {
 // 监听
 gulp.task('watch', function() {
 
+    gulp.watch('www/lib/ionic/**/*.scss', ['ionicss']);
     gulp.watch('src/scss/**/*.scss', ['css']);
     gulp.watch('src/js/**/*.js', ['js']);
 

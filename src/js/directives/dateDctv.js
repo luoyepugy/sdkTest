@@ -6,7 +6,7 @@ define(['./module'], function(directives) {
 			restrict: 'E',
 			scope: {},
 			replace: true,
-			template: '<input type="text" name="birthday" placeholder={{placeholder}} ng-model="user.birthday" value="{{user.birthday}}" readonly>',
+			template: '<input type="text" name="birthday" placeholder={{placeholder}} ng-model="$parent.user.birthday" value="{{$parent.user.birthday}}" readonly>',
 			link: function(scope, element, attrs) {
 				dateModel = null;
 				scope.user = {};
@@ -62,7 +62,7 @@ define(['./module'], function(directives) {
 		            		month && (scope.month = scope.monthData[index]);
 		            		day && (scope.day = scope.dayData[index]);
 		            		//数据同步
-				        	scope.user.birthday = scope.year.name + scope.tag + scope.month.name + scope.tag + scope.day.name;
+				        	scope.$parent.user.birthday = scope.year.name + scope.tag + scope.month.name + scope.tag + scope.day.name;
 				        }, 150);
 				    } else {
 				    	scope.scrolling = $timeout(function() {

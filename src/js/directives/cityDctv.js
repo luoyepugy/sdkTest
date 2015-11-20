@@ -6,7 +6,7 @@ define(['./module'], function(directives) {
 			restrict: 'E',
 			scope: {},
 			replace: true,
-			template: '<input type="text" name="city" placeholder="{{placeholder}}" ng-model="user.city" value="{{user.city}}" readonly />',
+			template: '<input type="text" name="city" placeholder="{{placeholder}}" ng-model="$parent.user.city" value="{{$parent.user.city}}" readonly />',
 			link: function(scope, element, attrs) {
 				cityModel = null;
 				scope.user = {};
@@ -55,7 +55,7 @@ define(['./module'], function(directives) {
 		            		city && (scope.city = scope.province.sub[index], scope.country = {}, (scope.city && scope.city.sub && (scope.country = scope.city.sub[0])));
 		            		country && (scope.country = scope.city.sub[index]);
 		            		//数据同步
-				        	(scope.city.sub && scope.city.sub.length>0) ? (scope.user.city = scope.province.name + scope.tag + scope.city.name + scope.tag + scope.country.name) : (scope.user.city = scope.province.name + scope.tag + scope.city.name);
+				        	(scope.city.sub && scope.city.sub.length>0) ? (scope.$parent.user.city = scope.province.name + scope.tag + scope.city.name + scope.tag + scope.country.name) : (scope.user.city = scope.province.name + scope.tag + scope.city.name);
 				        }, 150);
 				    } else {
 				    	scope.scrolling = $timeout(function() {
