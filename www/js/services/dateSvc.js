@@ -47,6 +47,6 @@ define(['./module'], function(services) {
 			},{
 				'name': '07'
 			}]
-		}
+		};
 	});
 });

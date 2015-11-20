@@ -174,6 +174,6 @@ define(['./module'], function(services) {
 			}, {
 				'name': '59'
 			}]
-		}
+		};
 	});
 });

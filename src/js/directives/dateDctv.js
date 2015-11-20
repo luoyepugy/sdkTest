@@ -19,9 +19,10 @@ define(['./module'], function(directives) {
 				scope.datas = dateService.dateList;
 				scope.tag=attrs.tag || "-";
 				scope.returnOk = function(){
-		            dateModel && dateModel.hide();
+					if(dateModel) { dateModel.hide(); }
 		        };
 		        scope.getData = function(name) {
+		        	var length, Handle;
 		        	$timeout.cancel(scope.scrolling);//取消之前的scrollTo.让位置一次性过渡到最新
 			        $timeout.cancel(scope.dataing);//取消之前的数据绑定.让数据一次性过渡到最新
 			        scope.yearData=scope.datas.yearData;
@@ -30,16 +31,16 @@ define(['./module'], function(directives) {
 			        switch(name)
 			        {
 			            case 'year':
-			              	if (!scope.yearData) return false;
-			             	var year = true, length=scope.yearData.length, Handle=scope.yearHandle;
+			              	if (!scope.yearData) { return false; }
+			             	var year = true; length=scope.yearData.length; Handle=scope.yearHandle;
 			            	break;
 			            case 'month':
-			              	if (!scope.monthData) return false;
-			              	var month = true, length=scope.monthData.length, Handle=scope.monthHandle;
+			              	if (!scope.monthData) { return false; }
+			              	var month = true; length=scope.monthData.length; Handle=scope.monthHandle;
 			            	break;
 			            case 'day':
-			              	if (!scope.dayData) return false;
-			              	var day = true, length=scope.dayData.length, Handle=scope.dayHandle;
+			              	if (!scope.dayData) { return false; }
+			              	var day = true; length=scope.dayData.length; Handle=scope.dayHandle;
 			            	break;
 			            default: 
 			            	scope.year = scope.yearData[0];
@@ -53,14 +54,14 @@ define(['./module'], function(directives) {
 		            	index = 0;
 		            } 	
 		            //iOS 超出尾			
-		            if (index > length-1 ) {
+		            if (index > length-1) {
 		            	index = length-1;
 		            } 
 		            if (top===index*36) {
 		            	scope.dataing = $timeout(function() {
-		            		year && (scope.year = scope.yearData[index]); 
-		            		month && (scope.month = scope.monthData[index]);
-		            		day && (scope.day = scope.dayData[index]);
+		            		if(year) { scope.year = scope.yearData[index]; }
+		            		if(month) { scope.month = scope.monthData[index]; }
+		            		if(day) { scope.day = scope.dayData[index]; }
 		            		//数据同步
 				        	scope.$parent.user.birthday = scope.year.name + scope.tag + scope.month.name + scope.tag + scope.day.name;
 				        }, 150);
@@ -75,10 +76,10 @@ define(['./module'], function(directives) {
 		        element.on("click", function() {
 		            //零时处理 点击过之后直接显示不再创建
 		            if (!attrs.checked) {
-		              dateModel && dateModel.remove();
+		            	if(dateModel) { dateModel.remove(); }
 		            } else {
-		              dateModel && dateModel.show();  
-		              return;
+		            	if(dateModel) { dateModel.show(); }
+		                return;
 		            }
 		            attrs.checked = true;
 		            // 显示模型
@@ -91,14 +92,14 @@ define(['./module'], function(directives) {
 		              //初始化 先获取数据后展示
 		              $timeout(function () {
 		                scope.getData();
-		                dateModel && dateModel.show();
+		                if(dateModel) { dateModel.show(); }
 		              },100);
 		            });
 
 		        });
 		        //销毁模型
 		        scope.$on('$destroy', function() {
-		          dateModel && dateModel.remove();
+		        	if(dateModel) { dateModel.remove(); }
 		        });
 		    }
 

@@ -15,7 +15,7 @@ define(['./module'], function(directives) {
 				scope.barCssClass = attrs.barcssclass || "bar-dark";
 				scope.datas = [{'value': '男'}, {'value': '女'}];
 				scope.returnOk = function(){
-		            sexModel && sexModel.hide();
+		            if(sexModel) { sexModel.hide(); }
 		        };
 		        scope.getData = function() {
 		        	$timeout.cancel(scope.scrolling);//取消之前的scrollTo.让位置一次性过渡到最新
@@ -46,9 +46,9 @@ define(['./module'], function(directives) {
 		        element.on("click", function() {
 		            //零时处理 点击过之后直接显示不再创建
 		            if (!attrs.checked) {
-		              sexModel && sexModel.remove();
+		              if(sexModel) { sexModel.remove(); }
 		            } else {
-		              sexModel && sexModel.show();  
+		              if(sexModel) { sexModel.show(); }  
 		              return;
 		            }
 		            attrs.checked = true;
@@ -62,13 +62,13 @@ define(['./module'], function(directives) {
 		              //初始化 先获取数据后展示
 		              $timeout(function () {
 		                scope.getData();
-		                sexModel && sexModel.show();
+		                if(sexModel) { sexModel.show(); }
 		              },100);
 		            });
 		        });
 		        //销毁模型
 		        scope.$on('$destroy', function() {
-		          sexModel && sexModel.remove();
+		          if(sexModel) { sexModel.remove(); }
 		        });
 		    }
 

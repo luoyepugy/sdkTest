@@ -16,6 +16,7 @@ define(['./module','cordova'], function(controllers) {
 			var promise = httpService.getData('./json/change-password.json', resultsDatas);
 		    promise.then(function(data) {
 		    	userService.user = $scope.user;
+		    	console.log(userService.user);
 		    	messageService.show('修改成功');
 		    	window.location = '#/home';
 		    }, function(data) {
@@ -42,7 +43,7 @@ define(['./module','cordova'], function(controllers) {
 	            		document.addEventListener("deviceready", function () {
 							var options = {  
 				              destinationType: Camera.DestinationType.FILE_URI,  
-				              sourceType: Camera.PictureSourceType.CAMERA,  
+				              sourceType: Camera.PictureSourceType.CAMERA
 				            };  
 				            $cordovaCamera.getPicture(options).then(function(imageURI) {
 				            	$scope.user.portrait = imageURI;
@@ -56,7 +57,7 @@ define(['./module','cordova'], function(controllers) {
 	            		document.addEventListener("deviceready", function () {
 		            		var options = {  
 				              destinationType: Camera.DestinationType.FILE_URI,  
-				              sourceType: Camera.PictureSourceType.PHOTOLIBRARY,  
+				              sourceType: Camera.PictureSourceType.PHOTOLIBRARY  
 				            };  
 				            $cordovaCamera.getPicture(options).then(function(imageURI) {
 				              $scope.user.portrait= imageURI;

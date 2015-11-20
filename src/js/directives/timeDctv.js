@@ -20,9 +20,10 @@ define(['./module'], function(directives) {
 				tm.datas = timeService.timeList;
 				tm.tag=attrs.tag || ":";
 				tm.returnOk = function(){
-		            timeModel && timeModel.hide();
+		            if(timeModel) { timeModel.hide(); }
 		        };
 		        tm.getData = function(name) {
+		        	var length, Handle;
 		        	$timeout.cancel(tm.scrolling);//取消之前的scrollTo.让位置一次性过渡到最新
 			        $timeout.cancel(tm.dataing);//取消之前的数据绑定.让数据一次性过渡到最新
 			        // 获取数据
@@ -32,12 +33,12 @@ define(['./module'], function(directives) {
 			        switch(name)
 			        {
 			            case 'hour':
-			              	if (!tm.hourData) return false;
-			             	var hour = true, length=tm.hourData.length, Handle=tm.hourHandle;
+			              	if (!tm.hourData) { return false; }
+			             	var hour = true; length=tm.hourData.length; Handle=tm.hourHandle;
 			            	break;
 			            case 'minute':
-			              	if (!tm.minuteData) return false;
-			              	var minute = true, length=tm.minuteData.length, Handle=tm.minuteHandle;
+			              	if (!tm.minuteData) { return false; }
+			              	var minute = true; length=tm.minuteData.length; Handle=tm.minuteHandle;
 			            	break;
 			            default: 
 			            	tm.hour = tm.hourData[0];
@@ -56,8 +57,8 @@ define(['./module'], function(directives) {
 		            // 处理滚动事件后数据
 		            if (top===index*36) {
 		            	tm.dataing = $timeout(function() {
-		            		hour && (tm.hour = tm.hourData[index]); 
-		            		minute && (tm.minute = tm.minuteData[index]);
+		            		if(hour) { tm.hour = tm.hourData[index]; }
+		            		if(minute) { tm.minute = tm.minuteData[index]; }
 		            		//数据同步
 				        	scope.timedata = tm.hour.name + tm.tag + tm.minute.name;
 				        }, 150);
@@ -72,9 +73,9 @@ define(['./module'], function(directives) {
 		        element.on("click", function() {
 		            //零时处理 点击过之后直接显示不再创建
 		            if (!attrs.checked) {
-		              timeModel && timeModel.remove();
+		              if(timeModel) { timeModel.remove(); }
 		            } else {
-		              timeModel && timeModel.show();  
+		              if(timeModel) { timeModel.show(); }  
 		              return;
 		            }
 		            attrs.checked = true;
@@ -88,13 +89,13 @@ define(['./module'], function(directives) {
 		              //初始化 先获取数据后展示
 		              $timeout(function () {
 		                tm.getData();
-		                timeModel && timeModel.show();
+		                if(timeModel) { timeModel.show(); }
 		              },100);
 		            });
 		        });
 		        //销毁模型
 		        scope.$on('$destroy', function() {
-		          timeModel && timeModel.remove();
+		          if(timeModel) { timeModel.remove(); }
 		        });
 		    }
 
