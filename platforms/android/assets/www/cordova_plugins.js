@@ -215,10 +215,17 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/org.apache.cordova.statusbar/www/statusbar.js",
-        "id": "org.apache.cordova.statusbar.statusbar",
+        "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
+        "id": "cordova-plugin-statusbar.statusbar",
         "clobbers": [
             "window.StatusBar"
+        ]
+    },
+    {
+        "file": "plugins/com.phonegap.plugins.PushPlugin/www/PushNotification.js",
+        "id": "com.phonegap.plugins.PushPlugin.PushNotification",
+        "clobbers": [
+            "PushNotification"
         ]
     }
 ];
@@ -232,7 +239,8 @@ module.exports.metadata =
     "cordova-plugin-whitelist": "1.0.0",
     "org.apache.cordova.file": "1.3.3",
     "org.apache.cordova.camera": "0.3.6",
-    "org.apache.cordova.statusbar": "0.1.10"
+    "cordova-plugin-statusbar": "2.0.0",
+    "com.phonegap.plugins.PushPlugin": "2.5.0"
 }
 // BOTTOM OF METADATA
 });
