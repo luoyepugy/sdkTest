@@ -1,8 +1,8 @@
 
 define(['./module','cordova'], function(controllers) {
 	controllers.controller('editCtrl', 
-	['$scope', '$ionicActionSheet', 'validateService', 'userService', 'httpService', 'messageService', '$cordovaCamera',
-	function($scope, $ionicActionSheet, validateService, userService, httpService, messageService, $cordovaCamera) {
+	['$scope', '$ionicActionSheet', 'validateService', 'userService', 'httpService', 'messageService', '$cordovaCamera', '$ionicPopup', '$cordovaFileTransfer',
+	function($scope, $ionicActionSheet, validateService, userService, httpService, messageService, $cordovaCamera, $ionicPopup, $cordovaFileTransfer) {
 		$scope.user =  userService.user;
 		$scope.submit = function() {
 			var resultsIsEmpty,
@@ -46,10 +46,27 @@ define(['./module','cordova'], function(controllers) {
 				              sourceType: Camera.PictureSourceType.CAMERA
 				            };  
 				            $cordovaCamera.getPicture(options).then(function(imageURI) {
-				            	$scope.user.portrait = imageURI;
-				            	alert(imageURI);
-				            }, function(err) {  
-				            	alert('拍摄照片失败');
+				            	$cordovaFileTransfer.upload(server, imageURI, options)
+							      .then(function(result) {
+							        $scope.user.portrait = result;
+							      }, function(err) {
+							        $ionicPopup.alert({
+								       title: '提示',
+								       template: '上传照片失败',
+								       okText: '确定',
+								       okType: 'button-balanced'
+								    });
+							      }, function (progress) {
+							        // constant progress updates
+							      });
+				            	// $scope.user.portrait = imageURI;
+				            }, function(err) { 
+				            	$ionicPopup.alert({
+							       title: '提示',
+							       template: '拍摄照片失败',
+							       okText: '确定',
+							       okType: 'button-balanced'
+							    }); 
 				            });
 			         	}, false);
 
@@ -62,7 +79,12 @@ define(['./module','cordova'], function(controllers) {
 				            $cordovaCamera.getPicture(options).then(function(imageURI) {
 				              $scope.user.portrait= imageURI;
 				            }, function(err) {  
-				            	alert('获取图片失败');
+				            	$ionicPopup.alert({
+							       title: '提示',
+							       template: '获取图片失败',
+							       okText: '确定',
+							       okType: 'button-balanced'
+							    }); 
 				            });
 				        }, false);
 	            	}

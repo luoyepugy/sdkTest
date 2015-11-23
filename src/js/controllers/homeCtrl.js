@@ -12,5 +12,8 @@ define(['./module'], function(controllers) {
                 messageService.show(data);
             });
 		};
+        $scope.onDragDown = function() {
+            console.log('down');
+        }
 	}]);
 });

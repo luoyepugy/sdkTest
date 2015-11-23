@@ -17,6 +17,7 @@ define(['app', 'ngCordova'], function(app) {
 			}  
   		}, false);
 		
+
 		$ionicPlatform.ready(function() {
 
 		    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -24,6 +25,12 @@ define(['app', 'ngCordova'], function(app) {
 		    // if(window.cordova && window.cordova.plugins.Keyboard) {
 		      // cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
 		    // }
+		    console.log(window.plugins);
+		    //启动极光推送服务 
+			// window.plugins.jPushPlugin.init(); 
+			//调试模式 
+			// window.plugins.jPushPlugin.setDebugMode(true); 
+
 
 			window.onerror = function(msg, url, line) {  
 			   	var idx = url.lastIndexOf("/");  

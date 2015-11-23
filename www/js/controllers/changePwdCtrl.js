@@ -1,8 +1,8 @@
 
 define(['./module'], function(controllers) {
 	controllers.controller('changePwdCtrl',
-		['$scope', '$http', 'validateService', 'httpService', 'userService', 'messageService', 
-		function($scope, $http, validateService, httpService, userService, messageService){
+		['$scope', '$http', 'validateService', 'httpService', 'userService', 'messageService', '$rootScope',
+		function($scope, $http, validateService, httpService, userService, messageService, $rootScope){
 		$scope.user = userService.user;
 		$scope.submit = function() {
 			var resultsIsEmpty,

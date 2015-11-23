@@ -7,7 +7,7 @@ define(['./module', 'zepto'], function(services, $) {
                 total = $(form).length,
                 results = '';
             $(form).each(function() {
-                var key =  $(this).attr('name');
+                var key = $(this).attr('name');
                 var val = $.trim($(this).val());
                 if(val === '' || val === undefined || val === null) {
                     results = $(this).data('empty');
