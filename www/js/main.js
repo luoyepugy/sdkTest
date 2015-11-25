@@ -8,7 +8,6 @@ requirejs.config({
         domReady: "lib/requirejs-domready/domReady",
         ngCordova: 'lib/ngCordova/dist/ng-cordova.min',
         cordova: '../cordova'
-        // when: 'lib/when/when'
 　　　　},
     shim: {
         angular: {
