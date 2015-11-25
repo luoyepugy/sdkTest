@@ -1,8 +1,10 @@
 
 define(['./module','cordova'], function(controllers) {
 	controllers.controller('editCtrl', 
-	['$scope', '$ionicActionSheet', 'validateService', 'userService', 'httpService', 'messageService', '$cordovaCamera', '$ionicPopup', '$cordovaFileTransfer',
-	function($scope, $ionicActionSheet, validateService, userService, httpService, messageService, $cordovaCamera, $ionicPopup, $cordovaFileTransfer) {
+	['$scope', '$ionicActionSheet', 'validateService', 'userService', 
+	'httpService', 'messageService', '$cordovaCamera', '$ionicPopup', '$cordovaFileTransfer',
+	function($scope, $ionicActionSheet, validateService, userService, 
+		httpService, messageService, $cordovaCamera, $ionicPopup, $cordovaFileTransfer) {
 		$scope.user =  userService.user;
 		$scope.submit = function() {
 			var resultsIsEmpty,
@@ -40,53 +42,120 @@ define(['./module','cordova'], function(controllers) {
 	            buttonClicked: function(index) {
 	            	
 	            	if(index === 0) {
-	            		document.addEventListener("deviceready", function () {
-							var options = {  
-				              destinationType: Camera.DestinationType.FILE_URI,  
-				              sourceType: Camera.PictureSourceType.CAMERA
-				            };  
-				            $cordovaCamera.getPicture(options).then(function(imageURI) {
-				            	$cordovaFileTransfer.upload(server, imageURI, options)
-							      .then(function(result) {
-							        $scope.user.portrait = result;
-							      }, function(err) {
+	            		document.addEventListener("deviceready", onDeviceReady, false);
+				  		function onDeviceReady() {
+				            navigator.camera.getPicture(uploadPhoto, function(error) {
+				            	$ionicPopup.alert({
+							       title: '提示',
+							       template: '拍摄照片失败',
+							       okText: '确定',
+							       okType: 'button-balanced'
+							    });
+				            }, {
+				            	destinationType : navigator.camera.DestinationType.FILE_URI,
+                    			sourceType      : navigator.camera.PictureSourceType.CAMERA
+				            });
+				        }
+			            function uploadPhoto(imageURI) {
+			            	var fileOptions = new FileUploadOptions();
+							fileOptions.fileKey = "file";
+							fileOptions.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1);
+							fileOptions.mimeType = "image/jpeg";
+							var params = {};
+				            params.value1 = "test1";
+				            params.value2 = "param1";
+				            fileOptions.params = params;
+			            	$cordovaFileTransfer.upload('http://www.baidu.com', imageURI, fileOptions)
+							    .then(function(result) {
+							        $scope.user.avatar = './images/avatar.jpg';
+							    }, function(err) {
 							        $ionicPopup.alert({
 								       title: '提示',
 								       template: '上传照片失败',
 								       okText: '确定',
 								       okType: 'button-balanced'
 								    });
-							      }, function (progress) {
-							        // constant progress updates
-							      });
-				            	// $scope.user.portrait = imageURI;
-				            }, function(err) { 
-				            	$ionicPopup.alert({
-							       title: '提示',
-							       template: '拍摄照片失败',
-							       okText: '确定',
-							       okType: 'button-balanced'
-							    }); 
-				            });
-			         	}, false);
+							    }, function (progress) {
+							    	var perc = Math.floor(progress.loaded / progress.total * 100);
+									$scope.progressPercent =  perc + "%";
+							    	var myPopup = $ionicPopup.show({
+									     template: '<div class="progressBar">' +
+											            '<i class="progressBar-current" style="width: {{progressPercent}}"></i>' + 
+											        '</div>',
+									     title: '当前下载进度',
+									     scope: $scope
+								   	});
+								   	if(perc === 100) {
+								   		myPopup.close();
+								   	}
+							    });
+			            }
 
 	            	} else if (index === 1) {
-	            		document.addEventListener("deviceready", function () {
-		            		var options = {  
-				              destinationType: Camera.DestinationType.FILE_URI,  
-				              sourceType: Camera.PictureSourceType.PHOTOLIBRARY  
-				            };  
-				            $cordovaCamera.getPicture(options).then(function(imageURI) {
-				              $scope.user.portrait= imageURI;
-				            }, function(err) {  
-				            	$ionicPopup.alert({
-							       title: '提示',
-							       template: '获取图片失败',
-							       okText: '确定',
-							       okType: 'button-balanced'
-							    }); 
-				            });
-				        }, false);
+	            		document.addEventListener("deviceready", onDeviceReady2, false);
+	            		function onDeviceReady2() {
+	          //   			var options = {  
+				       //        destinationType: Camera.DestinationType.FILE_URI,  
+				       //        sourceType: Camera.PictureSourceType.PHOTOLIBRARY  
+				       //      };  
+				       //      $cordovaCamera.getPicture(options).then(uploadPicture, function(err) {  
+				       //      	$ionicPopup.alert({
+							    //    title: '提示',
+							    //    template: '获取图片失败',
+							    //    okText: '确定',
+							    //    okType: 'button-balanced'
+							    // }); 
+				       //      });
+								navigator.camera.getPicture(uploadPicture, function(error) {
+					            	$ionicPopup.alert({
+								       title: '提示',
+								       template: '获取照片失败',
+								       okText: '确定',
+								       okType: 'button-balanced'
+								    });
+					            }, {
+					            	destinationType : navigator.camera.DestinationType.FILE_URI,
+	                    			sourceType      : navigator.camera.PictureSourceType.PHOTOLIBRARY
+					            });
+	            		}
+		            		
+            			function uploadPicture(imageURI) {
+			            	var fileOptions = new FileUploadOptions();
+							fileOptions.fileKey = "file";
+							fileOptions.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1);
+							fileOptions.mimeType = "image/jpeg";
+							var params = {};
+				            params.value1 = "test2";
+				            params.value2 = "param2";
+				            fileOptions.params = params;
+							$cordovaFileTransfer.upload('http://www.baidu.com', imageURI, fileOptions)
+							    .then(function(result) {
+							        alert(result);
+							        $scope.user.avatar = imageURI;
+							    }, function(err) {
+							        $ionicPopup.alert({
+								       title: '提示',
+								       template: '上传照片失败',
+								       okText: '确定',
+								       okType: 'button-balanced'
+								    });
+							    }, function (progress) {
+							    	// var perc = Math.floor(progress.loaded / progress.total * 100);
+							    	alert(progress);
+									$scope.progressPercent =  progress + "%";
+							    	var myPopup = $ionicPopup.show({
+									     template: '<div class="progressBar">' +
+											            '<i class="progressBar-current" style="width: {{progressPercent}}"></i>' + 
+											        '</div>',
+									     title: '当前下载进度',
+									     scope: $scope
+								   	});
+								   	if(progress === 100) {
+								   		myPopup.close();
+								   	}
+							    });
+						}
+
 	            	}
 	                return true;
 	            }

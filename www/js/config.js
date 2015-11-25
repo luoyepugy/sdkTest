@@ -6,15 +6,11 @@ define(['app', 'ngCordova'], function(app) {
   	.run(function($ionicPlatform, $cordovaStatusbar) {
   		document.addEventListener("deviceready", function() {
   			// 状态栏显示
-		    if (cordova.platformId === 'android') { 
-		    	StatusBar.overlaysWebView(true);
-			    StatusBar.backgroundColorByHexString("#96aa39"); 
-			    StatusBar.styleLightContent(); 
-			} else {  
-			    $cordovaStatusbar.overlaysWebView(false);  
-			    $cordovaStatusbar.style(1);  
-			    $cordovaStatusbar.styleHex('#96aa39');
-			}  
+			if(window.StatusBar) {
+				window.StatusBar.overlaysWebView(false);
+			    window.StatusBar.backgroundColorByHexString('#96aa39');
+			    window.StatusBar.styleLightContent();
+			} 
   		}, false);
 		
 

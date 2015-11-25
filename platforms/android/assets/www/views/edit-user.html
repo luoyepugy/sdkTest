@@ -24,6 +24,10 @@
                 <ionic-city></ionic-city>
             </ion-item>
         </ion-list>
+        <!-- 上传进度条 -->  
+        <div class="progressBar" ng-if="showProgress">  
+            <i class="progressBar-current" style="width: {{progressPercent}}"></i>  
+        </div> 
         <p class="tc mt10"><button class="button button-balanced" ng-click="submit()">提交保存</button></p>
    </ion-content> 
 </ion-view>
