@@ -51,6 +51,18 @@
                         {
                             "xml": "<feature name=\"NetworkStatus\"><param name=\"android-package\" value=\"org.apache.cordova.networkinformation.NetworkManager\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"AppVersion\"><param name=\"android-package\" value=\"uk.co.whiteoctober.cordova.AppVersion\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"FileOpener2\"><param name=\"android-package\" value=\"io.github.pwlin.cordova.plugins.fileopener2.FileOpener2\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Badge\"><param name=\"android-package\" value=\"de.appplant.cordova.plugin.badge.Badge\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -72,6 +84,10 @@
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.READ_EXTERNAL_STORAGE\" />",
                             "count": 1
                         }
                     ],
@@ -189,6 +205,10 @@
                         {
                             "xml": "<meta-data android:name=\"JPUSH_APPKEY\" android:value=\"ff924c1aab0dfb49fb5b56c3\" />",
                             "count": 1
+                        },
+                        {
+                            "xml": "<activity android:exported=\"false\" android:launchMode=\"singleInstance\" android:name=\"de.appplant.cordova.plugin.badge.LaunchActivity\" android:theme=\"@android:style/Theme.Black.NoTitleBar\" />",
+                            "count": 1
                         }
                     ]
                 }
@@ -233,6 +253,15 @@
             "PACKAGE_NAME": "com.ionicframework.mytest828088"
         },
         "org.apache.cordova.network-information": {
+            "PACKAGE_NAME": "com.ionicframework.mytest828088"
+        },
+        "cordova-plugin-app-version": {
+            "PACKAGE_NAME": "com.ionicframework.mytest828088"
+        },
+        "cordova-plugin-file-opener2": {
+            "PACKAGE_NAME": "com.ionicframework.mytest828088"
+        },
+        "de.appplant.cordova.plugin.badge": {
             "PACKAGE_NAME": "com.ionicframework.mytest828088"
         }
     },

@@ -1,8 +1,8 @@
 
 define(['./module'], function(controllers) {
 	controllers.controller('changePwdCtrl',
-		['$scope', '$http', 'validateService', 'httpService', 'userService', 'messageService', '$rootScope',
-		function($scope, $http, validateService, httpService, userService, messageService, $rootScope){
+		['$scope', '$http', 'validateService', 'httpService', 'userService', 'messageService',
+		function($scope, $http, validateService, httpService, userService, messageService){
 		$scope.user = userService.user;
 		$scope.submit = function() {
 			var resultsIsEmpty,
@@ -24,8 +24,6 @@ define(['./module'], function(controllers) {
 			    	userService.user.password = $scope.user.newPwd;
 			    	delete userService.user.newPwd;
 			    	window.location = '#/home';
-			    },function(data) {
-			    	messageService.show(data);
 			    });
 			}
 		};

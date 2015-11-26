@@ -96,6 +96,7 @@ ext {
 }
 
 // PLUGIN GRADLE EXTENSIONS START
+apply from: "de.appplant.cordova.plugin.badge/mytest828088-badge.gradle"
 // PLUGIN GRADLE EXTENSIONS END
 
 def hasBuildExtras = file('build-extras.gradle').exists()

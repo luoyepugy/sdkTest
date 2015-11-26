@@ -69,6 +69,7 @@
         <receiver android:name="cn.jpush.android.service.AlarmReceiver" />
         <meta-data android:name="JPUSH_CHANNEL" android:value="developer-default" />
         <meta-data android:name="JPUSH_APPKEY" android:value="ff924c1aab0dfb49fb5b56c3" />
+        <activity android:exported="false" android:launchMode="singleInstance" android:name="de.appplant.cordova.plugin.badge.LaunchActivity" android:theme="@android:style/Theme.Black.NoTitleBar" />
     </application>
     <uses-sdk android:minSdkVersion="16" android:targetSdkVersion="22" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />

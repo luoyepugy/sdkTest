@@ -15,8 +15,6 @@ define(['./module'], function(controllers) {
 			var promise = httpService.getData('./json/change-password.json', resultsDatas);
 		    promise.then(function(data) {
 		    	messageService.show('反馈成功');
-		    },function(data) {
-		    	messageService.show(data);
 		    });
 		};		
 	}]);

@@ -1,5 +1,1 @@
-
-define(['angular'], function(angular) {
-	'use strict';
-	return angular.module('myApp.directives', []);
-});
+define(["angular"],function(e){"use strict";return e.module("myApp.directives",[])});

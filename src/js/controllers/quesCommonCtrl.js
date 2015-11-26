@@ -1,8 +1,8 @@
 
 define(['./module'], function(controllers) {
 	controllers.controller('quesCommonCtrl', 
-		['$scope', 'httpService', '$ionicLoading', 'messageService', 
-		function($scope, httpService, $ionicLoading, messageService) {
+		['$scope', 'httpService', '$ionicLoading', 
+		function($scope, httpService, $ionicLoading) {
 
 		// 最后一个item的id
 		var lastId = 0;
@@ -28,8 +28,6 @@ define(['./module'], function(controllers) {
 	    	$ionicLoading.hide();
 	    	$scope.list = datas;
 	    	// lastId = datas[datas.length-1].id;
-	    },function(data) {
-	    	messageService.show(data);
 	    });
 
 	    // 刷新
@@ -41,8 +39,6 @@ define(['./module'], function(controllers) {
 		    	$scope.list = datas;
 		    	// lastId = datas[datas.length-1].id;
 		    	$scope.$broadcast('scroll.refreshComplete');
-		    },function(data) {
-		    	messageService.show(data);
 		    });
 	    };
 
@@ -59,8 +55,6 @@ define(['./module'], function(controllers) {
 	            	$scope.hasMore = false;
 	            }
 	            $scope.$broadcast('scroll.infiniteScrollComplete');
-		    },function(data) {
-		    	messageService.show(data);
 		    });
 	    };
 

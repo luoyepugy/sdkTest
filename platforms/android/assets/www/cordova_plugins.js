@@ -263,6 +263,28 @@ module.exports = [
         "clobbers": [
             "Connection"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-app-version/www/AppVersionPlugin.js",
+        "id": "cordova-plugin-app-version.AppVersionPlugin",
+        "clobbers": [
+            "cordova.getAppVersion"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-file-opener2/www/plugins.FileOpener2.js",
+        "id": "cordova-plugin-file-opener2.FileOpener2",
+        "clobbers": [
+            "cordova.plugins.fileOpener2"
+        ]
+    },
+    {
+        "file": "plugins/de.appplant.cordova.plugin.badge/www/badge.js",
+        "id": "de.appplant.cordova.plugin.badge.Badge",
+        "clobbers": [
+            "plugin.notification.badge",
+            "cordova.plugins.notification.badge"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -280,7 +302,10 @@ module.exports.metadata =
     "cn.jpush.phonegap.JPushPlugin": "2.0.2",
     "org.apache.cordova.file-transfer": "0.5.0",
     "cordova-plugin-geolocation": "1.0.1",
-    "org.apache.cordova.network-information": "0.2.15"
+    "org.apache.cordova.network-information": "0.2.15",
+    "cordova-plugin-app-version": "0.1.8",
+    "cordova-plugin-file-opener2": "2.0.1",
+    "de.appplant.cordova.plugin.badge": "0.7.1"
 }
 // BOTTOM OF METADATA
 });

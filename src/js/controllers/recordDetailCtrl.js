@@ -22,8 +22,6 @@ define(['./module'], function(controllers) {
 	    	$ionicLoading.hide();
 	    	$scope.list = datas;
 	    	// lastId = datas[datas.length-1].id;
-	    },function(data) {
-	    	messageService.show(data);
 	    });
 
 	    // 点击发送
@@ -42,8 +40,6 @@ define(['./module'], function(controllers) {
 		    	for(var i = 0; i < datas.length; i++) {
 	            	$scope.list.push(datas[i]);
 	            }
-		    },function(data) {
-		    	messageService.show(data);
 		    });
 	    };
 
@@ -58,8 +54,6 @@ define(['./module'], function(controllers) {
 	            	// lastId = datas[datas.length-1].id;
 	            }
 	            $scope.$broadcast('scroll.refreshComplete');
-		    },function(data) {
-		    	messageService.show(data);
 		    });
 	    };
 

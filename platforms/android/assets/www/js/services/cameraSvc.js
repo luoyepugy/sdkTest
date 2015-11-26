@@ -1,18 +1,1 @@
-
-define(['./module', 'cordova'], function(services) {
-    services.factory('cameraService', ['$q', '$cordovaCamera', function($q, $cordovaCamera) {
-        var camera = {};
-   		camera.getPicture = function(options) {
-   			var q = $q.defer();
-		    $cordovaCamera.getPicture(function(result) {
-		        // Do any magic you need
-		        q.resolve(result);
-		    }, function(err) {
-		        q.reject(err);
-		    }, options);
-
-		    return q.promise;  
-   		}
-        return camera;
-    }]);
-});
+define(["./module","cordova"],function(e){e.factory("cameraService",["$q","$ionicPopup","$cordovaFileTransfer","$cordovaCamera",function(e,t,r,o){var a={};return a.getPicture=function(r,a){var i=e.defer();return 0===r?r={destinationType:Camera.DestinationType.FILE_URI,sourceType:Camera.PictureSourceType.CAMERA}:1===r&&(r={destinationType:Camera.DestinationType.FILE_URI,sourceType:Camera.PictureSourceType.PHOTOLIBRARY}),o.getPicture(r).then(function(e){i.resolve(e)},function(e){t.alert({title:"提示",template:a,okText:"确定",okType:"button-balanced"})}),i.promise},a.uploadPicture=function(o){var a=new FileUploadOptions;a.fileKey="file",a.fileName=o.substr(o.lastIndexOf("/")+1),a.mimeType="image/jpeg";var i=e.defer();return r.upload("http://www.baidu.com",o).then(function(e){i.resolve(e)},function(e){t.alert({title:"提示",template:"上传照片失败",okText:"确定",okType:"button-balanced"})},function(e){var r=Math.floor(e.loaded/e.total*100);$scope.progressPercent=r+"%";var o=t.show({template:'<div class="progressBar"><i class="progressBar-current" style="width: {{progressPercent}}"></i></div>',title:"当前下载进度",scope:$scope});100===r&&o.close()}),i.promise},a}])});

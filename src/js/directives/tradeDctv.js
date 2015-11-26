@@ -1,6 +1,7 @@
 
 define(['./module'], function(directives) {
-	directives.directive('tradeList', ['httpService', '$ionicLoading', 'messageService', function(httpService, $ionicLoading, messageService) {
+	directives.directive('tradeList', ['httpService', '$ionicLoading', 
+		function(httpService, $ionicLoading) {
 		return {
 			restrict: 'E',
 			templateUrl: './js/templates/tradeTemp.html',
@@ -25,34 +26,30 @@ define(['./module'], function(directives) {
 			    });
 
 			    // 初始化
-			    var promise = httpService.getData('./json/trade.json', {'page': page});
-			    promise.then(function(data) {
+			    httpService.getData('./json/trade.json', {'page': page})
+			    .then(function(data) {
 			    	$ionicLoading.hide();
 			    	var datas = data.data.items;
 			    	scope.list = datas;
 			    	lastId = datas[datas.length-1].id;
-			    },function(data) {
-			    	messageService.show(data);
 			    });
 
 			    // 刷新
 				scope.doRefresh = function() {
-					var promise = httpService.getData('./json/trade-more.json', {'page': page, 'status': 'refresh'});
-				    promise.then(function(data) {
+					httpService.getData('./json/trade-more.json', {'page': page, 'status': 'refresh'})
+				    .then(function(data) {
 				    	$ionicLoading.hide();
 				    	var datas = data.data.items;
 				    	scope.list = datas;
 				    	lastId = datas[datas.length-1].id;
 				    	scope.$broadcast('scroll.refreshComplete');
-				    },function(data) {
-				    	messageService.show(data);
 				    });
 				};
 
 				// 加载更多
 				scope.loadMore = function() {
-					var promise = httpService.getData('./json/trade-more.json', {'page': page, 'status': 'loadmore', 'id': lastId});
-				    promise.then(function(data) {
+					httpService.getData('./json/trade-more.json', {'page': page, 'status': 'loadmore', 'id': lastId})
+				    .then(function(data) {
 				    	var datas = data.data.items;
 			            for(var i = 0; i < datas.length; i++) {
 			            	scope.list.push(datas[i]);
@@ -62,8 +59,6 @@ define(['./module'], function(directives) {
 			            	scope.hasMore = false;
 			            }
 			            scope.$broadcast('scroll.infiniteScrollComplete');
-				    },function(data) {
-				    	messageService.show(data);
 				    });
 				};
 

@@ -1,6 +1,6 @@
 
 define(['./module'], function(services) {
-	services.service('httpService', ['$q', '$http', function($q, $http) {
+	services.service('httpService', ['$q', '$http', 'messageService', function($q, $http, messageService) {
 		this.getData = function(url, datas) {
 			var deferred = $q.defer();
 	        // $http.post(url, datas)
@@ -9,11 +9,11 @@ define(['./module'], function(services) {
 	                if(response.success === true) {
 	                	deferred.resolve(response);
 					} else {
-						deferred.reject(response.message);
+						messageService.show(response.message);
 					}
 	            })
 	            .error(function(data){
-	            	deferred.reject('服务器请求失败');
+	            	messageService.show('服务器请求失败');
 	            });
 	        return deferred.promise;
 		};

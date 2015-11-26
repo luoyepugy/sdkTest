@@ -1,7 +1,1 @@
-
-define(['angular', 'domReady', 'routes', 'config'], function(angular, domReady) {
-	'use strict';
-	domReady(function() {
-		angular.bootstrap(document, ['myApp']);
-	});
-});
+define(["angular","domReady","./routes","./config"],function(n,o){"use strict";o(function(){n.bootstrap(document,["myApp"])})});

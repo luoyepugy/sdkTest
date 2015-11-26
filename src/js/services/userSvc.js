@@ -1,8 +1,8 @@
 
 define(['./module'], function(services) {
     services.factory('userService', function() {
-        var service = {};
-        service.user = {
+        var users = {};
+        users.user = {
             name: '齐天大圣s',
             id: '77878556999',
             avatar: './images/default_avatar.png',
@@ -14,6 +14,6 @@ define(['./module'], function(services) {
             phone: '13008885784',
             email: '1129432095@qq.com'
         };
-        return service;
+        return users;
     });
 });
