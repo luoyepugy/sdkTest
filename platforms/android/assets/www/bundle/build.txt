@@ -6,8 +6,6 @@ domReady.js
 controllers/module.js
 controllers/homeCtrl.js
 controllers/changePwdCtrl.js
-ngCordova.js
-cordova.js
 controllers/editCtrl.js
 controllers/quesCommonCtrl.js
 controllers/quesSubmitCtrl.js
@@ -31,7 +29,9 @@ services/httpSvc.js
 services/messageSvc.js
 services/dateSvc.js
 services/citySvc.js
-services/timeSvc.js
+ngCordova.js
+cordova.js
+services/cameraSvc.js
 services/index.js
 app.js
 routes.js

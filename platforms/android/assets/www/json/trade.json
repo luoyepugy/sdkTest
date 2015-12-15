@@ -64,7 +64,57 @@
                 "time": "2014-11-20",
                 "order_number": "222222",
                 "content": "支付成功"
-            }        
+            },
+            {
+                "id": 2,
+                "stuff": "500钻石",
+                "status": false,
+                "payment": "支付宝",
+                "money": 50,
+                "time": "2014-11-20",
+                "order_number": "222222",
+                "content": "支付成功"
+            },
+            {
+                "id": 3,
+                "stuff": "500钻石",
+                "status": false,
+                "payment": "支付宝",
+                "money": 50,
+                "time": "2014-11-20",
+                "order_number": "222222",
+                "content": "支付成功"
+            },
+            {
+                "id": 4,
+                "stuff": "500钻石",
+                "status": true,
+                "payment": "支付宝",
+                "money": 50,
+                "time": "2014-11-20",
+                "order_number": "222222",
+                "content": "支付成功"
+            },
+            {
+                "id": 5,
+                "stuff": "500钻石",
+                "status": false,
+                "payment": "支付宝",
+                "money": 50,
+                "time": "2014-11-20",
+                "order_number": "222222",
+                "content": "支付成功"
+            },
+            {
+                "id": 6,
+                "stuff": "500钻石",
+                "status": true,
+                "payment": "支付宝",
+                "money": 50,
+                "time": "2014-11-20",
+                "order_number": "222222",
+                "content": "支付成功"
+            }         
         ]
     }
 }

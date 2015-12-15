@@ -2,8 +2,7 @@ var gulp = require('gulp'),
     plugins = require('gulp-load-plugins')(),
     pngquant = require('imagemin-pngquant'),
     spritesmith = require('gulp.spritesmith'),
-    browserSync = require('browser-sync').create(),
-    amdOptimize = require('amd-optimize');
+    browserSync = require('browser-sync').create();
 
 // ionicss
 gulp.task('ionicss',function (){
@@ -39,13 +38,6 @@ gulp.task('js', function() {
   return gulp.src('src/js/**/*.js')
     .pipe(plugins.jshint('.jshintrc'))
     .pipe(plugins.jshint.reporter('default'))
-    // .pipe(gulp.dest('www/js/'))
-    // .pipe(amdOptimize('src/js/main', {
-    //     configFile : "src/js/config.js",
-    //     findNestedDependencies: true,
-    //     include: false
-    // }))
-    // .pipe(plugins.concat('bundle.js'))
     .pipe(plugins.uglify())
     // .pipe(plugins.rename({ extname: '.min.js' }))
     .pipe(gulp.dest('www/js/'));

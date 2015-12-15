@@ -32,18 +32,26 @@ define(['./module', 'cordova'], function(services) {
 		};
 
 		camera.uploadPicture = function(imageURI) {
-			var fileOptions = new FileUploadOptions();
-			fileOptions.fileKey = "file";
-			fileOptions.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1);
-			fileOptions.mimeType = "image/jpeg";
+			var options = {
+			    fileKey: "file",
+			    fileName: imageURI.substr(imageURI.lastIndexOf('/') + 1),
+			    chunkedMode: false,
+			    mimeType: "image/jpg",
+			 	params : {'directory':'upload', 'fileName':imageURI.substr(imageURI.lastIndexOf('/') + 1)} // directory represents remote directory,  fileName represents final remote file name
+			 };
+			// var fileOptions = new FileUploadOptions();
+			// fileOptions.fileKey = "file";
+			// fileOptions.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1);
+			// fileOptions.mimeType = "image/jpeg";
+			// fileOptions.httpMethod = 'POST';
 			var deferred = $q.defer();
-			$cordovaFileTransfer.upload('http://www.baidu.com', imageURI)
+			$cordovaFileTransfer.upload('http://www.baidu.com', imageURI, options)
 			    .then(function(response) {
 			        deferred.resolve(response);
 			    }, function(error) {
 			        $ionicPopup.alert({
 				       title: '提示',
-				       template: '上传照片失败',
+				       template: JSON.stringify(error),
 				       okText: '确定',
 				       okType: 'button-balanced'
 				    });
@@ -54,7 +62,7 @@ define(['./module', 'cordova'], function(services) {
 					     template: '<div class="progressBar">' +
 							            '<i class="progressBar-current" style="width: {{progressPercent}}"></i>' + 
 							        '</div>',
-					     title: '当前下载进度',
+					     title: '当前上传进度',
 					     scope: $scope
 				   	});
 				   	if(perc === 100) {

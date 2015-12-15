@@ -1,1 +1,1 @@
-define(["./module"],function(e){e.controller("homeCtrl",["$scope","userService","httpService","messageService",function(e,o,n,s){e.user=o.user,e.statusToggle=function(){n.getData("./json/change-password.json",{on:e.user.autoLogin}).then(function(e){s.show("修改成功")})}}])});
+define(["./module"],function(e){e.controller("homeCtrl",["$scope","httpService","messageService","userService",function(e,o,n,s){e.user=s.user,e.statusToggle=function(){o.getData("./json/change-password.json",{on:e.user.autoLogin}).then(function(e){n.show("修改成功")})}}])});

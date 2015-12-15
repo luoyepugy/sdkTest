@@ -38,9 +38,10 @@
                 <input type="email" name="email" ng-model="user.email" value="" data-empty="请输入邮箱账号" placeholder="请输入邮箱账号" />
             </ion-item>
             <ion-item class="tr" ng-if="showEmail">
-                <a class="link-green" href="#">联系客服</a>
+                <a class="link-green" href="tel:10086">联系客服</a>
             </ion-item>
         </ion-list>
-        <p class="tc mt10"><button class="button button-balanced" ng-click="submit()">下一步</button></p>
+        <submit-button ng-if="showPhone" action="./json/change-password.json" state="reset-pwd" text="提交保存" user="true" form=".j-valiPhone"></submit-button>
+        <submit-button ng-if="showEmail" action="./json/change-password.json" state="reset-pwd" text="提交保存" user="true" form=".j-valiEmail"></submit-button>
     </ion-content>
 </ion-view>

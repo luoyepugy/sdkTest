@@ -4,9 +4,9 @@ define(['./module', 'zepto'], function(services, $) {
 		this.isEmpty = function(form) {
 			var inputs = {},
                 num = 0,
-                total = $(form).length,
+                total = $(form).find('.j-input').length,
                 results = '';
-            $(form).each(function() {
+            $(form).find('.j-input').each(function() {
                 var key = $(this).attr('name');
                 var val = $.trim($(this).val());
                 if(val === '' || val === undefined || val === null) {

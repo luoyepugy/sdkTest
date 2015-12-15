@@ -7,11 +7,11 @@
 		</ion-refresher>
 		<ion-list class="list list-inset list-space">
 			<ion-item ng-repeat="item in list" class="ques-common">
-				<div ng-click="toggle()" class="pointer">
+				<div ng-click="toggle($index)" class="pointer">
 					<div class="inline-left orange">Q：</div>
 					<div class="inline-right">{{item.question}}</div>
 				</div>
-				<div ng-if="show" class="division">
+				<div ng-if="clickRow === $index" class="division">
 					<div class="inline-left green">A：</div>
 					<div class="inline-right">{{item.answer}}</div>
 				</div>

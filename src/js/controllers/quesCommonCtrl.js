@@ -5,18 +5,15 @@ define(['./module'], function(controllers) {
 		function($scope, httpService, $ionicLoading) {
 
 		// 最后一个item的id
-		var lastId = 0;
+		var lastId = 0,
+			firstId = 0;
 		var baseUrl = './json/commonquestion.json';
-		// 更多数据判断
+
+	    // 更多数据判断
 		$scope.hasMore = true;
+		$scope.list = [];
 
-		// 预加载
-	    $ionicLoading.show({
-	        template: '<ion-spinner></ion-spinner><h3>加载中...</h3>',
-	        duration: 3000
-	    });
-
-	    // 切换状态
+		// 切换状态
 	    $scope.toggle = function(row) {
 	    	$scope.clickRow = row;
 	    };
@@ -25,31 +22,31 @@ define(['./module'], function(controllers) {
 	    var promise = httpService.getData(baseUrl);
 	    promise.then(function(data) {
 	    	var datas = data.data.items;
-	    	$ionicLoading.hide();
 	    	$scope.list = datas;
-	    	// lastId = datas[datas.length-1].id;
 	    });
 
+	    
 	    // 刷新
 	    $scope.doRefresh = function() {
-	    	var promise = httpService.getData(baseUrl, {'status': 'refresh'});
+	    	var length = $scope.list.length;
+	    	firstId = $scope.list[0].id;
+	    	var promise = httpService.getData(baseUrl, {'status': 'refresh', 'id': firstId});
 		    promise.then(function(data) {
-		    	$ionicLoading.hide();
 		    	var datas = data.data.items;
 		    	$scope.list = datas;
-		    	// lastId = datas[datas.length-1].id;
 		    	$scope.$broadcast('scroll.refreshComplete');
 		    });
 	    };
 
 	    // 加载更多
 	    $scope.loadMore = function() {
+	    	var length = $scope.list.length;
+	    	lastId = $scope.list[length - 1].id;
 	    	var promise = httpService.getData(baseUrl, {'status': 'loadmore', 'id': lastId});
 		    promise.then(function(data) {
 		    	var datas = data.data.items;
 		    	for(var i = 0; i < datas.length; i++) {
 	            	$scope.list.push(datas[i]);
-	            	// lastId = datas[datas.length-1].id;
 	            }
 	            if(data.length === 0) {
 	            	$scope.hasMore = false;

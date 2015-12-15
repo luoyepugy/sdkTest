@@ -12,7 +12,7 @@
                 'routes',
 		'config'
             ],
-            out: 'bundle.js'
+            out: 'main.js'
         }
     ],
     fileExclusionRegExp: /^(r|build)\.js$/,

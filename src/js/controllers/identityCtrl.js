@@ -7,9 +7,6 @@ define(['./module'], function(controllers) {
 		$scope.showEmail = $rootScope.showEmail = false;
 		$scope.user = {};
 
-		var phone_regexp = /^((145|147)|(15[^4])|(17[6-8])|((13|18)[0-9]))\d{8}$/;
-        var email_regexp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-
 		// 选择手机方式
 		$scope.choosePhone = function() {
 			$rootScope.showPhone = $scope.showPhone = true;
@@ -33,47 +30,6 @@ define(['./module'], function(controllers) {
 			    promiseCode.then(function(data) {
 			    	messageService.show('获取短信成功');
 			    });
-			}
-		};
-		// 提交表单
-		$scope.submit =  function() {			
-			if($scope.showPhone === true) {
-				var phoneIsEmpty,
-					phoneDatas;
-				phoneIsEmpty = validateService.isEmpty('.j-valiPhone input');
-				if(phoneIsEmpty !== 1) {
-					messageService.show(phoneIsEmpty);
-					return false;
-				}
-				if(!phone_regexp.test($scope.user.phone)) {
-					messageService.show('请输入正确的手机号码格式');
-				} else {
-					phoneDatas = validateService.submitData('.j-valiPhone');
-					var promisePhone = httpService.getData('./json/change-password.json', phoneDatas);
-				    promisePhone.then(function(data) {
-				    	userService.user.phone = $scope.user.phone;
-				    	window.location = './#/reset-pwd';
-				    });
-				}
-			} else {
-				var emailIsEmpty,
-					emailDatas;
-				emailIsEmpty = validateService.isEmpty('.j-valiEmail input');
-				if(emailIsEmpty !== 1) {
-					messageService.show(emailIsEmpty);
-					console.log(emailIsEmpty);
-					return false;
-				}
-				if(!email_regexp.test($scope.user.email)) {
-					messageService.show('请输入正确的邮箱格式');
-				} else {
-					emailDatas = validateService.submitData('.j-valiEmail');
-					var promiseEmail = httpService.getData('./json/change-password.json', emailDatas);
-				    promiseEmail.then(function(data) {
-				    	userService.user.email = $scope.user.email;
-				    	window.location = './#/reset-pwd';
-				    });
-				}
 			}
 		};
 	}]);

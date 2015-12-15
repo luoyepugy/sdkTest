@@ -18,7 +18,7 @@
         </div>
         <div class="j-form" ng-if="showPhone">
             <p class="gray_mid mt15 mb10 ml10">请为账号设置新登录密码。建议使用字母、数字与标点的组合，可大幅提高账号安全度。</p>
-            <ion-list class="j-form">
+            <ion-list class="j-resetPwd">
                 <ion-item class="item-input">
                     <span class="input-label">新密码</span>
                     <input type="password" name="newPwd" ng-model="user.newPwd" placeholder="请输入新密码" value="" data-empty="请输入新密码" />
@@ -28,7 +28,8 @@
                     <input type="password" name="confirmPwd" placeholder="请再次输入新密码" value="" data-empty="请再次输入新密码" />
                 </ion-item>
             </ion-list>
-            <p class="tc mt10"><button class="button button-balanced" ng-click="submit()">完成</button></p>
+            <submit-button　action="./json/change-password.json" state="home" text="完成" form=".j-resetPwd"></submit-button>
+            <!-- <p class="tc mt10"><button class="button button-balanced" ng-click="submit()">完成</button></p> -->
         </div>
         <div ng-if="showEmail">
             <p class="mb10 mt15 ml10">校验码已发送至：<span class="green">{{user.email}}</span></p>

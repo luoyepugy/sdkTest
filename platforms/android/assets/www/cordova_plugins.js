@@ -285,6 +285,13 @@ module.exports = [
             "plugin.notification.badge",
             "cordova.plugins.notification.badge"
         ]
+    },
+    {
+        "file": "plugins/cordova-sqlite-storage/www/SQLitePlugin.js",
+        "id": "cordova-sqlite-storage.SQLitePlugin",
+        "clobbers": [
+            "SQLitePlugin"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -305,7 +312,8 @@ module.exports.metadata =
     "org.apache.cordova.network-information": "0.2.15",
     "cordova-plugin-app-version": "0.1.8",
     "cordova-plugin-file-opener2": "2.0.1",
-    "de.appplant.cordova.plugin.badge": "0.7.1"
+    "de.appplant.cordova.plugin.badge": "0.7.1",
+    "cordova-sqlite-storage": "0.7.15-dev"
 }
 // BOTTOM OF METADATA
 });

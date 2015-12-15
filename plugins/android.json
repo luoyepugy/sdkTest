@@ -63,6 +63,10 @@
                         {
                             "xml": "<feature name=\"Badge\"><param name=\"android-package\" value=\"de.appplant.cordova.plugin.badge.Badge\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"SQLitePlugin\"><param name=\"android-package\" value=\"io.liteglue.SQLitePlugin\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -262,6 +266,9 @@
             "PACKAGE_NAME": "com.ionicframework.mytest828088"
         },
         "de.appplant.cordova.plugin.badge": {
+            "PACKAGE_NAME": "com.ionicframework.mytest828088"
+        },
+        "cordova-sqlite-storage": {
             "PACKAGE_NAME": "com.ionicframework.mytest828088"
         }
     },

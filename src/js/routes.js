@@ -57,8 +57,7 @@ define(['./app'], function (app) {
 		    url: '/submit',
 		    views:{
 		        'feedback-submit':{
-		            templateUrl: "views/feedback/ques-submit.html",
-		            controller: 'quesSubmitCtrl'
+		            templateUrl: "views/feedback/ques-submit.html"
 		        }
 		    }
 		 })
