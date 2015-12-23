@@ -1,1 +1,1 @@
-define(["./tradeDctv","./sexDctv","./dateDctv","./cityDctv","./timeDctv","./submitBtnDctv"],function(){});
+define(["./tradeDctv","./sexDctv","./dateDctv","./cityDctv","./submitBtnDctv"],function(){});

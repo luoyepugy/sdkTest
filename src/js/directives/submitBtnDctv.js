@@ -41,7 +41,7 @@ define(['./module'], function(directives) {
 					    			userService.user[i] = scope.$parent.user[i];
 					    		}
 					    	} else if(attrs.login === 'true') {
-					    		userService.user = data.user;
+					    		userService.user = data.data;
 					    	}
 					    });
 					}

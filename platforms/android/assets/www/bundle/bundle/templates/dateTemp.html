@@ -1,0 +1,36 @@
+
+<div  class="ios-picker-bg">
+    <ion-modal-view>
+        <div class="ios-picker">
+            <ion-header-bar ng-class="barCssClass">
+                <h1 class="title"></h1>
+                <button class="button" ng-click="returnOk()">{{okText}}</button>
+            </ion-header-bar>
+            <div class="ios-picker-content">
+                <div class="row ">
+                    <div class="col col-33">
+                        <ion-scroll class="ios-picker-scroll" delegate-handle={{yearHandle}}  on-scroll="getData('year')" scrollbar-y=false has-bouncing=true padding=false>
+                        <ul >
+                            <li ng-repeat="year in yearData" >{{year.name}}</li>
+                        </ul>
+                        </ion-scroll>
+                    </div>
+                    <div class="col col-33">
+                        <ion-scroll class="ios-picker-scroll" delegate-handle={{monthHandle}}  on-scroll="getData('month')" scrollbar-y=false has-bouncing=true padding=false>
+                        <ul >
+                            <li ng-repeat="month in monthData">{{month.name}}</li>
+                        </ul>
+                        </ion-scroll>
+                    </div>
+                    <div class="col col-33">
+                        <ion-scroll class="ios-picker-scroll" delegate-handle={{dayHandle}} on-scroll="getData('day')" scrollbar-y=false has-bouncing=true padding=false>
+                        <ul >
+                            <li ng-repeat="day in dayData" >{{day.name}}</li>
+                        </ul>
+                        </ion-scroll>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-modal-view>
+</div>

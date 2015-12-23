@@ -19,7 +19,7 @@ directives/tradeDctv.js
 directives/sexDctv.js
 directives/dateDctv.js
 directives/cityDctv.js
-directives/timeDctv.js
+directives/submitBtnDctv.js
 directives/index.js
 services/module.js
 services/userSvc.js

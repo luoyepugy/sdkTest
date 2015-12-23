@@ -1,8 +1,8 @@
 
 define(['./module', 'cordova'], function(services) {
 	services.factory('cameraService', 
-	['$q', '$ionicPopup', '$cordovaFileTransfer', '$cordovaCamera',
-	function($q, $ionicPopup, $cordovaFileTransfer, $cordovaCamera) {
+	['$q', '$ionicPopup', '$cordovaFileTransfer', '$cordovaCamera', '$ionicLoading',
+	function($q, $ionicPopup, $cordovaFileTransfer, $cordovaCamera, $ionicLoading) {
 		var camera = {};
 
 		camera.getPicture = function(options, errorMessage) {
@@ -37,7 +37,7 @@ define(['./module', 'cordova'], function(services) {
 			    fileName: imageURI.substr(imageURI.lastIndexOf('/') + 1),
 			    chunkedMode: false,
 			    mimeType: "image/jpg",
-			 	params : {'directory':'upload', 'fileName':imageURI.substr(imageURI.lastIndexOf('/') + 1)} // directory represents remote directory,  fileName represents final remote file name
+			 	params : {'directory':'upload', 'fileName':imageURI.substr(imageURI.lastIndexOf('/') + 1)}
 			 };
 			// var fileOptions = new FileUploadOptions();
 			// fileOptions.fileKey = "file";
@@ -56,18 +56,25 @@ define(['./module', 'cordova'], function(services) {
 				       okType: 'button-balanced'
 				    });
 			    }, function (progress) {
-			    	var perc = Math.floor(progress.loaded / progress.total * 100);
-					$scope.progressPercent =  perc + "%";
-			    	var myPopup = $ionicPopup.show({
-					     template: '<div class="progressBar">' +
-							            '<i class="progressBar-current" style="width: {{progressPercent}}"></i>' + 
-							        '</div>',
-					     title: '当前上传进度',
-					     scope: $scope
-				   	});
-				   	if(perc === 100) {
-				   		myPopup.close();
-				   	}
+			  //   	var perc = Math.floor(progress.loaded / progress.total * 100);
+					// $scope.progressPercent =  perc + "%";
+					var downloadProgress = (progress.loaded / progress.total) * 100;  
+                    $ionicLoading.show({  
+                        template: "已经下载：" + Math.floor(downloadProgress) + "%"  
+                    });  
+                    if (downloadProgress > 99) {  
+                        $ionicLoading.hide();  
+                    }
+			    	// var myPopup = $ionicPopup.show({
+					   //   template: '<div class="progressBar">' +
+							 //            '<i class="progressBar-current" style="width: {{progressPercent}}"></i>' + 
+							 //        '</div>',
+					   //   title: '当前上传进度',
+					   //   scope: $scope
+				   	// });
+				   	// if(perc === 100) {
+				   	// 	myPopup.close();
+				   	// }
 			    });
 
 			return deferred.promise;

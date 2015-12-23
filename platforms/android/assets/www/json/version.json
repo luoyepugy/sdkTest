@@ -1,0 +1,7 @@
+{
+	"success" : true,
+    "message" : "成功",
+    "data": {
+    	"version": "1.0.1"
+    }
+}
