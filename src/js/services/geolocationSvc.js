@@ -1,6 +1,6 @@
 
 define(['./module', 'cordova'], function(services) {
-	services.factory('geoService', ['$q, $http', '$cordovaGeolocation', function($q, $http, $cordovaGeolocation) {
+	services.factory('geoService', ['$q', '$http', '$cordovaGeolocation', function($q, $http, $cordovaGeolocation) {
 		var geo = {};
 		geo.getGeolocation = function() {
 			var deferred = $q.defer();
@@ -9,12 +9,15 @@ define(['./module', 'cordova'], function(services) {
 			    .then(function (position) {
 			      	var lat  = position.coords.latitude;
 			      	var lng = position.coords.longitude;
+			      	alert(lat + '' + lng);
 			      	$http.post('http://www.baidu.com', {'lat': lat, 'lng': lng})
 				      	.success(function(response) {
 				      		deferred.resolve(response);
+				      		alert(JSON.stringify(response));
 				      	})
 				      	.error(function(response) {
 				      		deferred.reject(response.message);
+				      		alert(JSON.stringify(response));
 				      	});
 			    }, function(error) {
 			      	switch(error.code)

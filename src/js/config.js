@@ -3,13 +3,14 @@ define(['./app', 'cordova'], function(app) {
 	return app.config(['$ionicConfigProvider', '$compileProvider', function($ionicConfigProvider, $compileProvider) {
 	  		$ionicConfigProvider.tabs.position("top");
 	  	}])
-	  	.run(['$ionicPlatform', '$cordovaBadge', '$ionicLoading',　'$ionicPopup','$cordovaGeolocation', '$cordovaFileTransfer', 'httpService', '$cordovaAppVersion', '$timeout',
-	  		function($ionicPlatform, $cordovaBadge, $ionicLoading, $ionicPopup,$cordovaGeolocation, $cordovaFileTransfer, httpService, $cordovaAppVersion, $timeout) {
+	  	.run(['$ionicPlatform', '$cordovaBadge', '$ionicLoading', 'geoService',　'$ionicPopup','$cordovaGeolocation', '$cordovaFileTransfer', 'httpService', '$cordovaAppVersion', '$timeout',
+	  		function($ionicPlatform, $cordovaBadge, $ionicLoading, geoService, $ionicPopup,$cordovaGeolocation, $cordovaFileTransfer, httpService, $cordovaAppVersion, $timeout) {
 	  		
 	  		document.addEventListener("deviceready", function () {
-
+	  			// 检查版本更新
 	  			// checkUpdate();
-	  			geo();
+	  			//定位服务
+	  			// geoService.getGeolocation();
 	  			// 状态栏显示
 				if(window.StatusBar) {
 					window.StatusBar.overlaysWebView(true);
@@ -40,18 +41,6 @@ define(['./app', 'cordova'], function(app) {
 				});
 			}, false);
 
-	  		function geo() {
-	  			var posOptions = {timeout: 10000, enableHighAccuracy: false};
-			    $cordovaGeolocation.getCurrentPosition(posOptions)
-				    .then(function (position) {
-				      var lat  = position.coords.latitude;
-				      var long = position.coords.longitude;
-				      alert(lat +" " + long);
-				    }, function(err) {
-				    	alert(JSON.stringify(error));
-				       // error
-				    });
-	  		}
 	  		function checkUpdate() {
 	  			// 版本自动更新
 				httpService.getData('./json/version.json')

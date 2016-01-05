@@ -1,1 +1,1 @@
-define(["./userSvc","./validateSvc","./httpSvc","./messageSvc","./dateSvc","./citySvc","./cameraSvc"],function(){});
+define(["./userSvc","./validateSvc","./httpSvc","./messageSvc","./dateSvc","./citySvc","./cameraSvc","./geolocationSvc"],function(){});
