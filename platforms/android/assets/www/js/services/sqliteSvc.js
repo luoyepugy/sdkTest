@@ -1,1 +1,0 @@
-define(["./module"],function(e){e.service("sqliteService",["$cordovaSQLite",function(e){e.openDB({name:"my.db"})}])});

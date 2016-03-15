@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="-webkit-tap-highlight" content="no"/>
+<meta content="IE=10" http-equiv="x-ua-compatible"/>
+<title>我的交易</title>
+<link rel="stylesheet" href="css/fonts.css" />
+<link rel="stylesheet" href="css/apps.min.css" />
+<script type="text/javascript" src="js/Qmik.min.js"></script>
+<script type="text/javascript" src="js/pages.min.js"></script>
+<body>
+    <!-- 头部导航 -->
+    <header class="header">
+        <div class="header_nav">
+            <a href="index.html" class="link_white"><i class="icon-arrow-left"></i></a>
+            <span class="header_nav_title">我的交易</span>
+            <a href="#" class="header_nav_button link_white">返回游戏</a>
+        </div>
+        <!-- 选项卡菜单 -->
+        <ul class="header_tab" q-ctrl="tab_menu">
+            <li class="header_tab_cur" data-index="0" q-onclick="tab_toggle">全部</li>
+            <li data-index="1" q-onclick="tab_toggle">成功</li>
+            <li data-index="2" q-onclick="tab_toggle">未成功</li>
+        </ul>
+        <!-- 选项卡菜单 -->
+    </header>
+    <!-- /头部导航 -->   
+    <!-- 中间内容 -->
+    <article class="content_withtab" q-ctrl="slide">
+        <!-- 全部 -->
+        <div q-ctrl="trade_all">
+          <ul class="list jq-trade-all tab_content">
+          </ul>
+        </div>      
+        <!-- /全部 -->
+        <!-- 成功 -->
+        <div q-ctrl="trade_success">
+          <ul class="list jq-trade-success tab_content none">
+          </ul>
+        </div>
+        <!-- /成功 -->
+        <!-- 未成功 -->
+        <div q-ctrl="trade_fail">
+          <ul class="list jq-trade-fail tab_content none"> 
+          </ul>
+        </div>
+        <!-- /未成功 -->
+    </article>
+    <!-- /中间内容 -->
+</body>
+</html>

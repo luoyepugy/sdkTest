@@ -1,0 +1,94 @@
+
+@import mixin
+
+// =========================================
+// ============= 屏幕宽度判断 ===============
+// =========================================
+@media (max-width: 320px) 
+  html
+    font-size: 90%
+    width: 320px
+    margin: 0 auto
+
+
+@media (min-width: 320px ) and (max-width: 360px) 
+  html
+    font-size: 95%
+
+
+@media (min-width: 360px ) and (max-width: 481px) 
+  html
+    font-size: 105%
+  .chat_box_sendBtn
+    padding: 3.7%
+  .limit_size
+    +size(90px, 90px)
+
+
+@media (min-width: 481px ) and (max-width: 720px) 
+  html
+    font-size: 120%
+  +switch-toggle($main_green, #ccc, 35px)
+  .content_withtab
+    padding-top: 28%
+  .chat_box
+    .inline_left
+      padding: 15px
+    .inline_right
+      padding: 18px
+  .footer
+    padding: 15px
+  .identity_code
+    +display-inline(62%, 24%)
+  .step_img
+    margin: -9% 0 8% 0 
+  .limit_size
+    +size(110px, 110px)
+
+
+@media (min-width: 720px ) 
+  html
+    font-size: 135%
+    width: 720px
+    margin: 0 auto
+  .header_nav
+    +line-height(45px)
+    padding: 20px
+  .header_tab
+    +line-height(70px)
+  .header_tab li
+    padding: 0
+    width: 32.5%
+  .header_nav_title,
+  .header_nav i
+    padding: 0
+    margin: 0 2% 0 2%
+  .header_nav_button
+    padding: 2px 15px
+    margin: 0
+  +switch-toggle($main_green, #ccc, 45px)
+  .content_nopadding
+    padding-top: 85px
+  .content
+    padding-top: 115px
+  .content_withtab
+    padding-top: 160px
+  .chat_box
+    .inline_left
+      padding: 15px
+      width: 68%
+    .inline_right
+      padding: 18px
+  .footer
+    padding: 15px
+  .change_pwd
+    +display-inline(23%, 68%)
+  .identity_code
+    +display-inline(62%, 24%)
+  .step_img
+    margin: -8% 0 7% 0
+  .error_tip
+    width: 300px
+    margin-left: -150px
+  .limit_size
+    +size(130px, 130px)

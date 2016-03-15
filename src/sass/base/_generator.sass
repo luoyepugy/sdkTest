@@ -1,0 +1,136 @@
+
+// 生成器:
+// fontsize字体/padding内边距/margin外边距/宽度width/高度height
+//
+
+
+
+
+
+// fontsize生成器
+//
+// 参数列表依次为（间距值、开始值、结束值）,值不带单位，默认为px
+// 可以在样式表中引用生成的class（ex .f12）
+//
+
+=fontsize-generator($step, $start, $end, $mark: '.')
+  $n: $start
+  @while $n <= $end
+    #{$mark}f#{$n}
+      font-size: #{$n}px
+
+    $n: $n + $step
+
+
+
+
+
+// width生成器
+//
+// 参数列表依次为（间距值、开始值、结束值）,值不带单位，默认为px
+// 可以在样式表中引用生成的class（ex .w200）
+//
+
+=width-generator($step, $start, $end, $unit: 'px', $mark: '.')
+  $n: $start
+  @while $n <= $end
+    #{$mark}w#{$n}
+      width: #{$n}#{$unit}
+
+    $n: $n + $step
+
+
+
+// height生成器
+//
+// 参数列表依次为（间距值、开始值、结束值）,值不带单位，默认为px
+// 可以在样式表中引用生成的class（ex .h200）
+//
+
+=height-generator($step, $start, $end, $mark: '.')
+  $n: $start
+  @while $n <= $end
+    #{$mark}h#{$n}
+      height: #{$n}px
+
+    $n: $n + $step
+
+
+
+
+
+// padding生成器
+//
+// 参数列表依次为（间距值、开始值、结束值，类型，标记）,值不带单位，默认为px
+// 可以在样式表中引用生成的class（ex .p10）
+//
+
+=padding-generator($step, $start, $end, $unit: 'px', $mark: '.')
+  $n: $start
+  @while $n <= $end
+    #{$mark}p#{$n}
+      padding: #{$n}#{$unit}   
+
+    $n: $n + $step
+
+
+
+// padding分解生成器
+//
+// 参数列表依次为（间距值、开始值、结束值，类型，标记）,值不带单位，默认为px
+// 可以在样式表中引用生成的class（ex .pt10）
+//
+
+=padding-single-generator($step, $start, $end, $unit: 'px', $mark: '.')
+  $n: $start
+  @while $n <= $end
+    #{$mark}pt#{$n}
+      padding-top: #{$n}#{$unit}
+    #{$mark}pr#{$n}
+      padding-right: #{$n}#{$unit}
+    #{$mark}pl#{$n}
+      padding-left: #{$n}#{$unit}
+    #{$mark}pb#{$n}
+      padding-bottom: #{$n}#{$unit}
+
+    $n: $n + $step
+
+
+
+
+
+// margin生成器
+//
+// 参数列表依次为（间距值、开始值、结束值，类型，标记）,值不带单位，默认为px
+// 可以在样式表中引用生成的class（ex .m10）
+//
+
+=margin-generator($step, $start, $end, $unit: 'px', $mark: '.')
+  $n: $start
+  @while $n <= $end
+    #{$mark}m#{$n}
+      margin: #{$n}#{$unit} 
+
+    $n: $n + $step
+
+
+
+// margin分解生成器
+//
+// 参数列表依次为（间距值、开始值、结束值，类型，标记）,值不带单位，默认为px
+// 可以在样式表中引用生成的class（ex .mt10）
+//
+
+=margin-single-generator($step, $start, $end, $unit: 'px', $mark: '.')
+  $n: $start
+  @while $n <= $end
+    #{$mark}mt#{$n}
+      margin-top: #{$n}#{$unit}
+    #{$mark}mr#{$n}
+      margin-right: #{$n}#{$unit}
+    #{$mark}ml#{$n}
+      margin-left: #{$n}#{$unit}
+    #{$mark}mb#{$n}
+      margin-bottom: #{$n}#{$unit}
+
+    $n: $n + $step

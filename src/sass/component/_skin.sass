@@ -1,0 +1,91 @@
+
+// 渐变背景
+//
+// 参数为多个（方向，颜色1，颜色2...），根据需要传入任意个参数
+//
+
+=linear-bg($colors...)
+  background: -webkit-linear-gradient($colors)
+  background: -moz-linear-gradient($colors)
+  background: linear-gradient($colors)
+
+
+
+// 颜色值相关联的skin
+//
+// 参数为（文本颜色值）
+//
+
+=skin-relation($color)
+  color: $color
+  background: lighten($color, 40%)
+  border: 1px solid lighten($color, 20%)
+
+
+
+// 基本skin，包括背景（可传入渐变色值），字体颜色，边框（可传入边框颜色或者border属性值）
+//
+// 参数列表依次为（背景，字体颜色，边框）
+//
+
+=skin-basic($background, $color, $border)
+  color: $color
+
+  @if length($background) == 1
+    background: $background
+  @else
+    +linear-bg($background...)
+
+  @if length($border) == 1
+    border: 1px solid $border
+  @else
+    border: $border
+
+
+
+// 只有背景（可传入渐变色值），字体颜色
+//
+// 参数列表依次为（背景，字体颜色）
+//
+
+=skin-bgfg($background, $color)
+  color: $color
+
+  @if length($background) == 1
+    background: $background
+  @else
+    +linear-bg($background...)
+
+
+
+// 只有背景（可传入渐变色值），边框（可传入边框颜色或者border属性值）
+//
+// 参数列表依次为（背景，边框）
+//
+
+=skin-bgbd($background, $border)
+
+  @if length($background) == 1
+    background: $background
+  @else
+    +linear-bg($background...)
+
+  @if length($border) == 1
+    border: 1px solid $border
+  @else
+    border: $border
+
+
+
+// 只有字体颜色，边框（可传入边框颜色或者border属性值）
+//
+// 参数列表依次为（字体颜色，边框）
+//
+
+=skin-fgbd($color, $border)
+  color: $color
+
+  @if length($border) == 1
+    border: 1px solid $border
+  @else
+    border: $border

@@ -1,0 +1,18 @@
+
+// 多行文本输入框
+//
+// 参数为（宽度，高度）
+// @content扩展自定义样式
+//
+
+%textarea-basic
+  outline: none
+  padding: 10px 5px
+
+
+=textarea($width, $height)
+  .textarea
+    @extend %textarea-basic
+    width: $width
+    height: $height
+    @content

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="-webkit-tap-highlight" content="no"/>
+<meta content="IE=10" http-equiv="x-ua-compatible"/>
+<title>个人主页</title>
+<link rel="stylesheet" href="css/fonts.css" />
+<link rel="stylesheet" href="css/apps.min.css" />
+<script type="text/javascript" src="js/Qmik.min.js"></script>
+<script type="text/javascript" src="js/pages.min.js"></script>
+<body>
+    <!-- 头部导航 -->
+    <header class="header">
+        <div class="header_nav">
+            <a href="#" class="link_white"><i class="icon-arrow-left"></i></a>
+            <span class="header_nav_title">个人主页</span>
+            <a href="#" class="header_nav_button link_white">返回游戏</a>
+        </div>
+    </header>
+    <!-- /头部导航 -->
+    <!-- 中间内容 -->
+    <article class="content_nopadding">
+        <!-- 个人信息 -->
+        <div class="user vm">
+            <section class="inline_left user_portrait">
+                <img src="images/portrait.jpg">
+            </section>
+            <section class="inline_right ml3">
+                <p class="mb5 elimit8em">科技航空</p>
+                <p class="gray_light font_sm">ID: 2452882</p>
+            </section>
+            <a class="link-white button fr mt7" href="edit-user.html">编辑资料</a>
+        </div>
+        <!-- /个人信息 -->
+        <!-- 菜单列表 -->
+        <ul class="list">
+            <a class="link_gray" href="change-password.html"><li><i class="icon-locked font_icon"></i>修改密码</li></a>
+            <a class="link_gray" href="trade.html"><li><i class="icon-coin font_icon"></i>我的交易</li></a>
+            <a class="link_gray" href="terms.html"><li><i class="icon-coin font_icon"></i>服务条款</li></a>
+            <a class="link_gray" href="retrieve-pwd/identity.html"><li><i class="icon-coin font_icon"></i>找回密码</li></a>
+            <a class="link_gray" href="feedback/question.html"><li><i class="icon-coin font_icon"></i>反馈</li></a>
+            <a class="link_gray" href="feedback/record.html"><li><i class="icon-coin font_icon"></i>我的反馈记录</li></a>
+            <li>
+                <i class="icon-key font_icon"></i>自动登录游戏
+                <span class="mt-1 switch_active jq-switch" q-ctrl="switch" q-onclick='switch_toggle'></span>
+            </li>
+        </ul>
+        <p class="gray_light font_sm tc">关闭自动登录，每次进入游戏时可重新选择登录账号</p>
+        <!-- /菜单列表 -->
+    </article>
+    <!-- /中间内容 -->
+</body>
+</html>

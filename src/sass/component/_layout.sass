@@ -1,0 +1,90 @@
+
+// mobile-layout-fixed
+// 移动端固定布局
+//
+
+=mobile-fixed-header
+  +position-common(fixed)
+  z-index: 100
+  width: 100%
+
+
+=mobile-fixed-footer
+  +position(fixed, bottom, 0 , left, 0)
+  z-index: 100
+  width: 100%
+
+
+
+// layout-fixed
+// 固定布局
+//
+// 参数为（宽度）
+// @content扩展自定义样式
+//
+
+=fixed-header($width)
+  .fixed_header
+    +position-common(fixed)
+    z-index: 100
+    width: $width
+    @content
+
+
+=fixed-footer($width)
+  .fixed_footer
+    +position(fixed, bottom, 0 , left, 0)
+    z-index: 100
+    width: $width
+    @content
+
+
+=fixed-left($width)
+  .fixed_left
+    +position(fixed)
+    z-index: 100
+    width: $width
+    @content
+
+
+=fixed-right($width)
+  .fixed_right
+    +position(fixed, right, 0, top, 0)
+    z-index: 100
+    width: $width
+    @content
+
+ 
+
+
+// display-inline
+// 块状元素显示为一行布局
+//
+// 参数为（左边宽度， 右边宽度）
+//
+
+=display-inline($left_width, $right_width)
+  .inline_left
+    width: $left_width
+    display: inline-block
+  .inline_right
+    width: $right_width
+    display: inline-block
+
+
+
+// display-inline-autowidth
+// 块状元素显示为一行布局，自动宽度
+//
+// 参数为（左边宽度， 右边宽度）
+//
+
+=display-inline-autowidth($left_width, $right_width)
+  .inline_left
+    display: inline-block
+    width: auto
+    max-width: $left_width
+  .inline_right
+    display: inline-block
+    width: auto
+    max-width: $right_width

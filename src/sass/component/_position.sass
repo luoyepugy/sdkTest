@@ -1,0 +1,39 @@
+
+// 水平方向绝对居中，在不同浏览器
+//
+// 参数为（宽度值）
+//
+
+%absolute-center
+  position: absolute
+  left: 50%
+
+=position-center($width)
+  @extend %absolute-center
+  margin-left: - ($width / 2)
+  width: $width
+
+
+
+// 常用定位
+//
+// 参数列表依次为（定位类型，距离左边的值，距离顶部的值）
+//
+
+=position-common($position-type, $left-value: 0, $top-value: 0)
+  position: $position-type
+  left: $left-value
+  top: $top-value
+
+
+
+
+// 定位
+//
+// 参数列表依次为（定位类型，方向1，值1，方向2，值2）
+//
+
+=position($position-type, $direction1, $value1, $direction2, $value2)
+  position: $position-type
+  #{$direction1}: $value1
+  #{$direction2}: $value2

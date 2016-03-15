@@ -1,0 +1,203 @@
+
+@import reset/default-reset
+@import reset/custom-reset
+@import mixin
+
+
+
+// =========================================
+// ============= 组件 ======================
+// =========================================
+
+// 按钮
+.button
+  +border-radius(5px)
+  padding: 3%
+  font-size: 1rem
+  +skin-bgfg($main_green, #fff)
+  text-align: center
+  border: 0
+
+// 按钮
+.green_button
+  @extend .button
+  padding: 2% 7%  
+  margin: 0 auto
+  width: 45%
+
+.green_disabled_button
+  @extend .green_button
+  background: #aeaeae
+
+// 我的反馈记录页面-消息发送按钮
+.chat_box_sendBtn
+  @extend .button
+  border-radius: 0
+
+
+// 字符限制
++elimit-width(8em)
+
+// 文本输入框
+%text_input
+  padding: 3%
+  font-size: 1em
+  +skin-bgbd(#fff, #ddd)
+
+  &:focus
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6)
+    outline: 0 none
+    border-color: #66afe9
+
+.input
+  @extend %text_input
+  width: 94%
+
+// 多行文本输入框
+.textarea
+  @extend %text_input
+  width: 94%
+  height: 100px
+
+
+// 超链接
+.link_white
+  +link(#fff, #fff)
+.link_gray
+  +link(#333, #333)
+.link_green
+  +link(#96aa39, #96aa39)
+
+// 分割线
+.division
+  border-top: 1px solid #ddd
+  padding-top: 3%
+
+// 段落
+.p
+  margin: 3% 0
+
+
+// =========================================
+// ============= 页面版块 ===================
+// =========================================
+
+// 头部导航
+.header  
+  +mobile-fixed-header
+
+.header_nav
+  +skin-bgfg(#96aa39, #fff)
+  font-size: 1.2em
+.header_nav *
+  vertical-align: middle
+.header_nav_title
+  padding-left: 3%
+.header_nav i, 
+.header_nav_title
+  display: inline-block
+  margin: 1% 0 1% 0
+  padding: 4% 2% 
+.header_nav_button
+  @extend .button
+  background: #333
+  float: right
+  margin: 2.5% 2% 0 0
+
+.header_tab
+  background: #fff
+  border-bottom: 1px solid #ddd
+.header_tab li
+  width: 24.2%
+  text-align: center
+  display: inline-block
+  padding: 4%
+.header_tab_cur
+  color: $main_green
+  border-bottom: 2px solid $main_green
+
+
+// 中间内容
+.content
+  padding: 22% 4% 4% 4%
+.content_nopadding
+  padding: 14% 0 4% 0
+.content_withtab
+  padding: 30% 0 4% 0
+
+
+// 底部固定
+.footer
+  +mobile-fixed-footer
+  background: #fff
+  padding: 3%
+  border-top: 1px solid #ddd
+
+
+// =========================================
+// ============= 模块 ======================
+// =========================================
+
+// 列表
+.list
+  margin: 3%
+.list li
+  background: #fff
+  padding: 4%
+  margin-bottom: 2%
+  border: 1px solid #ddd
+.list *
+  vertical-align: middle
+.list .font_icon
+  padding-right: 5%
+
+
+// 错误提示
+.error_tip
+  +position(fixed, bottom, 40px, left, 50%)
+  width: 180px
+  color: #fff
+  background: rgba(0, 0, 0, .7)
+  opacity: .7
+  +border-radius(4px)
+  padding: 5px 7px
+  text-align: center
+  margin-left: -90px
+  font-size: .9em
+
+// 加载提示
+.load_tip
+  font-size: .8em
+  color: #bbb
+  text-align: center
+  margin: 3% 0
+
+// 加载图标
+.loading
+  +position(fixed, bottom, 37%, left, 48%)
+  z-index: 100
+  +size(40px)
+
+
+// =========================================
+// ============= 元件 ======================
+// =========================================
+
+// 字体图标默认
+.font_icon
+  font-size: 1.3em
+  color: $main_green
+
+// 颜色
++color('gray_light', '#bbb')
++color('gray_mid', '#666')
++color('green', '#96aa39')
++color('orange', '#ff802e')
++color('red')
++color('white')
+
+
+// 导入其他元件
+@import base/mobile-default-base
+@import base/mobile-custom-base
+@import base/default-base

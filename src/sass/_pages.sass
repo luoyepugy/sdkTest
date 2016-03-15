@@ -1,0 +1,126 @@
+
+@import mixin
+
+// =====================================================
+// ============= 个人主页index.html =====================
+// =====================================================
+
+
+// 用户信息
+.user
+  background: #fff
+  padding: 5%
+  border-bottom: 1px solid #ddd
+  +display-inline(22%, 41%)
+
+// 开关按钮
++switch-toggle($main_green, #ccc)
+
+
+// =====================================================
+// ============= 修改密码change-password.html ===========
+// =====================================================
+.change_pwd
+  +display-inline(34%, 57%)
+
+
+// =====================================================
+// =============== 我的交易trade.html ===================
+// =====================================================
+.trade_price
+  padding: 0 1%
+  vertical-align: top
+
+
+// =====================================================
+// =========== 我的反馈记录feedback/record.html =========
+// =====================================================
+.message_record
+  margin: 3% 0 5% 0
+  +display-inline-autowidth(11%, 67%)
+
+.message_record *,
+.message_question *,
+.myfeedback *
+  vertical-align: top
+
+// 聊天消息输入框
+.chat_box
+  +display-inline(62%, 18%)
+
+
+
+// =====================================================
+// ============= 反馈问题feedback/question.html =========
+// =====================================================
+
+// 反馈问题
+.message_question
+  +display-inline(8%, 85%)
+
+// 我的反馈
+.myfeedback
+  +display-inline(78%, 20%)
+
+// select下拉箭头
+.arrow_down
+  +skin-bgfg($main_green, #fff)
+  padding: 2.7% 5%
+  +position(absolute, right, 0, top, 2%)
+
+
+// 选项列表，类似select
+.option_list
+  width: 100%
+  background: #fff
+  padding: 7px
+  +border-radius(0)
+
+
+// =====================================================
+// ============ 找回密码retrieve-pwd/phone.html =========
+// =====================================================
+
+// 步骤图
+.step
+  +display-inline(49%, 49%)
+  text-align: center
+  font-size: 0
+.step_img
+  display: block
+  padding-top: 14%
+  margin: -13% 0 10% 0
+  border-top: 1px solid #ddd
+
+
+// 验证码
+.identity_code
+  +display-inline(52%, 33%)
+
+
+
+// =====================================================
+// ================ 编辑资料edit-user.html ==============
+// =====================================================
+.user_infos
+  +display-inline(18%, 72%)
+
+.user_portrait
+  +border-radius(10px)
+  width: 22%
+  margin: 0 auto
+  overflow: hidden
+  text-align: center
+  background: #fff
+  border: 1px solid #ddd
+
+  i
+    font-size: 4em
+
+.limit_size
+  +size(70px, 70px)
+
+.upload_img
+  +position-common(absolute)
+  +size(100%, 100%)
+  opacity: 0

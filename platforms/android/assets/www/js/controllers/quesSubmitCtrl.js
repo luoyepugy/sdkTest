@@ -1,1 +1,0 @@
-define(["./module"],function(e){e.controller("quesSubmitCtrl",["$scope","validateService","httpService","messageService",function(e,t,n,i){e.submit=function(){var e,o;if(e=t.isEmpty(".j-form .j-input"),1!==e)return i.show(e),!1;o=t.submitData(".j-form");var r=n.getData("./json/change-password.json",o);r.then(function(e){i.show("反馈成功")})}}])});

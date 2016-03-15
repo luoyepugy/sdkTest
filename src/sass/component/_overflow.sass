@@ -1,0 +1,34 @@
+
+// 文本达到一定宽度时，隐藏多余文本并加上省略号
+//
+// 参数为（宽度值）
+// 可以在样式表中引用生成的class（ex .elimit-width25em）
+//
+
+%ellipsis
+  display: inline-block
+  white-space: nowrap
+  overflow: hidden
+  cursor: pointer
+  text-overflow: ellipsis
+
+%clip
+  display: inline-block
+  white-space: nowrap
+  overflow: hidden
+  cursor: pointer
+  text-overflow: clip
+
+
+
+=elimit-width($width)
+  .elimit#{$width}
+    @extend %ellipsis
+    max-width: $width
+
+
+
+=climit-width($width)
+  .climit#{$width}
+    @extend %clip
+    max-width: $width

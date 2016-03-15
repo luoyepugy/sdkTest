@@ -1,1 +1,0 @@
-define(["./tradeDctv","./sexDctv","./dateDctv","./cityDctv","./submitBtnDctv"],function(){});

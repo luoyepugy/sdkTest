@@ -1,0 +1,30 @@
+
+// 超链接
+//
+// 参数为（文本原始颜色，鼠标放上后的颜色，文本修饰类型）
+// @content扩展自定义样式
+//
+
+=link($original-color, $hover-color)
+  color: $original-color
+
+  &:hover,
+  &:visited
+    color: $hover-color
+
+  cursor: pointer
+  @content
+
+
+
+=link-a($original-color, $hover-color, $decoration-type: none)
+  a
+    text-decoration: $decoration-type  
+    color: $original-color
+
+    &:hover,
+    &:visited
+      color: $hover-color
+
+    cursor: pointer
+    @content

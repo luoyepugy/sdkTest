@@ -1,1 +1,0 @@
-define(["./module"],function(e){e.controller("changePwdCtrl",["$scope","$http","validateService","httpService","userService","messageService",function(e,r,c,s,t,i){e.user={},e.user.oldPwd=t.user.password}])});

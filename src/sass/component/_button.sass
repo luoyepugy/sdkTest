@@ -1,0 +1,89 @@
+
+// button-fixedwidth
+// 固定宽度按钮
+//
+// 参数为（宽度，高度，背景色值）
+// @content扩展自定义样式
+//
+
+%button
+  cursor: pointer
+  border: 0
+  font-size: 1em
+  text-align: center
+
+
+=button-fixedwidth($width, $height, $background)
+  @extend %button
+  width: $width
+  +line-height($height)
+  background: $background
+  @content
+
+  &:hover
+    background: darken($background, 5%)
+
+
+
+// button-autowidth
+// 自动宽度按钮
+//
+// 参数为（内边距值，背景色值）
+// @content扩展自定义样式
+//
+
+=button-autowidth($padding, $background)
+  @extend %button
+  padding: $padding
+  background: $background
+  @content
+
+  &:hover
+    background: darken($background, 5%)
+
+
+
+// button-group
+// 块状按钮组（多个按钮之间无间隙）
+//
+// @content扩展自定义样式
+//  
+
+=button-group
+  .button_group  
+    vertical-align: middle
+    font-size: 0
+    @content
+    .button
+      padding: .5em 2em
+      display: inline-block
+      font-size: 1rem
+      cursor: pointer
+      @content
+
+
+// button-group-rounded
+// 块状圆角按钮组（多个按钮之间无间隙）
+//
+// 参数为（圆角半径值）
+// @content扩展自定义样式
+//  
+
+=button-group-rounded($radius)
+  .button_group_rounded 
+    vertical-align: middle
+    @content
+    .button
+      padding: .5em 2em
+      display: inline-block
+      margin-right: -5px
+      cursor: pointer
+      @content
+    .button_first
+      @extend .button
+      border-top-left-radius: $radius
+      border-bottom-left-radius: $radius    
+    .button_last
+      @extend .button
+      border-top-right-radius: $radius
+      border-bottom-right-radius: $radius

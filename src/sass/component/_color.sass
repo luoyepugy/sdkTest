@@ -1,0 +1,9 @@
+
+// 颜色类
+//
+// 参数依次为（颜色类名，颜色值），颜色名 == 颜色值时，加引号
+//
+
+=color($color_name, $color: $color_name)
+  .#{$color_name}
+    color: unquote($color)

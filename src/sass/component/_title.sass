@@ -1,0 +1,27 @@
+
+// 标题
+//
+// 参数为（字体大小，字体颜色）
+// @content扩展自定义样式
+//
+
+=title($font-size, $color)
+  .title
+    font-size: $font-size
+    color: $color
+
+    @content
+
+
+
+// 标题，无class生成
+//
+// 参数为（字体大小，字体颜色）
+// @content扩展自定义样式
+//
+
+=title-mixin($font-size, $color)
+  font-size: $font-size
+  color: $color
+
+  @content

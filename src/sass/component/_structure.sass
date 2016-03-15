@@ -1,0 +1,29 @@
+
+// 侧边内容包裹层
+//
+// 参数列表为（宽度，浮动），不传浮动参数时，默认为左浮动
+// @content扩展自定义样式
+//
+
+=side-wrap($width, $float: left)
+  .side-wrap
+    width: $width 
+
+    @if $float == left
+      float: left
+    @else
+      float: right
+
+    @content
+
+
+
+
+// 主体内容包裹层
+//
+// @content扩展自定义样式
+//
+
+=main-wrap
+  .main-wrap
+    @content

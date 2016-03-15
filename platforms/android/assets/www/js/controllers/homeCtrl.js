@@ -1,1 +1,0 @@
-define(["./module"],function(e){e.controller("homeCtrl",["$scope","httpService","messageService","userService",function(e,o,n,s){e.user=s.user,e.statusToggle=function(){o.getData("./json/change-password.json",{on:e.user.autoLogin}).then(function(e){n.show("修改成功")})}}])});

@@ -1,0 +1,39 @@
+
+// switch
+// 移动端开关按钮切换状态
+//
+// 参数为（按钮打开背景色，按钮关闭背景色）
+// 默认按钮大小为宽度56px,高度28px
+// 
+
+=switch-toggle($actived_bg, $closed_bg, $height: 28px)
+  // 函数内部变量
+  $width: $height * 2
+  $circle: $height - 4
+  
+  .switch_active,
+  .switch_close
+    +size($width, $height)
+    border-radius: $height
+    float: right
+
+    &:before
+      +size($circle, $circle)
+      border-radius: $height
+      background: #fff
+      content: ' '
+      float: right
+
+  .switch_active
+    background: $actived_bg
+    @content
+
+    &:before
+      border: 2px solid $actived_bg
+
+  .switch_close
+    background: $closed_bg
+
+    &:before
+      border: 2px solid $closed_bg
+      margin-right: $height

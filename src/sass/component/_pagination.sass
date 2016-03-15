@@ -1,0 +1,26 @@
+
+// 分页
+//
+// @content扩展自定义样式
+//
+
+%pagination
+  li,
+  a
+    display: inline-block
+
+  input
+    padding: .2em 0 .2em 5px
+
+  a,
+  .current,
+  .page
+    padding: .2em .5em
+    margin-right: .3em
+    cursor: pointer
+
+
+=pagination
+  .pagination
+    @extend %pagination
+    @content

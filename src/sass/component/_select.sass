@@ -1,0 +1,20 @@
+
+// select下拉菜单
+//
+// 参数为（高度值）
+// @content扩展自定义样式
+//
+
+=line-height($height)
+  height: $height
+  line-height: $height
+
+%font1em
+  font-size: 1em
+
+
+=select($height)
+  .select
+    +line-height($height)
+    @extend %font1em
+    @content
